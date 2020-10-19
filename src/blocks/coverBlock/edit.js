@@ -14,7 +14,11 @@ import {
 import { Fragment } from '@wordpress/element'
 import {
 	Toolbar,
-	DropdownMenu
+	DropdownMenu,
+	PanelBody,
+	ToggleControl,
+	ColorPicker,
+	ColorPalette
 } from '@wordpress/components'
 
 
@@ -51,7 +55,30 @@ export default function Edit( { className, attributes, setAttributes } ) {
 	}
 	return(
 	<>
-		<Inspect
+		<InspectorControls>
+			<PanelBody
+			title={__('Panel', 'qtd-blocks')}>
+				<ToggleControl
+				label="Hello world!!!"
+				onChange={(v) => console.log(v)}
+				/>
+				{/*<ColorPicker
+				color="#dedede"
+				onChangeComplete = {(v) => console.log((v))}
+				/>*/}
+				<ColorPalette
+				colors={[
+					{color: '#f03'},
+					{color: '#dedede'},
+					{color: '#d52'},
+					{color: '#b28'},
+					]}
+				onChange={(v) => console.log(v)}
+				/>
+
+
+			</PanelBody>
+		</InspectorControls>
 		<BlockControls
 			/*controls={ [
 				[{
