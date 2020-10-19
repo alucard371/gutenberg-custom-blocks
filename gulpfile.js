@@ -12,7 +12,7 @@ function bundle() {
 		"!package-lock.json",
 		"!.gitignore",
 	])
-		.pipe(zip('todo-list.zip'))
+		.pipe(zip('qtd-blocks.zip'))
 		.pipe(gulp.dest('bundled'));
 }
 

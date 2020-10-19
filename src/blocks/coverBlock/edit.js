@@ -4,6 +4,7 @@
  * @see https://developer.wordpress.org/block-editor/packages/packages-i18n/
  */
 import { __ } from '@wordpress/i18n';
+import { RichText } from '@wordpress/editor';
 var el = wp.element.createElement;
 
 
@@ -27,5 +28,5 @@ import './editor.scss';
  * @return {WPElement} Element to render.
  */
 export default function Edit( { className } ) {
-	return <p className={ className }>This is the new test edit function of the cover block</p>;
+	return <RichText className={ className }>This is the new test edit function of the cover block</RichText>;
 }

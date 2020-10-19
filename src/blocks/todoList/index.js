@@ -32,12 +32,12 @@ import save from './save';
  *
  * @see https://developer.wordpress.org/block-editor/developers/block-api/#registering-a-block
  */
-registerBlockType( 'create-block/todo-list', {
+registerBlockType( 'create-block/todo-block', {
 	/**
 	 * This is the display title for your block, which can be translated with `i18n` functions.
 	 * The block inserter will show this name.
 	 */
-	title: __( 'Todo List', 'todo-list' ),
+	title: __( 'Todo Block', 'todo-block' ),
 
 	/**
 	 * This is a short description for your block, can be translated with `i18n` functions.
@@ -45,7 +45,7 @@ registerBlockType( 'create-block/todo-list', {
 	 */
 	description: __(
 		'Description de votre bloc custom',
-		'todo-list'
+		'todo-block'
 	),
 
 	/**
@@ -64,7 +64,7 @@ registerBlockType( 'create-block/todo-list', {
 		src: 'text-page',
 	},
 
-	keywords: [__('list', 'todo-list'),__('organise', 'todo-list')],
+	keywords: [__('list', 'todo-block'),__('organise', 'todo-block')],
 
 
 

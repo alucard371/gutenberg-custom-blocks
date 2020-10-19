@@ -1,10 +1,10 @@
 {
-	"name": "create-block/todo-list",
-	"title": "Todo List",
+	"name": "create-block/qtd-blocks",
+	"title": "Qtd Blocks",
 	"category": "widgets",
 	"icon": "smiley",
 	"description": "Example block written with ESNext standard and JSX support – build step required.",
-	"textdomain": "todo-list",
+	"textdomain": "qtd-blocks",
 	"supports": {
 		"html": false
 	},

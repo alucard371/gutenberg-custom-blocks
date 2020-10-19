@@ -1,5 +1,5 @@
 {
-	"name": "todo-list",
+	"name": "qtd-blocks",
 	"version": "0.1.0",
 	"description": "Example block written with ESNext standard and JSX support – build step required.",
 	"author": "The WordPress Contributors",
@@ -16,6 +16,8 @@
 		"build:custom": "wp-scripts build src/blocks/todoList/index.js src/blocks/coverBlock/index.js src/blocks/menuBlock/index.js --output-path=build && gulp bundle"
 	},
 	"devDependencies": {
+		"@wordpress/components": "^11.0.1",
+		"@wordpress/editor": "^9.23.2",
 		"@wordpress/scripts": "^12.3.0",
 		"eslint": "^7.11.0",
 		"eslint-plugin-react": "^7.21.4",
