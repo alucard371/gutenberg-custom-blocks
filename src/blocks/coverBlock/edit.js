@@ -40,5 +40,6 @@ export default function Edit( { className, attributes, setAttributes } ) {
 			className={ className}
 			onChange={onChangeContent}
 			value={ content }
-			formattingControls={[]}/>;
+			// formattingControls={[]}
+	/>;
 }

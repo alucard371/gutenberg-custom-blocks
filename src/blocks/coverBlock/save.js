@@ -4,6 +4,7 @@
  * @see https://developer.wordpress.org/block-editor/packages/packages-i18n/
  */
 import { __ } from '@wordpress/i18n';
+import { RichText } from '@wordpress/editor';
 var el = wp.element.createElement;
 
 /**
@@ -15,6 +16,12 @@ var el = wp.element.createElement;
  *
  * @return {WPElement} Element to render.
  */
-export default function save() {
-	return <p>this is the save function of the cover block</p>;
+export default function save(
+	{attributes}
+) {
+	const { content } = attributes;
+	return <RichText.Content
+	tagName="p"
+	value={ content }
+	/>;
 }
