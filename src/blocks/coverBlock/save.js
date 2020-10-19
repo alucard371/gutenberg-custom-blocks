@@ -9,6 +9,8 @@ import {
 	getColorClassName,
 } from '@wordpress/editor';
 
+import classnames from 'classnames';
+
 
 /**
  * The save function defines the way in which the different attributes should
@@ -24,18 +26,31 @@ export default function save(
 ) {
 	const { content, alignment,backgroundColor, textColor, customBackgroundColor, customTextColor } = attributes;
 
+	//get the color classes names from colors
 	const backgroundClass = getColorClassName('background-color', backgroundColor)
 	const textClass = getColorClassName('color', textColor)
+	//add the classes names
+	//let classes='';
+	/*if (backgroundClass) {
+		classes += backgroundClass;
+	}*/
 
-	console.log(attributes);
-	console.log(backgroundClass);
-	console.log(textClass);
+	const classes = classnames({
+		//variable as a key to see if the condition is true
+		[backgroundClass] : backgroundClass,
+		[textClass] : textClass,
+	})
+
+
 	return <RichText.Content
 	tagName="p"
+	className={ classes }
 	value={ content }
 	style={{
 		textAlign: alignment,
-		backgroundColor: backgroundColor,
-		color: textColor }}
+		//ignore the inline style if undefined
+		//if backgroundClass === true backgroundColor=undefined else customBackgroundColor
+		backgroundColor: backgroundClass ? undefined : customBackgroundColor ,
+		color: textClass ? undefined : customTextColor }}
 	/>;
 }
