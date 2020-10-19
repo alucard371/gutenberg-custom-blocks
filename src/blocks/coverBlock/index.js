@@ -5,7 +5,7 @@ import EditClass from "./editClass";
  *
  * @see https://developer.wordpress.org/block-editor/developers/block-api/#registering-a-block
  */
-import { registerBlockType } from '@wordpress/blocks';
+import {createBlock, registerBlockType} from '@wordpress/blocks';
 
 /**
  * Retrieves the translation of text.
@@ -30,6 +30,7 @@ import './style.scss';
 import save from './save';
 import {getColorClassName, RichText} from "@wordpress/editor";
 import classnames from "classnames";
+import { omit } from 'lodash';
 
 const attributes = {
 		content: {
@@ -37,7 +38,7 @@ const attributes = {
 			source: 'html',
 			selector: 'h4'
 		},
-		alignement: {
+		alignment: {
 			type:'string',
 		},
 		textColor: {
@@ -121,18 +122,113 @@ registerBlockType( 'create-block/cover-block', {
 		html: false,
 	},
 
+	transforms: {
+		from: [
+			{
+				type: 'block',
+				blocks: ['core/paragraph'],
+				transform: ({content, align} ) => {
+					return createBlock('create-block/cover-block',{
+						content: content,
+						alignment: align,
+					} )
+				}
+			},
+			{
+				type: 'prefix',
+				prefix: '#',
+				transform: () => {
+					return createBlock('create-block/cover-block',{
+					} )
+					}
+				}
+		],
+		to: [
+			{
+				type: 'block',
+				blocks: ['core/paragraph'],
+				isMatch: ({content}) => {
+						if(content) return true;
+						return false;
+				},
+				transform: ({content, alignement} ) => {
+					return createBlock('core/paragraph',{
+						content: content,
+						align: alignement,
+					} )
+				}
+			}
+		]
+	},
+
 	attributes: attributes,
 
 	deprecated: [
 		{
+			attributes: omit({
+				...attributes,
+				textAlignment: {
+					type: 'string'
+				}
+			}, ['alignment']),
+			migrate: ( attributes ) => {
+			return omit({
+				...attributes,
+				alignment: attributes.textAlignment
+			}, ['textAlignment'])
+			},
+			save:(
+				{attributes}
+			) => {
+				const { content, textAlignment,backgroundColor, textColor, customBackgroundColor, customTextColor, shadow, shadowOpacity } = attributes;
+
+				//get the color classes names from colors
+				const backgroundClass = getColorClassName('background-color', backgroundColor)
+				const textClass = getColorClassName('color', textColor)
+				//add the classes names
+				//let classes='';
+				/*if (backgroundClass) {
+					classes += backgroundClass;
+				}*/
+
+				const classes = classnames({
+					//variable as a key to see if the condition is true
+					[backgroundClass] : backgroundClass,
+					[textClass] : textClass,
+					'has-shadow': shadow,
+					[`shadow-opacity-${shadowOpacity * 100}`] : shadowOpacity
+				})
+
+
+				return <RichText.Content
+					tagName="p"
+					className={ classes }
+					value={ content }
+					style={{
+						textAlign: textAlignment,
+						//ignore the inline style if undefined
+						//if backgroundClass === true backgroundColor=undefined else customBackgroundColor
+						backgroundColor: backgroundClass ? undefined : customBackgroundColor ,
+						color: textClass ? undefined : customTextColor }}
+				/>;
+			}
+		},
+
+		{
 			//supports
-			attributes: {
+			attributes: omit({
 				...attributes,
 				content: {
 					type: 'string',
 					source: 'html',
 					selector: 'p'
 				},
+			}, ['textAlignment']),
+			migrate: ( attributes ) => {
+				return omit({
+					...attributes,
+					alignment: attributes.textAlignment
+				}, ['textAlignment'])
 			},
 			save:(
 				{attributes}

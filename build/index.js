@@ -424,6 +424,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _wordpress_editor__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_wordpress_editor__WEBPACK_IMPORTED_MODULE_5__);
 /* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! classnames */ "./node_modules/classnames/index.js");
 /* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(classnames__WEBPACK_IMPORTED_MODULE_6__);
+/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! lodash */ "lodash");
+/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(lodash__WEBPACK_IMPORTED_MODULE_7__);
 
 /**
  * Registers a new block provided a unique name and an object defining its behavior.
@@ -456,13 +458,14 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+
 const attributes = {
   content: {
     type: 'string',
     source: 'html',
     selector: 'h4'
   },
-  alignement: {
+  alignment: {
     type: 'string'
   },
   textColor: {
@@ -546,15 +549,113 @@ Object(_wordpress_blocks__WEBPACK_IMPORTED_MODULE_1__["registerBlockType"])('cre
     // Removes support for an HTML mode.
     html: false
   },
+  transforms: {
+    from: [{
+      type: 'block',
+      blocks: ['core/paragraph'],
+      transform: ({
+        content,
+        align
+      }) => {
+        return Object(_wordpress_blocks__WEBPACK_IMPORTED_MODULE_1__["createBlock"])('create-block/cover-block', {
+          content: content,
+          alignment: align
+        });
+      }
+    }, {
+      type: 'prefix',
+      prefix: '#',
+      transform: () => {
+        return Object(_wordpress_blocks__WEBPACK_IMPORTED_MODULE_1__["createBlock"])('create-block/cover-block', {});
+      }
+    }],
+    to: [{
+      type: 'block',
+      blocks: ['core/paragraph'],
+      isMatch: ({
+        content
+      }) => {
+        if (content) return true;
+        return false;
+      },
+      transform: ({
+        content,
+        alignement
+      }) => {
+        return Object(_wordpress_blocks__WEBPACK_IMPORTED_MODULE_1__["createBlock"])('core/paragraph', {
+          content: content,
+          align: alignement
+        });
+      }
+    }]
+  },
   attributes: attributes,
   deprecated: [{
+    attributes: Object(lodash__WEBPACK_IMPORTED_MODULE_7__["omit"])({ ...attributes,
+      textAlignment: {
+        type: 'string'
+      }
+    }, ['alignment']),
+    migrate: attributes => {
+      return Object(lodash__WEBPACK_IMPORTED_MODULE_7__["omit"])({ ...attributes,
+        alignment: attributes.textAlignment
+      }, ['textAlignment']);
+    },
+    save: ({
+      attributes
+    }) => {
+      const {
+        content,
+        textAlignment,
+        backgroundColor,
+        textColor,
+        customBackgroundColor,
+        customTextColor,
+        shadow,
+        shadowOpacity
+      } = attributes; //get the color classes names from colors
+
+      const backgroundClass = Object(_wordpress_editor__WEBPACK_IMPORTED_MODULE_5__["getColorClassName"])('background-color', backgroundColor);
+      const textClass = Object(_wordpress_editor__WEBPACK_IMPORTED_MODULE_5__["getColorClassName"])('color', textColor); //add the classes names
+      //let classes='';
+
+      /*if (backgroundClass) {
+      	classes += backgroundClass;
+      }*/
+
+      const classes = classnames__WEBPACK_IMPORTED_MODULE_6___default()({
+        //variable as a key to see if the condition is true
+        [backgroundClass]: backgroundClass,
+        [textClass]: textClass,
+        'has-shadow': shadow,
+        [`shadow-opacity-${shadowOpacity * 100}`]: shadowOpacity
+      });
+      return /*#__PURE__*/React.createElement(_wordpress_editor__WEBPACK_IMPORTED_MODULE_5__["RichText"].Content, {
+        tagName: "p",
+        className: classes,
+        value: content,
+        style: {
+          textAlign: textAlignment,
+          //ignore the inline style if undefined
+          //if backgroundClass === true backgroundColor=undefined else customBackgroundColor
+          backgroundColor: backgroundClass ? undefined : customBackgroundColor,
+          color: textClass ? undefined : customTextColor
+        }
+      });
+    }
+  }, {
     //supports
-    attributes: { ...attributes,
+    attributes: Object(lodash__WEBPACK_IMPORTED_MODULE_7__["omit"])({ ...attributes,
       content: {
         type: 'string',
         source: 'html',
         selector: 'p'
       }
+    }, ['textAlignment']),
+    migrate: attributes => {
+      return Object(lodash__WEBPACK_IMPORTED_MODULE_7__["omit"])({ ...attributes,
+        alignment: attributes.textAlignment
+      }, ['textAlignment']);
     },
     save: ({
       attributes
@@ -677,7 +778,7 @@ function save({
     [`shadow-opacity-${shadowOpacity * 100}`]: shadowOpacity
   });
   return /*#__PURE__*/React.createElement(_wordpress_editor__WEBPACK_IMPORTED_MODULE_1__["RichText"].Content, {
-    tagName: "h4",
+    tagName: "p",
     className: classes,
     value: content,
     style: {
@@ -1162,6 +1263,17 @@ module.exports = __webpack_require__(/*! ./src/blocks/menuBlock/index.js */"./sr
 /***/ (function(module, exports) {
 
 (function() { module.exports = this["wp"]["i18n"]; }());
+
+/***/ }),
+
+/***/ "lodash":
+/*!**********************************!*\
+  !*** external {"this":"lodash"} ***!
+  \**********************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+(function() { module.exports = this["lodash"]; }());
 
 /***/ })
 
