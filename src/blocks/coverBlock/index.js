@@ -80,7 +80,12 @@ registerBlockType( 'create-block/cover-block', {
 		},
 		alignement: {
 			type:'string',
-
+		},
+		textColor: {
+			type:'string',
+		},
+		backgroundColor: {
+			type:'string',
 		}
 	},
 

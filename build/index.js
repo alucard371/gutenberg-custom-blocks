@@ -249,7 +249,9 @@ function Edit(_ref) {
       setAttributes = _ref.setAttributes;
   console.log(attributes);
   var content = attributes.content,
-      alignment = attributes.alignment;
+      alignment = attributes.alignment,
+      backgroundColor = attributes.backgroundColor,
+      textColor = attributes.textColor;
 
   var onChangeContent = function onChangeContent(content) {
     setAttributes({
@@ -263,7 +265,30 @@ function Edit(_ref) {
     });
   };
 
-  return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["Fragment"], null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_editor__WEBPACK_IMPORTED_MODULE_2__["InspectorControls"], null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__["PanelBody"], {
+  var onChangeBackgroundColor = function onChangeBackgroundColor(backgroundColor) {
+    setAttributes({
+      backgroundColor: backgroundColor
+    });
+  };
+
+  var onChangeTextColor = function onChangeTextColor(textColor) {
+    setAttributes({
+      textColor: textColor
+    });
+  };
+
+  return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["Fragment"], null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_editor__WEBPACK_IMPORTED_MODULE_2__["InspectorControls"], null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_editor__WEBPACK_IMPORTED_MODULE_2__["PanelColorSettings"], {
+    title: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__["__"])('Panel Color Settings', 'qtd-blocks'),
+    colorSettings: [{
+      value: backgroundColor,
+      onChange: onChangeBackgroundColor,
+      label: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__["__"])('Background color', 'qtd-blocks')
+    }, {
+      value: textColor,
+      onChange: onChangeTextColor,
+      label: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__["__"])('Text color', 'qtd-blocks')
+    }]
+  }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__["PanelBody"], {
     title: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__["__"])('Panel', 'qtd-blocks')
   }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__["ToggleControl"], {
     label: "Hello world!!!",
@@ -280,9 +305,7 @@ function Edit(_ref) {
     }, {
       color: '#b28'
     }],
-    onChange: function onChange(v) {
-      return console.log(v);
-    }
+    onChange: onChangeBackgroundColor
   }))), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_editor__WEBPACK_IMPORTED_MODULE_2__["BlockControls"]
   /*controls={ [
   	[{
@@ -333,7 +356,9 @@ function Edit(_ref) {
     onChange: onChangeContent,
     value: content,
     style: {
-      textAlign: alignment
+      textAlign: alignment,
+      backgroundColor: backgroundColor,
+      color: textColor
     } // formattingControls={[]}
 
   }));
@@ -458,6 +483,12 @@ Object(_wordpress_blocks__WEBPACK_IMPORTED_MODULE_1__["registerBlockType"])('cre
     },
     alignement: {
       type: 'string'
+    },
+    textColor: {
+      type: 'string'
+    },
+    backgroundColor: {
+      type: 'string'
     }
   },
 
@@ -513,12 +544,16 @@ var el = wp.element.createElement;
 function save(_ref) {
   var attributes = _ref.attributes;
   var content = attributes.content,
-      alignment = attributes.alignment;
+      alignment = attributes.alignment,
+      backgroundColor = attributes.backgroundColor,
+      textColor = attributes.textColor;
   return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_editor__WEBPACK_IMPORTED_MODULE_2__["RichText"].Content, {
     tagName: "p",
     value: content,
     style: {
-      textAlign: alignment
+      textAlign: alignment,
+      backgroundColor: backgroundColor,
+      color: textColor
     }
   });
 }

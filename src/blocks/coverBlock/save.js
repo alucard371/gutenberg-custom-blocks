@@ -19,10 +19,13 @@ var el = wp.element.createElement;
 export default function save(
 	{attributes}
 ) {
-	const { content, alignment } = attributes;
+	const { content, alignment,backgroundColor, textColor } = attributes;
 	return <RichText.Content
 	tagName="p"
 	value={ content }
-	style={{ textAlign: alignment }}
+	style={{
+		textAlign: alignment,
+		backgroundColor: backgroundColor,
+		color: textColor }}
 	/>;
 }

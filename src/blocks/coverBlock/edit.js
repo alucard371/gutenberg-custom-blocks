@@ -8,7 +8,8 @@ import {
 	RichText,
 	BlockControls,
 	AlignmentToolbar,
-	InspectorControls
+	InspectorControls,
+	PanelColorSettings
 } from '@wordpress/editor';
 
 import { Fragment } from '@wordpress/element'
@@ -46,16 +47,39 @@ import './editor.scss';
 
 export default function Edit( { className, attributes, setAttributes } ) {
 	console.log(attributes);
-	const { content, alignment } = attributes;
+	const { content, alignment,backgroundColor, textColor } = attributes;
 	const onChangeContent = (content) => {
 		setAttributes({ content })
 	}
 	const onChangeAlignment = (alignment) => {
 		setAttributes({ alignment })
 	}
+	const onChangeBackgroundColor = (backgroundColor) => {
+		setAttributes({ backgroundColor })
+	}
+	const onChangeTextColor = (textColor) => {
+		setAttributes({ textColor })
+	}
 	return(
 	<>
 		<InspectorControls>
+			<PanelColorSettings
+				title={__('Panel Color Settings', 'qtd-blocks')}
+				colorSettings={[
+					{
+						value: backgroundColor,
+						onChange: onChangeBackgroundColor,
+						label: __('Background color', 'qtd-blocks')
+					},
+					{
+						value: textColor,
+						onChange: onChangeTextColor,
+						label: __('Text color', 'qtd-blocks')
+					},
+				]}
+			>
+
+			</PanelColorSettings>
 			<PanelBody
 			title={__('Panel', 'qtd-blocks')}>
 				<ToggleControl
@@ -73,7 +97,7 @@ export default function Edit( { className, attributes, setAttributes } ) {
 					{color: '#d52'},
 					{color: '#b28'},
 					]}
-				onChange={(v) => console.log(v)}
+				onChange={onChangeBackgroundColor}
 				/>
 
 
@@ -134,7 +158,10 @@ export default function Edit( { className, attributes, setAttributes } ) {
 			className={ className}
 			onChange={onChangeContent}
 			value={ content }
-			style={{ textAlign: alignment }}
+			style={{
+				textAlign: alignment,
+				backgroundColor: backgroundColor,
+				color: textColor}}
 			// formattingControls={[]}
 		/>
 
