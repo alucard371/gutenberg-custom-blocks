@@ -10,4 +10,12 @@
 	color: #fff;
 	padding: 20px;
   	border-radius: 5px;
+	&.is-style-squared{
+	  border-radius: 0px;
+	}
+	&.is-style-outlined{
+	  border-radius: 0px;
+	  border: 2px solid currentcolor;
+	}
+
 }

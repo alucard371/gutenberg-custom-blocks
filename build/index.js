@@ -288,25 +288,7 @@ function Edit(_ref) {
       onChange: onChangeTextColor,
       label: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__["__"])('Text color', 'qtd-blocks')
     }]
-  }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__["PanelBody"], {
-    title: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__["__"])('Panel', 'qtd-blocks')
-  }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__["ToggleControl"], {
-    label: "Hello world!!!",
-    onChange: function onChange(v) {
-      return console.log(v);
-    }
-  }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__["ColorPalette"], {
-    colors: [{
-      color: '#f03'
-    }, {
-      color: '#dedede'
-    }, {
-      color: '#d52'
-    }, {
-      color: '#b28'
-    }],
-    onChange: onChangeBackgroundColor
-  }))), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_editor__WEBPACK_IMPORTED_MODULE_2__["BlockControls"]
+  })), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_editor__WEBPACK_IMPORTED_MODULE_2__["BlockControls"]
   /*controls={ [
   	[{
   		icon: 'editor-alignleft',
@@ -467,6 +449,17 @@ Object(_wordpress_blocks__WEBPACK_IMPORTED_MODULE_1__["registerBlockType"])('cre
     d: "M3 5v14c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2H5c-1.11 0-2 .9-2 2zm12 4c0 1.66-1.34 3-3 3s-3-1.34-3-3 1.34-3 3-3 3 1.34 3 3zm-9 8c0-2 4-3.1 6-3.1s6 1.1 6 3.1v1H6v-1z"
   })),
   keywords: [Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__["__"])('list', 'cover-block'), Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__["__"])('organise', 'cover-block')],
+  styles: [{
+    name: 'rounded',
+    label: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__["__"])('Rounded', 'qtd-blocks'),
+    isDefault: true
+  }, {
+    name: 'squared',
+    label: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__["__"])('Squared', 'qtd-blocks')
+  }, {
+    name: 'outlined',
+    label: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__["__"])('Outlined', 'qtd-blocks')
+  }],
 
   /**
    * Optional block extended support features.

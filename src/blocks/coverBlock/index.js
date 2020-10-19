@@ -62,7 +62,21 @@ registerBlockType( 'create-block/cover-block', {
 
 	keywords: [__('list', 'cover-block'),__('organise', 'cover-block')],
 
-
+	styles: [
+		{
+			name: 'rounded',
+			label: __('Rounded', 'qtd-blocks'),
+			isDefault: true,
+		},
+		{
+			name: 'squared',
+			label: __('Squared', 'qtd-blocks')
+		},
+		{
+			name: 'outlined',
+			label: __('Outlined', 'qtd-blocks')
+		}
+	],
 
 	/**
 	 * Optional block extended support features.

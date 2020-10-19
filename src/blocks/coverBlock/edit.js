@@ -80,16 +80,16 @@ export default function Edit( { className, attributes, setAttributes } ) {
 			>
 
 			</PanelColorSettings>
-			<PanelBody
+		{/*	<PanelBody
 			title={__('Panel', 'qtd-blocks')}>
 				<ToggleControl
 				label="Hello world!!!"
 				onChange={(v) => console.log(v)}
 				/>
-				{/*<ColorPicker
+				<ColorPicker
 				color="#dedede"
 				onChangeComplete = {(v) => console.log((v))}
-				/>*/}
+				/>
 				<ColorPalette
 				colors={[
 					{color: '#f03'},
@@ -101,7 +101,7 @@ export default function Edit( { className, attributes, setAttributes } ) {
 				/>
 
 
-			</PanelBody>
+			</PanelBody>*/}
 		</InspectorControls>
 		<BlockControls
 			/*controls={ [
