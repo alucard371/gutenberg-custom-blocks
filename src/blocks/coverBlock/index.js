@@ -72,6 +72,12 @@ registerBlockType( 'create-block/cover-block', {
 		html: false,
 	},
 
+	attributes: {
+		content: {
+			type: 'string'
+		}
+	},
+
 	/**
 	 * @see ./edit.js
 	 */

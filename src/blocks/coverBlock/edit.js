@@ -27,6 +27,18 @@ import './editor.scss';
  *
  * @return {WPElement} Element to render.
  */
-export default function Edit( { className } ) {
-	return <RichText className={ className }>This is the new test edit function of the cover block</RichText>;
+
+
+export default function Edit( { className, attributes, setAttributes } ) {
+	console.log(attributes);
+	const { content } = attributes;
+	const onChangeContent = (content) => {
+		setAttributes({ content })
+	}
+	return <RichText
+			tagName="p"
+			className={ className}
+			onChange={onChangeContent}
+			value={ content }
+			formattingControls={[]}/>;
 }
