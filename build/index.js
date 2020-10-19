@@ -382,43 +382,43 @@ class EditClass extends _wordpress_element__WEBPACK_IMPORTED_MODULE_0__["Compone
         alignment
       });
     });
-
-    _defineProperty(this, "onChangeBackgroundColor", backgroundColor => {
-      this.props.setAttributes({
-        backgroundColor
-      });
-    });
-
-    _defineProperty(this, "onChangeTextColor", textColor => {
-      this.props.setAttributes({
-        textColor
-      });
-    });
   }
 
+  /*onChangeBackgroundColor = (backgroundColor) => {
+  	this.props.setAttributes({ backgroundColor })
+  }
+  onChangeTextColor = (textColor) => {
+  	this.props.setAttributes({ textColor })
+  }*/
   render() {
+    console.log(this.props);
     const {
       className,
-      attributes
+      attributes,
+      setTextColor,
+      setBackgroundColor,
+      backgroundColor,
+      textColor
     } = this.props;
     const {
       content,
-      alignment,
-      backgroundColor,
-      textColor
+      alignment
     } = attributes;
     return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement(_wordpress_editor__WEBPACK_IMPORTED_MODULE_1__["InspectorControls"], null, /*#__PURE__*/React.createElement(_wordpress_editor__WEBPACK_IMPORTED_MODULE_1__["PanelColorSettings"], {
       title: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__["__"])('Panel Color Settings', 'qtd-blocks'),
       colorSettings: [{
-        value: backgroundColor,
-        onChange: this.onChangeBackgroundColor,
+        value: backgroundColor.color,
+        onChange: setBackgroundColor,
         label: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__["__"])('Background color', 'qtd-blocks')
       }, {
-        value: textColor,
-        onChange: this.onChangeTextColor,
+        value: textColor.color,
+        onChange: setTextColor,
         label: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__["__"])('Text color', 'qtd-blocks')
       }]
-    })), /*#__PURE__*/React.createElement(_wordpress_editor__WEBPACK_IMPORTED_MODULE_1__["BlockControls"], null, /*#__PURE__*/React.createElement(_wordpress_editor__WEBPACK_IMPORTED_MODULE_1__["AlignmentToolbar"], {
+    }, /*#__PURE__*/React.createElement(_wordpress_editor__WEBPACK_IMPORTED_MODULE_1__["ContrastChecker"], {
+      textColor: textColor.color,
+      backgroundColor: backgroundColor.color
+    }))), /*#__PURE__*/React.createElement(_wordpress_editor__WEBPACK_IMPORTED_MODULE_1__["BlockControls"], null, /*#__PURE__*/React.createElement(_wordpress_editor__WEBPACK_IMPORTED_MODULE_1__["AlignmentToolbar"], {
       value: alignment,
       onChange: alignment => this.onChangeAlignment(alignment)
     }), content && content.length > 0 && /*#__PURE__*/React.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__["Toolbar"], null, /*#__PURE__*/React.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__["DropdownMenu"], {
@@ -442,8 +442,8 @@ class EditClass extends _wordpress_element__WEBPACK_IMPORTED_MODULE_0__["Compone
       value: content,
       style: {
         textAlign: alignment,
-        backgroundColor: backgroundColor,
-        color: textColor
+        backgroundColor: backgroundColor.color,
+        color: textColor.color
       } // formattingControls={[]}
 
     }));
@@ -451,7 +451,9 @@ class EditClass extends _wordpress_element__WEBPACK_IMPORTED_MODULE_0__["Compone
 
 }
 
-/* harmony default export */ __webpack_exports__["default"] = (EditClass);
+/* harmony default export */ __webpack_exports__["default"] = (Object(_wordpress_editor__WEBPACK_IMPORTED_MODULE_1__["withColors"])('backgroundColor', {
+  'textColor': 'color'
+})(EditClass));
 
 /***/ }),
 
@@ -587,6 +589,12 @@ Object(_wordpress_blocks__WEBPACK_IMPORTED_MODULE_1__["registerBlockType"])('cre
       type: 'string'
     },
     backgroundColor: {
+      type: 'string'
+    },
+    customTextColor: {
+      type: 'string'
+    },
+    customBackgroundColor: {
       type: 'string'
     }
   },

@@ -102,6 +102,12 @@ registerBlockType( 'create-block/cover-block', {
 		},
 		backgroundColor: {
 			type:'string',
+		},
+		customTextColor: {
+			type:'string',
+		},
+		customBackgroundColor: {
+			type:'string',
 		}
 	},
 

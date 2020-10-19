@@ -1,5 +1,15 @@
 import { Component } from '@wordpress/element'
-import {AlignmentToolbar, BlockControls, InspectorControls, PanelColorSettings, RichText} from "@wordpress/editor";
+import {
+	AlignmentToolbar,
+	BlockControls,
+	InspectorControls,
+	PanelColorSettings,
+	RichText,
+	withColors,
+	ContrastChecker
+}
+	from "@wordpress/editor";
+
 import {__} from "@wordpress/i18n";
 import {DropdownMenu, Toolbar} from "@wordpress/components";
 
@@ -11,16 +21,17 @@ class EditClass extends Component{
 	onChangeAlignment = (alignment) => {
 		this.props.setAttributes({ alignment })
 	}
-	onChangeBackgroundColor = (backgroundColor) => {
+	/*onChangeBackgroundColor = (backgroundColor) => {
 		this.props.setAttributes({ backgroundColor })
 	}
 	onChangeTextColor = (textColor) => {
 		this.props.setAttributes({ textColor })
-	}
+	}*/
 
 	render() {
-		const { className, attributes } = this.props;
-		const { content, alignment,backgroundColor, textColor } = attributes;
+		console.log(this.props)
+		const { className, attributes, setTextColor, setBackgroundColor,backgroundColor, textColor } = this.props;
+		const { content, alignment } = attributes;
 		return(
 			<>
 				<InspectorControls>
@@ -28,17 +39,21 @@ class EditClass extends Component{
 						title={__('Panel Color Settings', 'qtd-blocks')}
 						colorSettings={[
 							{
-								value: backgroundColor,
-								onChange: this.onChangeBackgroundColor,
+								value: backgroundColor.color,
+								onChange: setBackgroundColor,
 								label: __('Background color', 'qtd-blocks')
 							},
 							{
-								value: textColor,
-								onChange: this.onChangeTextColor,
+								value: textColor.color,
+								onChange: setTextColor,
 								label: __('Text color', 'qtd-blocks')
 							},
 						]}
 					>
+						<ContrastChecker
+						textColor={textColor.color}
+						backgroundColor={backgroundColor.color}
+						/>
 					</PanelColorSettings>
 				</InspectorControls>
 				<BlockControls
@@ -78,8 +93,8 @@ class EditClass extends Component{
 					value={ content }
 					style={{
 						textAlign: alignment,
-						backgroundColor: backgroundColor,
-						color: textColor}}
+						backgroundColor: backgroundColor.color,
+						color: textColor.color}}
 					// formattingControls={[]}
 				/>
 			</>
@@ -87,4 +102,4 @@ class EditClass extends Component{
 	}
 }
 
-export default EditClass;
+export default withColors('backgroundColor', {'textColor': 'color'})(EditClass);
