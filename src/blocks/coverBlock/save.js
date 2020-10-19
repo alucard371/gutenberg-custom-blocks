@@ -4,8 +4,11 @@
  * @see https://developer.wordpress.org/block-editor/packages/packages-i18n/
  */
 import { __ } from '@wordpress/i18n';
-import { RichText } from '@wordpress/editor';
-var el = wp.element.createElement;
+import {
+	RichText,
+	getColorClassName,
+} from '@wordpress/editor';
+
 
 /**
  * The save function defines the way in which the different attributes should
@@ -19,7 +22,14 @@ var el = wp.element.createElement;
 export default function save(
 	{attributes}
 ) {
-	const { content, alignment,backgroundColor, textColor } = attributes;
+	const { content, alignment,backgroundColor, textColor, customBackgroundColor, customTextColor } = attributes;
+
+	const backgroundClass = getColorClassName('background-color', backgroundColor)
+	const textClass = getColorClassName('color', textColor)
+
+	console.log(attributes);
+	console.log(backgroundClass);
+	console.log(textClass);
 	return <RichText.Content
 	tagName="p"
 	value={ content }

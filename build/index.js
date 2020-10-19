@@ -633,7 +633,6 @@ __webpack_require__.r(__webpack_exports__);
  */
 
 
-var el = wp.element.createElement;
 /**
  * The save function defines the way in which the different attributes should
  * be combined into the final markup, which is then serialized by the block
@@ -651,8 +650,15 @@ function save({
     content,
     alignment,
     backgroundColor,
-    textColor
+    textColor,
+    customBackgroundColor,
+    customTextColor
   } = attributes;
+  const backgroundClass = Object(_wordpress_editor__WEBPACK_IMPORTED_MODULE_1__["getColorClassName"])('background-color', backgroundColor);
+  const textClass = Object(_wordpress_editor__WEBPACK_IMPORTED_MODULE_1__["getColorClassName"])('color', textColor);
+  console.log(attributes);
+  console.log(backgroundClass);
+  console.log(textClass);
   return /*#__PURE__*/React.createElement(_wordpress_editor__WEBPACK_IMPORTED_MODULE_1__["RichText"].Content, {
     tagName: "p",
     value: content,
