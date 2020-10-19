@@ -424,10 +424,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__);
 /* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! classnames */ "./node_modules/classnames/index.js");
 /* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(classnames__WEBPACK_IMPORTED_MODULE_4__);
-/* harmony import */ var _wordpress_components_src_button_stories__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @wordpress/components/src/button/stories */ "@wordpress/components/src/button/stories");
-/* harmony import */ var _wordpress_components_src_button_stories__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_wordpress_components_src_button_stories__WEBPACK_IMPORTED_MODULE_5__);
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
 
 
 
@@ -456,6 +453,12 @@ class EditClass extends _wordpress_element__WEBPACK_IMPORTED_MODULE_0__["Compone
         shadow: !this.props.attributes.shadow
       });
     });
+
+    _defineProperty(this, "onChangeShadowOpacity", shadowOpacity => {
+      this.props.setAttributes({
+        shadowOpacity
+      });
+    });
   }
 
   /*onChangeBackgroundColor = (backgroundColor) => {
@@ -477,12 +480,23 @@ class EditClass extends _wordpress_element__WEBPACK_IMPORTED_MODULE_0__["Compone
     const {
       content,
       alignment,
-      shadow
+      shadow,
+      shadowOpacity
     } = attributes;
     const classes = classnames__WEBPACK_IMPORTED_MODULE_4___default()(className, {
-      'has-shadow': shadow
+      'has-shadow': shadow,
+      [`shadow-opacity-${shadowOpacity * 100}`]: shadowOpacity
     });
-    return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement(_wordpress_editor__WEBPACK_IMPORTED_MODULE_1__["InspectorControls"], null, /*#__PURE__*/React.createElement(_wordpress_editor__WEBPACK_IMPORTED_MODULE_1__["PanelColorSettings"], {
+    return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement(_wordpress_editor__WEBPACK_IMPORTED_MODULE_1__["InspectorControls"], null, /*#__PURE__*/React.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__["PanelBody"], {
+      title: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__["__"])('Settings', 'qtd-blocks')
+    }, shadow && /*#__PURE__*/React.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__["RangeControl"], {
+      label: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__["__"])('Shadow opacity', 'qtd-blocks'),
+      value: shadowOpacity,
+      onChange: this.onChangeShadowOpacity,
+      min: 0.1,
+      max: 0.4,
+      step: 0.1
+    })), /*#__PURE__*/React.createElement(_wordpress_editor__WEBPACK_IMPORTED_MODULE_1__["PanelColorSettings"], {
       title: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__["__"])('Panel Color Settings', 'qtd-blocks'),
       colorSettings: [{
         value: backgroundColor.color,
@@ -504,17 +518,17 @@ class EditClass extends _wordpress_element__WEBPACK_IMPORTED_MODULE_0__["Compone
       label: "Dropdown menu",
       controls: [[{
         icon: 'wordpress',
-        title: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__["__"])('test', 'qtdtheme'),
+        title: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__["__"])('test', 'qtd-blocks'),
         onClick: () => alert(true),
         isActive: false
       }], [{
         icon: 'admin-site',
-        title: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__["__"])('test', 'qtdtheme'),
+        title: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__["__"])('test', 'qtd-blocks'),
         onClick: () => alert(false),
         isActive: true
       }], [{
         icon: 'wordpress',
-        title: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__["__"])('shadow', 'qtdtheme'),
+        title: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__["__"])('shadow', 'qtd-blocks'),
         onClick: this.toggleShadow,
         isActive: shadow
       }]]
@@ -683,6 +697,10 @@ Object(_wordpress_blocks__WEBPACK_IMPORTED_MODULE_1__["registerBlockType"])('cre
     shadow: {
       type: 'boolean',
       default: false
+    },
+    shadowOpacity: {
+      type: 'number',
+      default: 0.3
     }
   },
 
@@ -742,7 +760,9 @@ function save({
     backgroundColor,
     textColor,
     customBackgroundColor,
-    customTextColor
+    customTextColor,
+    shadow,
+    shadowOpacity
   } = attributes; //get the color classes names from colors
 
   const backgroundClass = Object(_wordpress_editor__WEBPACK_IMPORTED_MODULE_1__["getColorClassName"])('background-color', backgroundColor);
@@ -756,7 +776,9 @@ function save({
   const classes = classnames__WEBPACK_IMPORTED_MODULE_2___default()({
     //variable as a key to see if the condition is true
     [backgroundClass]: backgroundClass,
-    [textClass]: textClass
+    [textClass]: textClass,
+    'has-shadow': shadow,
+    [`shadow-opacity-${shadowOpacity * 100}`]: shadowOpacity
   });
   return /*#__PURE__*/React.createElement(_wordpress_editor__WEBPACK_IMPORTED_MODULE_1__["RichText"].Content, {
     tagName: "p",
@@ -1211,17 +1233,6 @@ module.exports = __webpack_require__(/*! ./src/blocks/menuBlock/index.js */"./sr
 /***/ (function(module, exports) {
 
 (function() { module.exports = this["wp"]["components"]; }());
-
-/***/ }),
-
-/***/ "@wordpress/components/src/button/stories":
-/*!****************************************************************!*\
-  !*** external {"this":["wp","components/src/button/stories"]} ***!
-  \****************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-(function() { module.exports = this["wp"]["components/src/button/stories"]; }());
 
 /***/ }),
 

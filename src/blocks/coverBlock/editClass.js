@@ -10,11 +10,11 @@ import {
 }
 	from "@wordpress/editor";
 
+
 import {__} from "@wordpress/i18n";
-import {DropdownMenu, Toolbar} from "@wordpress/components";
+import {DropdownMenu, Toolbar, RangeControl, PanelBody} from "@wordpress/components";
 
 import classnames from 'classnames';
-import {icon} from "@wordpress/components/src/button/stories";
 
 class EditClass extends Component{
 
@@ -28,6 +28,9 @@ class EditClass extends Component{
 	toggleShadow = () => {
 		this.props.setAttributes({ shadow: !this.props.attributes.shadow })
 	}
+	onChangeShadowOpacity = (shadowOpacity) => {
+		this.props.setAttributes({ shadowOpacity })
+	}
 	/*onChangeBackgroundColor = (backgroundColor) => {
 		this.props.setAttributes({ backgroundColor })
 	}
@@ -38,13 +41,27 @@ class EditClass extends Component{
 	render() {
 		console.log(this.props)
 		const { className, attributes, setTextColor, setBackgroundColor,backgroundColor, textColor } = this.props;
-		const { content, alignment, shadow } = attributes;
+		const { content, alignment, shadow, shadowOpacity } = attributes;
 		const classes = classnames(className, {
 			'has-shadow': shadow,
+			[`shadow-opacity-${shadowOpacity * 100}`] : shadowOpacity
 		})
 		return(
 			<>
 				<InspectorControls>
+					<PanelBody title={__('Settings', 'qtd-blocks')}>
+						{/*//show only if shadow is on*/}
+						{shadow &&
+							<RangeControl
+								label={__('Shadow opacity', 'qtd-blocks')}
+								value={ shadowOpacity }
+								onChange={this.onChangeShadowOpacity }
+								min={ 0.1 }
+								max={ 0.4 }
+								step={ 0.1 }
+							/>
+						}
+					</PanelBody>
 					<PanelColorSettings
 						title={__('Panel Color Settings', 'qtd-blocks')}
 						colorSettings={[
@@ -80,19 +97,19 @@ class EditClass extends Component{
 							controls={[
 								[{
 									icon: 'wordpress',
-									title: __('test', 'qtdtheme'),
+									title: __('test', 'qtd-blocks'),
 									onClick: () => alert(true),
 									isActive: false
 								}],
 								[{
 									icon: 'admin-site',
-									title: __('test', 'qtdtheme'),
+									title: __('test', 'qtd-blocks'),
 									onClick: () => alert(false),
 									isActive: true
 								}],
 								[{
 									icon: 'wordpress',
-									title: __('shadow', 'qtdtheme'),
+									title: __('shadow', 'qtd-blocks'),
 									onClick: this.toggleShadow,
 									isActive: shadow
 								}]

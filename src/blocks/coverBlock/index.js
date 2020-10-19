@@ -112,6 +112,10 @@ registerBlockType( 'create-block/cover-block', {
 		shadow: {
 			type:'boolean',
 			default: false
+		},
+		shadowOpacity: {
+			type:'number',
+			default: 0.3
 		}
 	},
 

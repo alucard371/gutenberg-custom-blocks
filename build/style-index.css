@@ -28,6 +28,14 @@
     border: 2px solid currentcolor; }
   .wp-block-create-block-cover-block.has-shadow {
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.3); }
+    .wp-block-create-block-cover-block.has-shadow.shadow-opacity-10 {
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.1); }
+    .wp-block-create-block-cover-block.has-shadow.shadow-opacity-20 {
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.2); }
+    .wp-block-create-block-cover-block.has-shadow.shadow-opacity-30 {
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.3); }
+    .wp-block-create-block-cover-block.has-shadow.shadow-opacity-40 {
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.4); }
 
 /**
  * The following styles get applied both on the front of your site

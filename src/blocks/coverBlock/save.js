@@ -24,7 +24,7 @@ import classnames from 'classnames';
 export default function save(
 	{attributes}
 ) {
-	const { content, alignment,backgroundColor, textColor, customBackgroundColor, customTextColor } = attributes;
+	const { content, alignment,backgroundColor, textColor, customBackgroundColor, customTextColor, shadow, shadowOpacity } = attributes;
 
 	//get the color classes names from colors
 	const backgroundClass = getColorClassName('background-color', backgroundColor)
@@ -39,6 +39,8 @@ export default function save(
 		//variable as a key to see if the condition is true
 		[backgroundClass] : backgroundClass,
 		[textClass] : textClass,
+		'has-shadow': shadow,
+		[`shadow-opacity-${shadowOpacity * 100}`] : shadowOpacity
 	})
 
 
