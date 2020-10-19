@@ -197,152 +197,9 @@
   !*** ./src/blocks/coverBlock/edit.js ***!
   \***************************************/
 /*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/***/ (function(module, exports) {
 
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return Edit; });
-/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
-/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/i18n */ "@wordpress/i18n");
-/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _wordpress_editor__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @wordpress/editor */ "@wordpress/editor");
-/* harmony import */ var _wordpress_editor__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_wordpress_editor__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @wordpress/components */ "@wordpress/components");
-/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__);
-/* harmony import */ var _editor_scss__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./editor.scss */ "./src/blocks/coverBlock/editor.scss");
-/* harmony import */ var _editor_scss__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_editor_scss__WEBPACK_IMPORTED_MODULE_4__);
-
-
-/**
- * Retrieves the translation of text.
- *
- * @see https://developer.wordpress.org/block-editor/packages/packages-i18n/
- */
-
-
-
-
-/**
- * Lets webpack process CSS, SASS or SCSS files referenced in JavaScript files.
- * Those files can contain any CSS code that gets applied to the editor.
- *
- * @see https://www.npmjs.com/package/@wordpress/scripts#using-css
- */
-
-
-/**
- * The edit function describes the structure of your block in the context of the
- * editor. This represents what the editor will render when the block is used.
- *
- * @see https://developer.wordpress.org/block-editor/developers/block-api/block-edit-save/#edit
- *
- * @param {Object} [props]           Properties passed from the editor.
- * @param {string} [props.className] Class name generated for the block.
- *
- * @return {WPElement} Element to render.
- */
-
-function Edit(_ref) {
-  var className = _ref.className,
-      attributes = _ref.attributes,
-      setAttributes = _ref.setAttributes;
-  console.log(attributes);
-  var content = attributes.content;
-
-  var onChangeContent = function onChangeContent(content) {
-    setAttributes({
-      content: content
-    });
-  };
-
-  return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["Fragment"], null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_editor__WEBPACK_IMPORTED_MODULE_2__["BlockControls"], {
-    controls: [[{
-      icon: 'wordpress',
-      title: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__["__"])('test', 'qtdtheme'),
-      onClick: function onClick() {
-        return alert(true);
-      },
-      isActive: false
-    }], [{
-      icon: 'admin-site',
-      title: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__["__"])('test', 'qtdtheme'),
-      onClick: function onClick() {
-        return alert(false);
-      },
-      isActive: true
-    }]]
-  }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__["Toolbar"], {
-    isCollapsed: true,
-    controls: [[{
-      icon: 'wordpress',
-      title: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__["__"])('test', 'qtdtheme'),
-      onClick: function onClick() {
-        return alert(true);
-      },
-      isActive: false
-    }], [{
-      icon: 'admin-site',
-      title: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__["__"])('test', 'qtdtheme'),
-      onClick: function onClick() {
-        return alert(false);
-      },
-      isActive: true
-    }]]
-  }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__["Toolbar"], {
-    isCollapsed: true,
-    controls: [[{
-      icon: 'wordpress',
-      title: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__["__"])('test', 'qtdtheme'),
-      onClick: function onClick() {
-        return alert(true);
-      },
-      isActive: false
-    }], [{
-      icon: 'admin-site',
-      title: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__["__"])('test', 'qtdtheme'),
-      onClick: function onClick() {
-        return alert(false);
-      },
-      isActive: true
-    }]]
-  }), content && content.length > 0 && Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__["Toolbar"], null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__["DropdownMenu"], {
-    icon: "editor-table",
-    label: "Dropdown menu",
-    controls: [[{
-      icon: 'wordpress',
-      title: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__["__"])('test', 'qtdtheme'),
-      onClick: function onClick() {
-        return alert(true);
-      },
-      isActive: false
-    }], [{
-      icon: 'admin-site',
-      title: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__["__"])('test', 'qtdtheme'),
-      onClick: function onClick() {
-        return alert(false);
-      },
-      isActive: true
-    }]]
-  }))), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_editor__WEBPACK_IMPORTED_MODULE_2__["RichText"], {
-    tagName: "p",
-    className: className,
-    onChange: onChangeContent,
-    value: content // formattingControls={[]}
-
-  }));
-}
-
-/***/ }),
-
-/***/ "./src/blocks/coverBlock/editor.scss":
-/*!*******************************************!*\
-  !*** ./src/blocks/coverBlock/editor.scss ***!
-  \*******************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-// extracted by mini-css-extract-plugin
+throw new Error("Module build failed (from ./node_modules/babel-loader/lib/index.js):\nSyntaxError: C:\\laragon\\www\\qtd\\wp-content\\plugins\\todo-list\\src\\blocks\\coverBlock\\edit.js: Unexpected token (55:2)\n\n\u001b[0m \u001b[90m 53 | \u001b[39m\t\u001b[33m<\u001b[39m\u001b[33m>\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 54 | \u001b[39m\t\t\u001b[33m<\u001b[39m\u001b[33mInspect\u001b[39m\u001b[0m\n\u001b[0m\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 55 | \u001b[39m\t\t\u001b[33m<\u001b[39m\u001b[33mBlockControls\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m    | \u001b[39m\t\t\u001b[31m\u001b[1m^\u001b[22m\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 56 | \u001b[39m\t\t\t\u001b[90m/*controls={ [\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 57 | \u001b[39m\u001b[90m\t\t\t\t[{\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 58 | \u001b[39m\u001b[90m\t\t\t\t\ticon: 'editor-alignleft',\u001b[39m\u001b[0m\n    at Object._raise (C:\\laragon\\www\\qtd\\wp-content\\plugins\\todo-list\\node_modules\\@babel\\parser\\lib\\index.js:766:17)\n    at Object.raiseWithData (C:\\laragon\\www\\qtd\\wp-content\\plugins\\todo-list\\node_modules\\@babel\\parser\\lib\\index.js:759:17)\n    at Object.raise (C:\\laragon\\www\\qtd\\wp-content\\plugins\\todo-list\\node_modules\\@babel\\parser\\lib\\index.js:753:17)\n    at Object.unexpected (C:\\laragon\\www\\qtd\\wp-content\\plugins\\todo-list\\node_modules\\@babel\\parser\\lib\\index.js:8966:16)\n    at Object.jsxParseIdentifier (C:\\laragon\\www\\qtd\\wp-content\\plugins\\todo-list\\node_modules\\@babel\\parser\\lib\\index.js:4492:12)\n    at Object.jsxParseNamespacedName (C:\\laragon\\www\\qtd\\wp-content\\plugins\\todo-list\\node_modules\\@babel\\parser\\lib\\index.js:4502:23)\n    at Object.jsxParseAttribute (C:\\laragon\\www\\qtd\\wp-content\\plugins\\todo-list\\node_modules\\@babel\\parser\\lib\\index.js:4586:22)\n    at Object.jsxParseOpeningElementAfterName (C:\\laragon\\www\\qtd\\wp-content\\plugins\\todo-list\\node_modules\\@babel\\parser\\lib\\index.js:4607:28)\n    at Object.jsxParseOpeningElementAt (C:\\laragon\\www\\qtd\\wp-content\\plugins\\todo-list\\node_modules\\@babel\\parser\\lib\\index.js:4600:17)\n    at Object.jsxParseElementAt (C:\\laragon\\www\\qtd\\wp-content\\plugins\\todo-list\\node_modules\\@babel\\parser\\lib\\index.js:4632:33)\n    at Object.jsxParseElementAt (C:\\laragon\\www\\qtd\\wp-content\\plugins\\todo-list\\node_modules\\@babel\\parser\\lib\\index.js:4648:32)\n    at Object.jsxParseElement (C:\\laragon\\www\\qtd\\wp-content\\plugins\\todo-list\\node_modules\\@babel\\parser\\lib\\index.js:4706:17)\n    at Object.parseExprAtom (C:\\laragon\\www\\qtd\\wp-content\\plugins\\todo-list\\node_modules\\@babel\\parser\\lib\\index.js:4713:19)\n    at Object.parseExprSubscripts (C:\\laragon\\www\\qtd\\wp-content\\plugins\\todo-list\\node_modules\\@babel\\parser\\lib\\index.js:9844:23)\n    at Object.parseUpdate (C:\\laragon\\www\\qtd\\wp-content\\plugins\\todo-list\\node_modules\\@babel\\parser\\lib\\index.js:9824:21)\n    at Object.parseMaybeUnary (C:\\laragon\\www\\qtd\\wp-content\\plugins\\todo-list\\node_modules\\@babel\\parser\\lib\\index.js:9813:17)\n    at Object.parseExprOps (C:\\laragon\\www\\qtd\\wp-content\\plugins\\todo-list\\node_modules\\@babel\\parser\\lib\\index.js:9683:23)\n    at Object.parseMaybeConditional (C:\\laragon\\www\\qtd\\wp-content\\plugins\\todo-list\\node_modules\\@babel\\parser\\lib\\index.js:9657:23)\n    at Object.parseMaybeAssign (C:\\laragon\\www\\qtd\\wp-content\\plugins\\todo-list\\node_modules\\@babel\\parser\\lib\\index.js:9620:21)\n    at C:\\laragon\\www\\qtd\\wp-content\\plugins\\todo-list\\node_modules\\@babel\\parser\\lib\\index.js:9586:39\n    at Object.allowInAnd (C:\\laragon\\www\\qtd\\wp-content\\plugins\\todo-list\\node_modules\\@babel\\parser\\lib\\index.js:11303:12)\n    at Object.parseMaybeAssignAllowIn (C:\\laragon\\www\\qtd\\wp-content\\plugins\\todo-list\\node_modules\\@babel\\parser\\lib\\index.js:9586:17)\n    at Object.parseParenAndDistinguishExpression (C:\\laragon\\www\\qtd\\wp-content\\plugins\\todo-list\\node_modules\\@babel\\parser\\lib\\index.js:10473:28)\n    at Object.parseExprAtom (C:\\laragon\\www\\qtd\\wp-content\\plugins\\todo-list\\node_modules\\@babel\\parser\\lib\\index.js:10177:21)\n    at Object.parseExprAtom (C:\\laragon\\www\\qtd\\wp-content\\plugins\\todo-list\\node_modules\\@babel\\parser\\lib\\index.js:4718:20)\n    at Object.parseExprSubscripts (C:\\laragon\\www\\qtd\\wp-content\\plugins\\todo-list\\node_modules\\@babel\\parser\\lib\\index.js:9844:23)\n    at Object.parseUpdate (C:\\laragon\\www\\qtd\\wp-content\\plugins\\todo-list\\node_modules\\@babel\\parser\\lib\\index.js:9824:21)\n    at Object.parseMaybeUnary (C:\\laragon\\www\\qtd\\wp-content\\plugins\\todo-list\\node_modules\\@babel\\parser\\lib\\index.js:9813:17)\n    at Object.parseExprOps (C:\\laragon\\www\\qtd\\wp-content\\plugins\\todo-list\\node_modules\\@babel\\parser\\lib\\index.js:9683:23)\n    at Object.parseMaybeConditional (C:\\laragon\\www\\qtd\\wp-content\\plugins\\todo-list\\node_modules\\@babel\\parser\\lib\\index.js:9657:23)");
 
 /***/ }),
 
@@ -449,6 +306,9 @@ Object(_wordpress_blocks__WEBPACK_IMPORTED_MODULE_1__["registerBlockType"])('cre
       type: 'string',
       source: 'html',
       selector: 'p'
+    },
+    alignement: {
+      type: 'string'
     }
   },
 
@@ -503,10 +363,14 @@ var el = wp.element.createElement;
 
 function save(_ref) {
   var attributes = _ref.attributes;
-  var content = attributes.content;
+  var content = attributes.content,
+      alignment = attributes.alignment;
   return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_editor__WEBPACK_IMPORTED_MODULE_2__["RichText"].Content, {
     tagName: "p",
-    value: content
+    value: content,
+    style: {
+      textAlign: alignment
+    }
   });
 }
 
@@ -948,17 +812,6 @@ module.exports = __webpack_require__(/*! ./src/blocks/menuBlock/index.js */"./sr
 /***/ (function(module, exports) {
 
 (function() { module.exports = this["wp"]["blocks"]; }());
-
-/***/ }),
-
-/***/ "@wordpress/components":
-/*!*********************************************!*\
-  !*** external {"this":["wp","components"]} ***!
-  \*********************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-(function() { module.exports = this["wp"]["components"]; }());
 
 /***/ }),
 

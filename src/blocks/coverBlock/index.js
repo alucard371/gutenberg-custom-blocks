@@ -77,6 +77,10 @@ registerBlockType( 'create-block/cover-block', {
 			type: 'string',
 			source: 'html',
 			selector: 'p'
+		},
+		alignement: {
+			type:'string',
+
 		}
 	},
 

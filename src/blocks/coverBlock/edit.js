@@ -6,7 +6,9 @@
 import { __ } from '@wordpress/i18n';
 import {
 	RichText,
-	BlockControls
+	BlockControls,
+	AlignmentToolbar,
+	InspectorControls
 } from '@wordpress/editor';
 
 import { Fragment } from '@wordpress/element'
@@ -40,64 +42,43 @@ import './editor.scss';
 
 export default function Edit( { className, attributes, setAttributes } ) {
 	console.log(attributes);
-	const { content } = attributes;
+	const { content, alignment } = attributes;
 	const onChangeContent = (content) => {
 		setAttributes({ content })
 	}
+	const onChangeAlignment = (alignment) => {
+		setAttributes({ alignment })
+	}
 	return(
 	<>
+		<Inspect
 		<BlockControls
-			controls={ [
+			/*controls={ [
 				[{
-					icon: 'wordpress',
-					title: __('test', 'qtdtheme'),
-					onClick: () => alert(true),
-					isActive: false
+					icon: 'editor-alignleft',
+					title: __('left', 'qtdtheme'),
+					onClick: () => onChangeAlignment('left'),
+					isActive: true
 				}],
 				[{
-					icon: 'admin-site',
-					title: __('test', 'qtdtheme'),
-					onClick: () => alert(false),
+					icon: 'editor-aligncenter',
+					title: __('center', 'qtdtheme'),
+					onClick: () => onChangeAlignment('center'),
+					isActive: true
+				}],
+				[{
+					icon: 'editor-alignright',
+					title: __('right', 'qtdtheme'),
+					onClick: () => onChangeAlignment('right'),
 					isActive: true
 				}]
-			]}
+			]}*/
 		>
 
-		<Toolbar
-			isCollapsed
-			controls={ [
-				[{
-					icon: 'wordpress',
-					title: __('test', 'qtdtheme'),
-					onClick: () => alert(true),
-					isActive: false
-				}],
-				[{
-					icon: 'admin-site',
-					title: __('test', 'qtdtheme'),
-					onClick: () => alert(false),
-					isActive: true
-				}]
-			]}
-		/>
-
-		<Toolbar
-			isCollapsed
-			controls={ [
-				[{
-					icon: 'wordpress',
-					title: __('test', 'qtdtheme'),
-					onClick: () => alert(true),
-					isActive: false
-				}],
-				[{
-					icon: 'admin-site',
-					title: __('test', 'qtdtheme'),
-					onClick: () => alert(false),
-					isActive: true
-				}]
-			]}
-		/>
+			<AlignmentToolbar
+				value = {alignment}
+				onChange={(alignment)=>onChangeAlignment(alignment)}
+			/>
 			{(content && content.length > 0) &&
 			<Toolbar>
 				<DropdownMenu
@@ -126,6 +107,7 @@ export default function Edit( { className, attributes, setAttributes } ) {
 			className={ className}
 			onChange={onChangeContent}
 			value={ content }
+			style={{ textAlign: alignment }}
 			// formattingControls={[]}
 		/>
 
