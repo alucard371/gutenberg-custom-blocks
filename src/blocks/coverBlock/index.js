@@ -26,8 +26,41 @@ import './style.scss';
 /**
  * Internal dependencies
  */
-import Edit from './edit';
+//import Edit from './edit';
 import save from './save';
+import {getColorClassName, RichText} from "@wordpress/editor";
+import classnames from "classnames";
+
+const attributes = {
+		content: {
+			type: 'string',
+			source: 'html',
+			selector: 'h4'
+		},
+		alignement: {
+			type:'string',
+		},
+		textColor: {
+			type:'string',
+		},
+		backgroundColor: {
+			type:'string',
+		},
+		customTextColor: {
+			type:'string',
+		},
+		customBackgroundColor: {
+			type:'string',
+		},
+		shadow: {
+			type:'boolean',
+			default: false
+		},
+		shadowOpacity: {
+			type:'number',
+			default: 0.3
+		}
+	};
 
 /**
  * Every block starts by registering a new block type definition.
@@ -88,36 +121,58 @@ registerBlockType( 'create-block/cover-block', {
 		html: false,
 	},
 
-	attributes: {
-		content: {
-			type: 'string',
-			source: 'html',
-			selector: 'p'
-		},
-		alignement: {
-			type:'string',
-		},
-		textColor: {
-			type:'string',
-		},
-		backgroundColor: {
-			type:'string',
-		},
-		customTextColor: {
-			type:'string',
-		},
-		customBackgroundColor: {
-			type:'string',
-		},
-		shadow: {
-			type:'boolean',
-			default: false
-		},
-		shadowOpacity: {
-			type:'number',
-			default: 0.3
+	attributes: attributes,
+
+	deprecated: [
+		{
+			//supports
+			attributes: {
+				...attributes,
+				content: {
+					type: 'string',
+					source: 'html',
+					selector: 'p'
+				},
+			},
+			save:(
+				{attributes}
+			) => {
+				const { content, alignment,backgroundColor, textColor, customBackgroundColor, customTextColor, shadow, shadowOpacity } = attributes;
+
+				//get the color classes names from colors
+				const backgroundClass = getColorClassName('background-color', backgroundColor)
+				const textClass = getColorClassName('color', textColor)
+				//add the classes names
+				//let classes='';
+				/*if (backgroundClass) {
+					classes += backgroundClass;
+				}*/
+
+				const classes = classnames({
+					//variable as a key to see if the condition is true
+					[backgroundClass] : backgroundClass,
+					[textClass] : textClass,
+					'has-shadow': shadow,
+					[`shadow-opacity-${shadowOpacity * 100}`] : shadowOpacity
+				})
+
+
+				return <RichText.Content
+					tagName="p"
+					className={ classes }
+					value={ content }
+					style={{
+						textAlign: alignment,
+						//ignore the inline style if undefined
+						//if backgroundClass === true backgroundColor=undefined else customBackgroundColor
+						backgroundColor: backgroundClass ? undefined : customBackgroundColor ,
+						color: textClass ? undefined : customTextColor }}
+				/>;
+			}
 		}
-	},
+	],
+
+
 
 	/**
 	 * @see ./edit.js

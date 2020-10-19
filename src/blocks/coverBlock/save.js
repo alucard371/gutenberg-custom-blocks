@@ -45,7 +45,7 @@ export default function save(
 
 
 	return <RichText.Content
-	tagName="p"
+	tagName="h4"
 	className={ classes }
 	value={ content }
 	style={{
