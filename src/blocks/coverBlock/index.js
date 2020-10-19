@@ -4,7 +4,7 @@
  * @see https://developer.wordpress.org/block-editor/developers/block-api/#registering-a-block
  */
 import { registerBlockType } from '@wordpress/blocks';
-import { RichText } from '@wordpress/editor';
+
 /**
  * Retrieves the translation of text.
  *

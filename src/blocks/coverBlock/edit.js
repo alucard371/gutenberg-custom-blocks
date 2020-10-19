@@ -4,8 +4,17 @@
  * @see https://developer.wordpress.org/block-editor/packages/packages-i18n/
  */
 import { __ } from '@wordpress/i18n';
-import { RichText } from '@wordpress/editor';
-var el = wp.element.createElement;
+import {
+	RichText,
+	BlockControls
+} from '@wordpress/editor';
+
+import { Fragment } from '@wordpress/element'
+import {
+	Toolbar,
+	DropdownMenu
+} from '@wordpress/components'
+
 
 
 /**
@@ -35,11 +44,92 @@ export default function Edit( { className, attributes, setAttributes } ) {
 	const onChangeContent = (content) => {
 		setAttributes({ content })
 	}
-	return <RichText
+	return(
+	<>
+		<BlockControls
+			controls={ [
+				[{
+					icon: 'wordpress',
+					title: __('test', 'qtdtheme'),
+					onClick: () => alert(true),
+					isActive: false
+				}],
+				[{
+					icon: 'admin-site',
+					title: __('test', 'qtdtheme'),
+					onClick: () => alert(false),
+					isActive: true
+				}]
+			]}
+		>
+
+		<Toolbar
+			isCollapsed
+			controls={ [
+				[{
+					icon: 'wordpress',
+					title: __('test', 'qtdtheme'),
+					onClick: () => alert(true),
+					isActive: false
+				}],
+				[{
+					icon: 'admin-site',
+					title: __('test', 'qtdtheme'),
+					onClick: () => alert(false),
+					isActive: true
+				}]
+			]}
+		/>
+
+		<Toolbar
+			isCollapsed
+			controls={ [
+				[{
+					icon: 'wordpress',
+					title: __('test', 'qtdtheme'),
+					onClick: () => alert(true),
+					isActive: false
+				}],
+				[{
+					icon: 'admin-site',
+					title: __('test', 'qtdtheme'),
+					onClick: () => alert(false),
+					isActive: true
+				}]
+			]}
+		/>
+			{(content && content.length > 0) &&
+			<Toolbar>
+				<DropdownMenu
+					icon="editor-table"
+					label="Dropdown menu"
+					controls={[
+						[{
+							icon: 'wordpress',
+							title: __('test', 'qtdtheme'),
+							onClick: () => alert(true),
+							isActive: false
+						}],
+						[{
+							icon: 'admin-site',
+							title: __('test', 'qtdtheme'),
+							onClick: () => alert(false),
+							isActive: true
+						}]
+					]}
+				/>
+			</Toolbar>
+			}
+		</BlockControls>
+		<RichText
 			tagName="p"
 			className={ className}
 			onChange={onChangeContent}
 			value={ content }
 			// formattingControls={[]}
-	/>;
+		/>
+
+
+	</>
+	)
 }
