@@ -52,7 +52,7 @@ registerBlockType( 'create-block/cover-block', {
 	 * Blocks are grouped into categories to help users browse and discover them.
 	 * The categories provided by core are `common`, `embed`, `formatting`, `layout` and `widgets`.
 	 */
-	category: 'widgets',
+	category: 'qtd-blocks-category',
 
 	/**
 	 * An icon property should be specified to make it easier to identify a block.

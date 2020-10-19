@@ -11,6 +11,26 @@
  * @package         create-block
  */
 
+function qtd_blocks_categories($categories, $post){
+	return array_merge(
+		$categories,
+		array(
+			array(
+				'slug' => 'qtd-blocks-category',
+				'title' => __('Qtd theme category', 'qtd-blocks'),
+				'icon' => 'welcome-view-site'
+			)
+		)
+	);
+};
+
+add_filter(
+	'block_categories',
+	'qtd_blocks_categories',
+	10,
+	2
+);
+
 /**
  * Registers all block assets so that they can be enqueued through the block editor
  * in the corresponding context.
