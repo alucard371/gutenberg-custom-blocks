@@ -1,3 +1,5 @@
+import EditClass from "./editClass";
+
 /**
  * Registers a new block provided a unique name and an object defining its behavior.
  *
@@ -106,7 +108,7 @@ registerBlockType( 'create-block/cover-block', {
 	/**
 	 * @see ./edit.js
 	 */
-	edit: Edit,
+	edit: EditClass,
 
 	/**
 	 * @see ./save.js

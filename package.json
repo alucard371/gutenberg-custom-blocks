@@ -16,10 +16,12 @@
 		"build:custom": "wp-scripts build src/blocks/todoList/index.js src/blocks/coverBlock/index.js src/blocks/menuBlock/index.js --output-path=build && gulp bundle"
 	},
 	"devDependencies": {
+		"@babel/plugin-proposal-class-properties": "^7.12.1",
 		"@wordpress/components": "^11.0.1",
 		"@wordpress/editor": "^9.23.2",
 		"@wordpress/element": "^2.18.0",
 		"@wordpress/scripts": "^12.3.0",
+		"babel-eslint": "^10.1.0",
 		"eslint": "^7.11.0",
 		"eslint-plugin-react": "^7.21.4",
 		"gulp": "^4.0.2",
