@@ -1,1 +1,1 @@
-<?php return array('dependencies' => array('wp-blocks', 'wp-components', 'wp-editor', 'wp-element', 'wp-i18n', 'wp-polyfill'), 'version' => '0e21ce0a3ef6f396bdba210e6328c66c');
+<?php return array('dependencies' => array('wp-blocks', 'wp-components', 'wp-components/src/button/stories', 'wp-editor', 'wp-element', 'wp-i18n', 'wp-polyfill'), 'version' => 'dd7e17f53c5db7f9b99877389a685480');

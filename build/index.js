@@ -422,7 +422,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__);
 /* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @wordpress/components */ "@wordpress/components");
 /* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! classnames */ "./node_modules/classnames/index.js");
+/* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(classnames__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var _wordpress_components_src_button_stories__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @wordpress/components/src/button/stories */ "@wordpress/components/src/button/stories");
+/* harmony import */ var _wordpress_components_src_button_stories__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_wordpress_components_src_button_stories__WEBPACK_IMPORTED_MODULE_5__);
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+
 
 
 
@@ -442,6 +448,12 @@ class EditClass extends _wordpress_element__WEBPACK_IMPORTED_MODULE_0__["Compone
     _defineProperty(this, "onChangeAlignment", alignment => {
       this.props.setAttributes({
         alignment
+      });
+    });
+
+    _defineProperty(this, "toggleShadow", () => {
+      this.props.setAttributes({
+        shadow: !this.props.attributes.shadow
       });
     });
   }
@@ -464,8 +476,12 @@ class EditClass extends _wordpress_element__WEBPACK_IMPORTED_MODULE_0__["Compone
     } = this.props;
     const {
       content,
-      alignment
+      alignment,
+      shadow
     } = attributes;
+    const classes = classnames__WEBPACK_IMPORTED_MODULE_4___default()(className, {
+      'has-shadow': shadow
+    });
     return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement(_wordpress_editor__WEBPACK_IMPORTED_MODULE_1__["InspectorControls"], null, /*#__PURE__*/React.createElement(_wordpress_editor__WEBPACK_IMPORTED_MODULE_1__["PanelColorSettings"], {
       title: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__["__"])('Panel Color Settings', 'qtd-blocks'),
       colorSettings: [{
@@ -496,10 +512,15 @@ class EditClass extends _wordpress_element__WEBPACK_IMPORTED_MODULE_0__["Compone
         title: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__["__"])('test', 'qtdtheme'),
         onClick: () => alert(false),
         isActive: true
+      }], [{
+        icon: 'wordpress',
+        title: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__["__"])('shadow', 'qtdtheme'),
+        onClick: this.toggleShadow,
+        isActive: shadow
       }]]
     }))), /*#__PURE__*/React.createElement(_wordpress_editor__WEBPACK_IMPORTED_MODULE_1__["RichText"], {
       tagName: "p",
-      className: className,
+      className: classes,
       onChange: this.onChangeContent,
       value: content,
       style: {
@@ -658,6 +679,10 @@ Object(_wordpress_blocks__WEBPACK_IMPORTED_MODULE_1__["registerBlockType"])('cre
     },
     customBackgroundColor: {
       type: 'string'
+    },
+    shadow: {
+      type: 'boolean',
+      default: false
     }
   },
 
@@ -1186,6 +1211,17 @@ module.exports = __webpack_require__(/*! ./src/blocks/menuBlock/index.js */"./sr
 /***/ (function(module, exports) {
 
 (function() { module.exports = this["wp"]["components"]; }());
+
+/***/ }),
+
+/***/ "@wordpress/components/src/button/stories":
+/*!****************************************************************!*\
+  !*** external {"this":["wp","components/src/button/stories"]} ***!
+  \****************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+(function() { module.exports = this["wp"]["components/src/button/stories"]; }());
 
 /***/ }),
 

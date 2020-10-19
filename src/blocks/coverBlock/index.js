@@ -108,6 +108,10 @@ registerBlockType( 'create-block/cover-block', {
 		},
 		customBackgroundColor: {
 			type:'string',
+		},
+		shadow: {
+			type:'boolean',
+			default: false
 		}
 	},
 

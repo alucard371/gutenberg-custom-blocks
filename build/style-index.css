@@ -26,6 +26,8 @@
   .wp-block-create-block-cover-block.is-style-outlined {
     border-radius: 0px;
     border: 2px solid currentcolor; }
+  .wp-block-create-block-cover-block.has-shadow {
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.3); }
 
 /**
  * The following styles get applied both on the front of your site

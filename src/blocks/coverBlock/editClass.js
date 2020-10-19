@@ -13,6 +13,9 @@ import {
 import {__} from "@wordpress/i18n";
 import {DropdownMenu, Toolbar} from "@wordpress/components";
 
+import classnames from 'classnames';
+import {icon} from "@wordpress/components/src/button/stories";
+
 class EditClass extends Component{
 
 	onChangeContent = (content) => {
@@ -20,6 +23,10 @@ class EditClass extends Component{
 	}
 	onChangeAlignment = (alignment) => {
 		this.props.setAttributes({ alignment })
+	}
+	//if shadow === true turn shadow = false
+	toggleShadow = () => {
+		this.props.setAttributes({ shadow: !this.props.attributes.shadow })
 	}
 	/*onChangeBackgroundColor = (backgroundColor) => {
 		this.props.setAttributes({ backgroundColor })
@@ -31,7 +38,10 @@ class EditClass extends Component{
 	render() {
 		console.log(this.props)
 		const { className, attributes, setTextColor, setBackgroundColor,backgroundColor, textColor } = this.props;
-		const { content, alignment } = attributes;
+		const { content, alignment, shadow } = attributes;
+		const classes = classnames(className, {
+			'has-shadow': shadow,
+		})
 		return(
 			<>
 				<InspectorControls>
@@ -56,8 +66,7 @@ class EditClass extends Component{
 						/>
 					</PanelColorSettings>
 				</InspectorControls>
-				<BlockControls
-				>
+				<BlockControls>
 
 					<AlignmentToolbar
 						value = {alignment}
@@ -80,6 +89,12 @@ class EditClass extends Component{
 									title: __('test', 'qtdtheme'),
 									onClick: () => alert(false),
 									isActive: true
+								}],
+								[{
+									icon: 'wordpress',
+									title: __('shadow', 'qtdtheme'),
+									onClick: this.toggleShadow,
+									isActive: shadow
 								}]
 							]}
 						/>
@@ -88,7 +103,7 @@ class EditClass extends Component{
 				</BlockControls>
 				<RichText
 					tagName="p"
-					className={ className}
+					className={ classes }
 					onChange={this.onChangeContent}
 					value={ content }
 					style={{
