@@ -378,7 +378,9 @@ Object(_wordpress_blocks__WEBPACK_IMPORTED_MODULE_1__["registerBlockType"])('cre
   },
   attributes: {
     content: {
-      type: 'string'
+      type: 'string',
+      source: 'html',
+      selector: 'p'
     }
   },
 

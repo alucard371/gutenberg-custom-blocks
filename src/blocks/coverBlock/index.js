@@ -74,7 +74,9 @@ registerBlockType( 'create-block/cover-block', {
 
 	attributes: {
 		content: {
-			type: 'string'
+			type: 'string',
+			source: 'html',
+			selector: 'p'
 		}
 	},
 
