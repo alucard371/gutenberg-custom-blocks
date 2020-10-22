@@ -1,7 +1,7 @@
 <?php
 /**
  * Plugin Name:     Qtd Blocks
- * Description:     Example block written with ESNext standard and JSX support – build step required.
+ * Description:     Custom block development module - build step required.
  * Version:         0.1.0
  * Author:          The WordPress Contributors
  * License:         GPL-2.0-or-later

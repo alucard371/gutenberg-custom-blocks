@@ -1,4 +1,4 @@
 import './coverBlock/';
 import './todoList/';
-import './menuBlock/';
+import './team-member/';
 

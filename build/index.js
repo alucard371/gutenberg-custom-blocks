@@ -11,10 +11,10 @@
 
 /***/ }),
 
-/***/ "./src/blocks/menuBlock/style.scss":
-/*!*****************************************!*\
-  !*** ./src/blocks/menuBlock/style.scss ***!
-  \*****************************************/
+/***/ "./src/blocks/team-member/style.scss":
+/*!*******************************************!*\
+  !*** ./src/blocks/team-member/style.scss ***!
+  \*******************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -595,7 +595,7 @@ Object(_wordpress_blocks__WEBPACK_IMPORTED_MODULE_1__["registerBlockType"])('cre
       textAlignment: {
         type: 'string'
       }
-    }, ['alignment']),
+    }, ['textAlignment']),
     migrate: attributes => {
       return Object(lodash__WEBPACK_IMPORTED_MODULE_7__["omit"])({ ...attributes,
         alignment: attributes.textAlignment
@@ -793,10 +793,10 @@ function save({
 
 /***/ }),
 
-/***/ "./src/blocks/menuBlock/edit.js":
-/*!**************************************!*\
-  !*** ./src/blocks/menuBlock/edit.js ***!
-  \**************************************/
+/***/ "./src/blocks/team-member/edit.js":
+/*!****************************************!*\
+  !*** ./src/blocks/team-member/edit.js ***!
+  \****************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -805,7 +805,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return Edit; });
 /* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/i18n */ "@wordpress/i18n");
 /* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _editor_scss__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./editor.scss */ "./src/blocks/menuBlock/editor.scss");
+/* harmony import */ var _editor_scss__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./editor.scss */ "./src/blocks/team-member/editor.scss");
 /* harmony import */ var _editor_scss__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_editor_scss__WEBPACK_IMPORTED_MODULE_1__);
 /**
  * Retrieves the translation of text.
@@ -839,15 +839,15 @@ function Edit({
 }) {
   return /*#__PURE__*/React.createElement("p", {
     className: className
-  }, "\"This is the new test edit function of the menu block ");
+  }, "\"This is the new test edit function of the team member block ");
 }
 
 /***/ }),
 
-/***/ "./src/blocks/menuBlock/editor.scss":
-/*!******************************************!*\
-  !*** ./src/blocks/menuBlock/editor.scss ***!
-  \******************************************/
+/***/ "./src/blocks/team-member/editor.scss":
+/*!********************************************!*\
+  !*** ./src/blocks/team-member/editor.scss ***!
+  \********************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -855,10 +855,10 @@ function Edit({
 
 /***/ }),
 
-/***/ "./src/blocks/menuBlock/index.js":
-/*!***************************************!*\
-  !*** ./src/blocks/menuBlock/index.js ***!
-  \***************************************/
+/***/ "./src/blocks/team-member/index.js":
+/*!*****************************************!*\
+  !*** ./src/blocks/team-member/index.js ***!
+  \*****************************************/
 /*! no exports provided */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -868,10 +868,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _wordpress_blocks__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_blocks__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/i18n */ "@wordpress/i18n");
 /* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _style_scss__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./style.scss */ "./src/blocks/menuBlock/style.scss");
+/* harmony import */ var _style_scss__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./style.scss */ "./src/blocks/team-member/style.scss");
 /* harmony import */ var _style_scss__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_style_scss__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var _edit__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./edit */ "./src/blocks/menuBlock/edit.js");
-/* harmony import */ var _save__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./save */ "./src/blocks/menuBlock/save.js");
+/* harmony import */ var _edit__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./edit */ "./src/blocks/team-member/edit.js");
+/* harmony import */ var _save__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./save */ "./src/blocks/team-member/save.js");
 /**
  * Registers a new block provided a unique name and an object defining its behavior.
  *
@@ -900,30 +900,65 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+const attributes = {
+  title: {
+    type: 'string',
+    source: 'html',
+    selector: 'h4'
+  },
+  info: {
+    type: 'string',
+    source: 'html',
+    selector: 'p'
+  },
+  alignment: {
+    type: 'string'
+  },
+  textColor: {
+    type: 'string'
+  },
+  backgroundColor: {
+    type: 'string'
+  },
+  customTextColor: {
+    type: 'string'
+  },
+  customBackgroundColor: {
+    type: 'string'
+  },
+  shadow: {
+    type: 'boolean',
+    default: false
+  },
+  shadowOpacity: {
+    type: 'number',
+    default: 0.3
+  }
+};
 /**
  * Every block starts by registering a new block type definition.
  *
  * @see https://developer.wordpress.org/block-editor/developers/block-api/#registering-a-block
  */
 
-Object(_wordpress_blocks__WEBPACK_IMPORTED_MODULE_0__["registerBlockType"])('create-block/menu-block', {
+Object(_wordpress_blocks__WEBPACK_IMPORTED_MODULE_0__["registerBlockType"])('create-block/team-member', {
   /**
    * This is the display title for your block, which can be translated with `i18n` functions.
    * The block inserter will show this name.
    */
-  title: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__["__"])('menu block', 'menu-block'),
+  title: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__["__"])('team member', 'team-member'),
 
   /**
    * This is a short description for your block, can be translated with `i18n` functions.
    * It will be shown in the Block Tab in the Settings Sidebar.
    */
-  description: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__["__"])('Description de votre bloc custom', 'menu-block'),
+  description: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__["__"])('Description de votre bloc custom', 'team-member'),
 
   /**
    * Blocks are grouped into categories to help users browse and dismenu them.
    * The categories provided by core are `common`, `embed`, `formatting`, `layout` and `widgets`.
    */
-  category: 'widgets',
+  category: 'qtd-blocks-category',
 
   /**
    * An icon property should be specified to make it easier to identify a block.
@@ -940,7 +975,7 @@ Object(_wordpress_blocks__WEBPACK_IMPORTED_MODULE_0__["registerBlockType"])('cre
   }), /*#__PURE__*/React.createElement("path", {
     d: "M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-5 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z"
   })),
-  keywords: [Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__["__"])('list', 'menu-block'), Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__["__"])('organise', 'menu-block')],
+  keywords: [Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__["__"])('list', 'team-member'), Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__["__"])('organise', 'team-member'), Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__["__"])('team'), Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__["__"])('member'), Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__["__"])('person')],
 
   /**
    * Optional block extended support features.
@@ -963,10 +998,10 @@ Object(_wordpress_blocks__WEBPACK_IMPORTED_MODULE_0__["registerBlockType"])('cre
 
 /***/ }),
 
-/***/ "./src/blocks/menuBlock/save.js":
-/*!**************************************!*\
-  !*** ./src/blocks/menuBlock/save.js ***!
-  \**************************************/
+/***/ "./src/blocks/team-member/save.js":
+/*!****************************************!*\
+  !*** ./src/blocks/team-member/save.js ***!
+  \****************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -1198,15 +1233,15 @@ function save() {
 /***/ }),
 
 /***/ 0:
-/*!*************************************************************************************************************!*\
-  !*** multi ./src/blocks/todoList/index.js ./src/blocks/coverBlock/index.js ./src/blocks/menuBlock/index.js ***!
-  \*************************************************************************************************************/
+/*!***************************************************************************************************************!*\
+  !*** multi ./src/blocks/todoList/index.js ./src/blocks/coverBlock/index.js ./src/blocks/team-member/index.js ***!
+  \***************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(/*! ./src/blocks/todoList/index.js */"./src/blocks/todoList/index.js");
 __webpack_require__(/*! ./src/blocks/coverBlock/index.js */"./src/blocks/coverBlock/index.js");
-module.exports = __webpack_require__(/*! ./src/blocks/menuBlock/index.js */"./src/blocks/menuBlock/index.js");
+module.exports = __webpack_require__(/*! ./src/blocks/team-member/index.js */"./src/blocks/team-member/index.js");
 
 
 /***/ }),

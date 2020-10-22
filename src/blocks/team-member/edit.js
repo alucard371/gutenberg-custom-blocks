@@ -27,5 +27,5 @@ import './editor.scss';
  * @return {WPElement} Element to render.
  */
 export default function Edit( { className } ) {
-	return <p className={ className }>"This is the new test edit function of the menu block </p>;
+	return <p className={ className }>"This is the new test edit function of the team member block </p>;
 }

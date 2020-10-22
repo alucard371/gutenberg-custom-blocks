@@ -170,7 +170,7 @@ registerBlockType( 'create-block/cover-block', {
 				textAlignment: {
 					type: 'string'
 				}
-			}, ['alignment']),
+			}, ['textAlignment']),
 			migrate: ( attributes ) => {
 			return omit({
 				...attributes,
