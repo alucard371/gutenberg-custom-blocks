@@ -793,65 +793,82 @@ function save({
 
 /***/ }),
 
-/***/ "./src/blocks/team-member/edit.js":
-/*!****************************************!*\
-  !*** ./src/blocks/team-member/edit.js ***!
-  \****************************************/
+/***/ "./src/blocks/team-member/editClass.js":
+/*!*********************************************!*\
+  !*** ./src/blocks/team-member/editClass.js ***!
+  \*********************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return Edit; });
-/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/i18n */ "@wordpress/i18n");
-/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _editor_scss__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./editor.scss */ "./src/blocks/team-member/editor.scss");
-/* harmony import */ var _editor_scss__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_editor_scss__WEBPACK_IMPORTED_MODULE_1__);
-/**
- * Retrieves the translation of text.
- *
- * @see https://developer.wordpress.org/block-editor/packages/packages-i18n/
- */
-
-var el = wp.element.createElement;
-/**
- * Lets webpack process CSS, SASS or SCSS files referenced in JavaScript files.
- * Those files can contain any CSS code that gets applied to the editor.
- *
- * @see https://www.npmjs.com/package/@wordpress/scripts#using-css
- */
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _wordpress_editor__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/editor */ "@wordpress/editor");
+/* harmony import */ var _wordpress_editor__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_editor__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @wordpress/i18n */ "@wordpress/i18n");
+/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! classnames */ "./node_modules/classnames/index.js");
+/* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(classnames__WEBPACK_IMPORTED_MODULE_3__);
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 
-/**
- * The edit function describes the structure of your block in the context of the
- * editor. This represents what the editor will render when the block is used.
- *
- * @see https://developer.wordpress.org/block-editor/developers/block-api/block-edit-save/#edit
- *
- * @param {Object} [props]           Properties passed from the editor.
- * @param {string} [props.className] Class name generated for the block.
- *
- * @return {WPElement} Element to render.
- */
 
-function Edit({
-  className
-}) {
-  return /*#__PURE__*/React.createElement("p", {
-    className: className
-  }, "\"This is the new test edit function of the team member block ");
+
+
+
+class TeamMemberEdit extends _wordpress_element__WEBPACK_IMPORTED_MODULE_0__["Component"] {
+  constructor(...args) {
+    super(...args);
+
+    _defineProperty(this, "onChangeTitle", title => {
+      this.props.setAttributes({
+        title
+      });
+    });
+
+    _defineProperty(this, "onChangeInfo", info => {
+      this.props.setAttributes({
+        info
+      });
+    });
+  }
+
+  render() {
+    const {
+      className,
+      attributes
+    } = this.props;
+    const {
+      title,
+      info
+    } = attributes;
+    return /*#__PURE__*/React.createElement("div", {
+      className: className
+    }, /*#__PURE__*/React.createElement(_wordpress_editor__WEBPACK_IMPORTED_MODULE_1__["RichText"] //classname is in BEM format
+    //This will be the class of our div
+    , {
+      className: 'wp-block-qtd-blocks-team-member__title',
+      tagName: "h4",
+      onChange: this.onChangeTitle,
+      value: title,
+      placeholder: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__["__"])("Member name", 'team-member'),
+      formattingControle: []
+    }), /*#__PURE__*/React.createElement(_wordpress_editor__WEBPACK_IMPORTED_MODULE_1__["RichText"] //classname is in BEM format
+    //This will be the class of our div
+    , {
+      className: 'wp-block-qtd-blocks-team-member__info',
+      tagName: "p",
+      onChange: this.onChangeInfo,
+      value: info,
+      placeholder: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__["__"])("Member info", 'team-member'),
+      formattingControle: []
+    }));
+  }
+
 }
 
-/***/ }),
-
-/***/ "./src/blocks/team-member/editor.scss":
-/*!********************************************!*\
-  !*** ./src/blocks/team-member/editor.scss ***!
-  \********************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-// extracted by mini-css-extract-plugin
+/* harmony default export */ __webpack_exports__["default"] = (TeamMemberEdit);
 
 /***/ }),
 
@@ -870,8 +887,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _style_scss__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./style.scss */ "./src/blocks/team-member/style.scss");
 /* harmony import */ var _style_scss__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_style_scss__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var _edit__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./edit */ "./src/blocks/team-member/edit.js");
-/* harmony import */ var _save__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./save */ "./src/blocks/team-member/save.js");
+/* harmony import */ var _save__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./save */ "./src/blocks/team-member/save.js");
+/* harmony import */ var _team_member_editClass__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../team-member/editClass */ "./src/blocks/team-member/editClass.js");
 /**
  * Registers a new block provided a unique name and an object defining its behavior.
  *
@@ -897,6 +914,7 @@ __webpack_require__.r(__webpack_exports__);
 /**
  * Internal dependencies
  */
+//import Edit from './edit';
 
 
 
@@ -975,7 +993,7 @@ Object(_wordpress_blocks__WEBPACK_IMPORTED_MODULE_0__["registerBlockType"])('cre
   }), /*#__PURE__*/React.createElement("path", {
     d: "M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-5 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z"
   })),
-  keywords: [Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__["__"])('list', 'team-member'), Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__["__"])('organise', 'team-member'), Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__["__"])('team'), Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__["__"])('member'), Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__["__"])('person')],
+  keywords: [Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__["__"])('list', 'team-member'), Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__["__"])('organise', 'team-member'), Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__["__"])('team', 'team-member'), Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__["__"])('member', 'team-member'), Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__["__"])('person', 'team-member')],
 
   /**
    * Optional block extended support features.
@@ -988,12 +1006,12 @@ Object(_wordpress_blocks__WEBPACK_IMPORTED_MODULE_0__["registerBlockType"])('cre
   /**
    * @see ./edit.js
    */
-  edit: _edit__WEBPACK_IMPORTED_MODULE_3__["default"],
+  edit: _team_member_editClass__WEBPACK_IMPORTED_MODULE_4__["default"],
 
   /**
    * @see ./save.js
    */
-  save: _save__WEBPACK_IMPORTED_MODULE_4__["default"]
+  save: _save__WEBPACK_IMPORTED_MODULE_3__["default"]
 });
 
 /***/ }),

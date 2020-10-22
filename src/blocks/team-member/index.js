@@ -24,8 +24,9 @@ import './style.scss';
 /**
  * Internal dependencies
  */
-import Edit from './edit';
+//import Edit from './edit';
 import save from './save';
+import EditClass from "../team-member/editClass";
 
 const attributes = {
 	title: {
@@ -99,9 +100,9 @@ registerBlockType( 'create-block/team-member', {
 	keywords: [
 		__('list', 'team-member')
 		, __('organise', 'team-member')
-		, __('team')
-		, __('member')
-		, __('person')
+		, __('team', 'team-member')
+		, __('member', 'team-member')
+		, __('person', 'team-member')
 	],
 
 
@@ -117,7 +118,7 @@ registerBlockType( 'create-block/team-member', {
 	/**
 	 * @see ./edit.js
 	 */
-	edit: Edit,
+	edit: EditClass,
 
 	/**
 	 * @see ./save.js

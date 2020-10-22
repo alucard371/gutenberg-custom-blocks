@@ -4,7 +4,8 @@
  * @see https://developer.wordpress.org/block-editor/packages/packages-i18n/
  */
 import { __ } from '@wordpress/i18n';
-var el = wp.element.createElement;
+import { component } from '@wordpress/element';
+import { RichText } from "@wordpress/editor";
 
 
 /**
