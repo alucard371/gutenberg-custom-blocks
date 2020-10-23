@@ -5,21 +5,40 @@
  * Replace them with your own styles or remove the file completely.
  */
 
-.wp-block-qtd-blocks-team-member {
-  background-color: #e2e2ee;
-  color: #322e2e;
-  padding: 2px;
-  border: 2px solid #0d0f15;
-  &__title{
-	color: #cf4f4f !important;
-	font-size: 3rem;
-	font-weight: lighter;
-	margin-bottom: 0;
+.wp-block-qtd-blocks-team-members {
+  display: flex;
+  flex-wrap: wrap;
+  margin-left: -10px;
+  margin-right: -10px;
+  @for $i from 1 through 6 {
+	&.has-#{$i}-columns {
+	  .wp-block-qtd-blocks-team-member {
+		width: calc(100%/#{$i} - 20px);
+	  }
+	}
   }
-  &__info{
-	color: #641414 !important;
-	font-size: 2rem;
-	font-weight: bolder;
-	margin-bottom: 5px;
+  .wp-block-qtd-blocks-team-member {
+	background-color: #fffcfc;
+	color: #322e2e;
+	padding: 2px;
+	border: 1px solid #0d0f15;
+	margin: 10px;
+	&__title{
+	  color: #d24848 !important;
+	  font-size: 3rem;
+	  font-weight: lighter;
+	  font-style: oblique;
+	  text-transform: capitalize;
+	  margin-bottom: 0;
+	  padding: 10px;
+	}
+	&__info{
+	  color: #641414 !important;
+	  font-size: 2rem;
+	  font-weight: bolder;
+	  margin-bottom: 5px;
+	  padding: 10px;
+	}
   }
 }
+
