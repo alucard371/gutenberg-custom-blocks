@@ -4,6 +4,32 @@
  * Replace them with your own styles or remove the file completely.
  */
 
-.wp-block-qtd-blocks-team-member {
-	border: 5px dotted #00ff00;
+.wp-block-qtd-blocks-team-members {
+  display: block;
+  flex-wrap: wrap;
+  margin-left: 0px;
+  margin-right: 0px;
+  @for $i from 1 through 6 {
+	&.has-#{$i}-columns {
+	  [data-type="qtd-blocks/team-member"] {
+		width: calc(100%/#{$i});
+	  }
+	}
+  }
+  > .block-editor-inner-blocks > .block-editor-block-list__layout {
+	display: flex;
+	flex-wrap: wrap;
+	.block-list-appender{
+	  width: 100%;
+	}
+	> [data-type="qtd-blocks/team-member"] {
+	  max-width: none;
+	  margin-left: 0;
+	}
+  }
+  .wp-block-qtd-blocks-team-member {
+	margin: 0;
+	width: auto !important;
+  }
+
 }

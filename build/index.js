@@ -403,6 +403,17 @@ class EditClass extends _wordpress_element__WEBPACK_IMPORTED_MODULE_0__["Compone
 
 /***/ }),
 
+/***/ "./src/blocks/coverBlock/editor.scss":
+/*!*******************************************!*\
+  !*** ./src/blocks/coverBlock/editor.scss ***!
+  \*******************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+// extracted by mini-css-extract-plugin
+
+/***/ }),
+
 /***/ "./src/blocks/coverBlock/index.js":
 /*!****************************************!*\
   !*** ./src/blocks/coverBlock/index.js ***!
@@ -419,13 +430,15 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__);
 /* harmony import */ var _style_scss__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./style.scss */ "./src/blocks/coverBlock/style.scss");
 /* harmony import */ var _style_scss__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_style_scss__WEBPACK_IMPORTED_MODULE_3__);
-/* harmony import */ var _save__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./save */ "./src/blocks/coverBlock/save.js");
-/* harmony import */ var _wordpress_editor__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @wordpress/editor */ "@wordpress/editor");
-/* harmony import */ var _wordpress_editor__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_wordpress_editor__WEBPACK_IMPORTED_MODULE_5__);
-/* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! classnames */ "./node_modules/classnames/index.js");
-/* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(classnames__WEBPACK_IMPORTED_MODULE_6__);
-/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! lodash */ "lodash");
-/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(lodash__WEBPACK_IMPORTED_MODULE_7__);
+/* harmony import */ var _editor_scss__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./editor.scss */ "./src/blocks/coverBlock/editor.scss");
+/* harmony import */ var _editor_scss__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_editor_scss__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var _save__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./save */ "./src/blocks/coverBlock/save.js");
+/* harmony import */ var _wordpress_editor__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @wordpress/editor */ "@wordpress/editor");
+/* harmony import */ var _wordpress_editor__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(_wordpress_editor__WEBPACK_IMPORTED_MODULE_6__);
+/* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! classnames */ "./node_modules/classnames/index.js");
+/* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(classnames__WEBPACK_IMPORTED_MODULE_7__);
+/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! lodash */ "lodash");
+/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__webpack_require__.n(lodash__WEBPACK_IMPORTED_MODULE_8__);
 
 /**
  * Registers a new block provided a unique name and an object defining its behavior.
@@ -448,6 +461,7 @@ __webpack_require__.r(__webpack_exports__);
  *
  * @see https://www.npmjs.com/package/@wordpress/scripts#using-css
  */
+
 
 
 /**
@@ -591,13 +605,13 @@ Object(_wordpress_blocks__WEBPACK_IMPORTED_MODULE_1__["registerBlockType"])('cre
   },
   attributes: attributes,
   deprecated: [{
-    attributes: Object(lodash__WEBPACK_IMPORTED_MODULE_7__["omit"])({ ...attributes,
+    attributes: Object(lodash__WEBPACK_IMPORTED_MODULE_8__["omit"])({ ...attributes,
       textAlignment: {
         type: 'string'
       }
     }, ['textAlignment']),
     migrate: attributes => {
-      return Object(lodash__WEBPACK_IMPORTED_MODULE_7__["omit"])({ ...attributes,
+      return Object(lodash__WEBPACK_IMPORTED_MODULE_8__["omit"])({ ...attributes,
         alignment: attributes.textAlignment
       }, ['textAlignment']);
     },
@@ -615,22 +629,22 @@ Object(_wordpress_blocks__WEBPACK_IMPORTED_MODULE_1__["registerBlockType"])('cre
         shadowOpacity
       } = attributes; //get the color classes names from colors
 
-      const backgroundClass = Object(_wordpress_editor__WEBPACK_IMPORTED_MODULE_5__["getColorClassName"])('background-color', backgroundColor);
-      const textClass = Object(_wordpress_editor__WEBPACK_IMPORTED_MODULE_5__["getColorClassName"])('color', textColor); //add the classes names
+      const backgroundClass = Object(_wordpress_editor__WEBPACK_IMPORTED_MODULE_6__["getColorClassName"])('background-color', backgroundColor);
+      const textClass = Object(_wordpress_editor__WEBPACK_IMPORTED_MODULE_6__["getColorClassName"])('color', textColor); //add the classes names
       //let classes='';
 
       /*if (backgroundClass) {
       	classes += backgroundClass;
       }*/
 
-      const classes = classnames__WEBPACK_IMPORTED_MODULE_6___default()({
+      const classes = classnames__WEBPACK_IMPORTED_MODULE_7___default()({
         //variable as a key to see if the condition is true
         [backgroundClass]: backgroundClass,
         [textClass]: textClass,
         'has-shadow': shadow,
         [`shadow-opacity-${shadowOpacity * 100}`]: shadowOpacity
       });
-      return /*#__PURE__*/React.createElement(_wordpress_editor__WEBPACK_IMPORTED_MODULE_5__["RichText"].Content, {
+      return /*#__PURE__*/React.createElement(_wordpress_editor__WEBPACK_IMPORTED_MODULE_6__["RichText"].Content, {
         tagName: "p",
         className: classes,
         value: content,
@@ -645,7 +659,7 @@ Object(_wordpress_blocks__WEBPACK_IMPORTED_MODULE_1__["registerBlockType"])('cre
     }
   }, {
     //supports
-    attributes: Object(lodash__WEBPACK_IMPORTED_MODULE_7__["omit"])({ ...attributes,
+    attributes: Object(lodash__WEBPACK_IMPORTED_MODULE_8__["omit"])({ ...attributes,
       content: {
         type: 'string',
         source: 'html',
@@ -653,7 +667,7 @@ Object(_wordpress_blocks__WEBPACK_IMPORTED_MODULE_1__["registerBlockType"])('cre
       }
     }, ['textAlignment']),
     migrate: attributes => {
-      return Object(lodash__WEBPACK_IMPORTED_MODULE_7__["omit"])({ ...attributes,
+      return Object(lodash__WEBPACK_IMPORTED_MODULE_8__["omit"])({ ...attributes,
         alignment: attributes.textAlignment
       }, ['textAlignment']);
     },
@@ -671,22 +685,22 @@ Object(_wordpress_blocks__WEBPACK_IMPORTED_MODULE_1__["registerBlockType"])('cre
         shadowOpacity
       } = attributes; //get the color classes names from colors
 
-      const backgroundClass = Object(_wordpress_editor__WEBPACK_IMPORTED_MODULE_5__["getColorClassName"])('background-color', backgroundColor);
-      const textClass = Object(_wordpress_editor__WEBPACK_IMPORTED_MODULE_5__["getColorClassName"])('color', textColor); //add the classes names
+      const backgroundClass = Object(_wordpress_editor__WEBPACK_IMPORTED_MODULE_6__["getColorClassName"])('background-color', backgroundColor);
+      const textClass = Object(_wordpress_editor__WEBPACK_IMPORTED_MODULE_6__["getColorClassName"])('color', textColor); //add the classes names
       //let classes='';
 
       /*if (backgroundClass) {
       	classes += backgroundClass;
       }*/
 
-      const classes = classnames__WEBPACK_IMPORTED_MODULE_6___default()({
+      const classes = classnames__WEBPACK_IMPORTED_MODULE_7___default()({
         //variable as a key to see if the condition is true
         [backgroundClass]: backgroundClass,
         [textClass]: textClass,
         'has-shadow': shadow,
         [`shadow-opacity-${shadowOpacity * 100}`]: shadowOpacity
       });
-      return /*#__PURE__*/React.createElement(_wordpress_editor__WEBPACK_IMPORTED_MODULE_5__["RichText"].Content, {
+      return /*#__PURE__*/React.createElement(_wordpress_editor__WEBPACK_IMPORTED_MODULE_6__["RichText"].Content, {
         tagName: "p",
         className: classes,
         value: content,
@@ -709,7 +723,7 @@ Object(_wordpress_blocks__WEBPACK_IMPORTED_MODULE_1__["registerBlockType"])('cre
   /**
    * @see ./save.js
    */
-  save: _save__WEBPACK_IMPORTED_MODULE_4__["default"]
+  save: _save__WEBPACK_IMPORTED_MODULE_5__["default"]
 });
 
 /***/ }),
@@ -868,6 +882,17 @@ class TeamMemberEdit extends _wordpress_element__WEBPACK_IMPORTED_MODULE_0__["Co
 
 /***/ }),
 
+/***/ "./src/blocks/team-member/editor.scss":
+/*!********************************************!*\
+  !*** ./src/blocks/team-member/editor.scss ***!
+  \********************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+// extracted by mini-css-extract-plugin
+
+/***/ }),
+
 /***/ "./src/blocks/team-member/index.js":
 /*!*****************************************!*\
   !*** ./src/blocks/team-member/index.js ***!
@@ -883,9 +908,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _style_scss__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./style.scss */ "./src/blocks/team-member/style.scss");
 /* harmony import */ var _style_scss__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_style_scss__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var _parent__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./parent */ "./src/blocks/team-member/parent.js");
-/* harmony import */ var _save__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./save */ "./src/blocks/team-member/save.js");
-/* harmony import */ var _team_member_editClass__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../team-member/editClass */ "./src/blocks/team-member/editClass.js");
+/* harmony import */ var _editor_scss__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./editor.scss */ "./src/blocks/team-member/editor.scss");
+/* harmony import */ var _editor_scss__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_editor_scss__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _parent__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./parent */ "./src/blocks/team-member/parent.js");
+/* harmony import */ var _save__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./save */ "./src/blocks/team-member/save.js");
+/* harmony import */ var _team_member_editClass__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../team-member/editClass */ "./src/blocks/team-member/editClass.js");
 /**
  * Registers a new block provided a unique name and an object defining its behavior.
  *
@@ -906,6 +933,7 @@ __webpack_require__.r(__webpack_exports__);
  *
  * @see https://www.npmjs.com/package/@wordpress/scripts#using-css
  */
+
 
 
 /**
@@ -982,12 +1010,12 @@ Object(_wordpress_blocks__WEBPACK_IMPORTED_MODULE_0__["registerBlockType"])('qtd
   /**
    * @see ./edit.js
    */
-  edit: _team_member_editClass__WEBPACK_IMPORTED_MODULE_5__["default"],
+  edit: _team_member_editClass__WEBPACK_IMPORTED_MODULE_6__["default"],
 
   /**
    * @see ./save.js
    */
-  save: _save__WEBPACK_IMPORTED_MODULE_4__["default"]
+  save: _save__WEBPACK_IMPORTED_MODULE_5__["default"]
 });
 
 /***/ }),

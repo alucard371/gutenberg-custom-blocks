@@ -7,3 +7,13 @@
 .wp-block-create-block-cover-block {
 	border: 1px dotted #f00;
 }
+
+.wp-block-qtd-blocks-team-members {
+  display: block;
+  flex-wrap: wrap;
+  margin-left: 0px;
+  margin-right: 0px;
+  .wp-block-qtd-blocks-team-member {
+	margin: 0;
+  }
+}
