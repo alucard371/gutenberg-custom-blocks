@@ -1,5 +1,5 @@
 import { Component } from '@wordpress/element'
-import { RichText } from "@wordpress/editor";
+import { RichText, MediaPlaceholder } from "@wordpress/block-editor";
 
 import {__} from "@wordpress/i18n";
 
@@ -16,6 +16,15 @@ class TeamMemberEdit extends Component{
 		const { title,info } = attributes;
 		return(
 			<div className={ className }>
+				<MediaPlaceholder
+					className={'wp-block-qtd-blocks-team-member__image'}
+					icon='format-image'
+					onSelect={(image) => console.log(image)}
+					onSelectURL={(url) => console.log(url)}
+					onError={(message) => console.log(message)}
+					accept="image/*"
+					allowedTypes={['image']}
+				/>
 				<RichText
 					//classname is in BEM format
 					//This will be the class of our div

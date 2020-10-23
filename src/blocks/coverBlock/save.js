@@ -7,7 +7,7 @@ import { __ } from '@wordpress/i18n';
 import {
 	RichText,
 	getColorClassName,
-} from '@wordpress/editor';
+} from '@wordpress/block-editor';
 
 import classnames from 'classnames';
 

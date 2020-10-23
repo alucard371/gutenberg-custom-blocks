@@ -29,7 +29,7 @@ import './editor.scss';
  */
 //import Edit from './edit';
 import save from './save';
-import {getColorClassName, RichText} from "@wordpress/editor";
+import {getColorClassName, RichText} from "@wordpress/block-editor";
 import classnames from "classnames";
 import { omit } from 'lodash';
 
