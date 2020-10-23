@@ -94,6 +94,8 @@ registerBlockType( 'qtd-blocks/team-member', {
 	supports: {
 		// Removes support for an HTML mode.
 		html: false,
+		// Removes support for reusability.
+		reusable: false
 	},
 
 	/**

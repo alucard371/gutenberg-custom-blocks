@@ -30,6 +30,11 @@ registerBlockType('qtd-blocks/team-members', {
 		, __('person', 'team-member')
 	],
 
+	supports: {
+		// Removes support for an HTML mode.
+		html: false,
+	},
+
 	attributes,
 
 	edit ( {className, attributes, setAttributes}) {

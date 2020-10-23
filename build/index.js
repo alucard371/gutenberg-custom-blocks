@@ -1004,7 +1004,9 @@ Object(_wordpress_blocks__WEBPACK_IMPORTED_MODULE_0__["registerBlockType"])('qtd
    */
   supports: {
     // Removes support for an HTML mode.
-    html: false
+    html: false,
+    // Removes support for reusability.
+    reusable: false
   },
 
   /**
@@ -1053,6 +1055,10 @@ Object(_wordpress_blocks__WEBPACK_IMPORTED_MODULE_0__["registerBlockType"])('qtd
   category: 'qtd-blocks-category',
   icon: 'grid-view',
   keywords: [Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__["__"])('list', 'team-member'), Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__["__"])('organise', 'team-member'), Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__["__"])('team', 'team-member'), Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__["__"])('member', 'team-member'), Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__["__"])('person', 'team-member')],
+  supports: {
+    // Removes support for an HTML mode.
+    html: false
+  },
   attributes,
 
   edit({
