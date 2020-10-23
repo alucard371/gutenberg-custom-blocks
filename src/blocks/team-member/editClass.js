@@ -1,5 +1,7 @@
 import { Component } from '@wordpress/element'
 import { RichText, MediaPlaceholder } from "@wordpress/block-editor";
+import { isBlobURL } from "@wordpress/blob"
+import { Spinner } from  "@wordpress/components"
 
 import {__} from "@wordpress/i18n";
 
@@ -10,21 +12,34 @@ class TeamMemberEdit extends Component{
 	onChangeInfo = (info) => {
 		this.props.setAttributes( {info} )
 	}
+	onSelectImage = ( {id,url,alt } ) => {
+		this.props.setAttributes( {
+			id,
+			url,
+			alt
+		})
+	}
 
 	render(){
 		const { className, attributes } = this.props;
-		const { title,info } = attributes;
+		const { title,info, url, alt } = attributes;
 		return(
 			<div className={ className }>
-				<MediaPlaceholder
+				{url ?
+				<>
+					<img src={url} alt={alt}/>
+					{isBlobURL(url) && <Spinner />}
+				</>
+				:<MediaPlaceholder
 					className={'wp-block-qtd-blocks-team-member__image'}
 					icon='format-image'
-					onSelect={(image) => console.log(image)}
+					onSelect={ this.onSelectImage }
 					onSelectURL={(url) => console.log(url)}
 					onError={(message) => console.log(message)}
 					accept="image/*"
 					allowedTypes={['image']}
 				/>
+				}
 				<RichText
 					//classname is in BEM format
 					//This will be the class of our div

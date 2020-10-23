@@ -819,9 +819,15 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/block-editor */ "@wordpress/block-editor");
 /* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @wordpress/i18n */ "@wordpress/i18n");
-/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _wordpress_blob__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @wordpress/blob */ "@wordpress/blob");
+/* harmony import */ var _wordpress_blob__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_wordpress_blob__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @wordpress/components */ "@wordpress/components");
+/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @wordpress/i18n */ "@wordpress/i18n");
+/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__);
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+
 
 
 
@@ -842,6 +848,18 @@ class TeamMemberEdit extends _wordpress_element__WEBPACK_IMPORTED_MODULE_0__["Co
         info
       });
     });
+
+    _defineProperty(this, "onSelectImage", ({
+      id,
+      url,
+      alt
+    }) => {
+      this.props.setAttributes({
+        id,
+        url,
+        alt
+      });
+    });
   }
 
   render() {
@@ -851,14 +869,19 @@ class TeamMemberEdit extends _wordpress_element__WEBPACK_IMPORTED_MODULE_0__["Co
     } = this.props;
     const {
       title,
-      info
+      info,
+      url,
+      alt
     } = attributes;
     return /*#__PURE__*/React.createElement("div", {
       className: className
-    }, /*#__PURE__*/React.createElement(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__["MediaPlaceholder"], {
+    }, url ? /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement("img", {
+      src: url,
+      alt: alt
+    }), Object(_wordpress_blob__WEBPACK_IMPORTED_MODULE_2__["isBlobURL"])(url) && /*#__PURE__*/React.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__["Spinner"], null)) : /*#__PURE__*/React.createElement(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__["MediaPlaceholder"], {
       className: 'wp-block-qtd-blocks-team-member__image',
       icon: "format-image",
-      onSelect: image => console.log(image),
+      onSelect: this.onSelectImage,
       onSelectURL: url => console.log(url),
       onError: message => console.log(message),
       accept: "image/*",
@@ -870,7 +893,7 @@ class TeamMemberEdit extends _wordpress_element__WEBPACK_IMPORTED_MODULE_0__["Co
       tagName: "h4",
       onChange: this.onChangeTitle,
       value: title,
-      placeholder: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__["__"])("Member name", 'team-member'),
+      placeholder: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__["__"])("Member name", 'team-member'),
       formattingControle: []
     }), /*#__PURE__*/React.createElement(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__["RichText"] //classname is in BEM format
     //This will be the class of our div
@@ -879,7 +902,7 @@ class TeamMemberEdit extends _wordpress_element__WEBPACK_IMPORTED_MODULE_0__["Co
       tagName: "p",
       onChange: this.onChangeInfo,
       value: info,
-      placeholder: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__["__"])("Member info", 'team-member'),
+      placeholder: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__["__"])("Member info", 'team-member'),
       formattingControle: []
     }));
   }
@@ -961,6 +984,22 @@ const attributes = {
     type: 'string',
     source: 'html',
     selector: 'p'
+  },
+  id: {
+    type: 'number'
+  },
+  alt: {
+    type: 'string',
+    source: 'attribute',
+    selector: 'img',
+    attribute: 'alt',
+    default: ''
+  },
+  url: {
+    type: 'string',
+    source: 'attribute',
+    selector: 'img',
+    attribute: 'src'
   }
 };
 /**
@@ -1366,6 +1405,17 @@ __webpack_require__(/*! ./src/blocks/todoList/index.js */"./src/blocks/todoList/
 __webpack_require__(/*! ./src/blocks/coverBlock/index.js */"./src/blocks/coverBlock/index.js");
 module.exports = __webpack_require__(/*! ./src/blocks/team-member/index.js */"./src/blocks/team-member/index.js");
 
+
+/***/ }),
+
+/***/ "@wordpress/blob":
+/*!***************************************!*\
+  !*** external {"this":["wp","blob"]} ***!
+  \***************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+(function() { module.exports = this["wp"]["blob"]; }());
 
 /***/ }),
 
