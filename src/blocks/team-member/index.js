@@ -69,7 +69,7 @@ const attributes = {
  *
  * @see https://developer.wordpress.org/block-editor/developers/block-api/#registering-a-block
  */
-registerBlockType( 'create-block/team-member', {
+registerBlockType( 'qtd-blocks/team-member', {
 	/**
 	 * This is the display title for your block, which can be translated with `i18n` functions.
 	 * The block inserter will show this name.
