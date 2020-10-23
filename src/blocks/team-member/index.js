@@ -39,29 +39,6 @@ const attributes = {
 		source: 'html',
 		selector: 'p'
 	},
-	alignment: {
-		type:'string',
-	},
-	textColor: {
-		type:'string',
-	},
-	backgroundColor: {
-		type:'string',
-	},
-	customTextColor: {
-		type:'string',
-	},
-	customBackgroundColor: {
-		type:'string',
-	},
-	shadow: {
-		type:'boolean',
-		default: false
-	},
-	shadowOpacity: {
-		type:'number',
-		default: 0.3
-	}
 };
 
 /**
@@ -97,7 +74,7 @@ registerBlockType( 'qtd-blocks/team-member', {
 	 */
 	icon: <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24"><path d="M0 0h24v24H0z" fill="none"/><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-5 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z"/></svg>,
 
-	parent: ['qtd-blocks/team-members'],
+
 
 	keywords: [
 		__('list', 'team-member')
@@ -107,7 +84,7 @@ registerBlockType( 'qtd-blocks/team-member', {
 		, __('person', 'team-member')
 	],
 
-
+	attributes: attributes,
 
 	/**
 	 * Optional block extended support features.

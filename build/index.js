@@ -767,8 +767,7 @@ function save({
   //let classes='';
 
   /*if (backgroundClass) {
-  	classes += backgroundClass;
-  }*/
+  	classes += backgroundClass;	}*/
 
   const classes = classnames__WEBPACK_IMPORTED_MODULE_2___default()({
     //variable as a key to see if the condition is true
@@ -808,10 +807,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _wordpress_editor__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_editor__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @wordpress/i18n */ "@wordpress/i18n");
 /* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! classnames */ "./node_modules/classnames/index.js");
-/* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(classnames__WEBPACK_IMPORTED_MODULE_3__);
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
 
 
 
@@ -929,29 +925,6 @@ const attributes = {
     type: 'string',
     source: 'html',
     selector: 'p'
-  },
-  alignment: {
-    type: 'string'
-  },
-  textColor: {
-    type: 'string'
-  },
-  backgroundColor: {
-    type: 'string'
-  },
-  customTextColor: {
-    type: 'string'
-  },
-  customBackgroundColor: {
-    type: 'string'
-  },
-  shadow: {
-    type: 'boolean',
-    default: false
-  },
-  shadowOpacity: {
-    type: 'number',
-    default: 0.3
   }
 };
 /**
@@ -994,8 +967,8 @@ Object(_wordpress_blocks__WEBPACK_IMPORTED_MODULE_0__["registerBlockType"])('qtd
   }), /*#__PURE__*/React.createElement("path", {
     d: "M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-5 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z"
   })),
-  parent: ['qtd-blocks/team-members'],
   keywords: [Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__["__"])('list', 'team-member'), Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__["__"])('organise', 'team-member'), Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__["__"])('team', 'team-member'), Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__["__"])('member', 'team-member'), Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__["__"])('person', 'team-member')],
+  attributes: attributes,
 
   /**
    * Optional block extended support features.
@@ -1031,32 +1004,61 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _wordpress_blocks__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_blocks__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/i18n */ "@wordpress/i18n");
 /* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _wordpress_editor__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @wordpress/editor */ "@wordpress/editor");
-/* harmony import */ var _wordpress_editor__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_wordpress_editor__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @wordpress/block-editor */ "@wordpress/block-editor");
+/* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @wordpress/components */ "@wordpress/components");
+/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__);
 
 
 
+
+const attributes = {
+  columns: {
+    type: "number",
+    default: 2
+  }
+};
 Object(_wordpress_blocks__WEBPACK_IMPORTED_MODULE_0__["registerBlockType"])('qtd-blocks/team-members', {
   title: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__["__"])('Team members', 'qtd-blocks'),
   description: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__["__"])('Block to show team members', 'team-members'),
   category: 'qtd-blocks-category',
   icon: 'grid-view',
   keywords: [Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__["__"])('list', 'team-member'), Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__["__"])('organise', 'team-member'), Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__["__"])('team', 'team-member'), Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__["__"])('member', 'team-member'), Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__["__"])('person', 'team-member')],
+  attributes,
 
   edit({
-    className
+    className,
+    attributes,
+    setAttributes
   }) {
+    const {
+      columns
+    } = attributes;
     return /*#__PURE__*/React.createElement("div", {
-      className: className
-    }, /*#__PURE__*/React.createElement(_wordpress_editor__WEBPACK_IMPORTED_MODULE_2__["InnerBlocks"], {
+      className: `${className} has-${columns}-columns`
+    }, /*#__PURE__*/React.createElement(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__["InspectorControls"], null, /*#__PURE__*/React.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__["PanelBody"], null, /*#__PURE__*/React.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__["RangeControl"], {
+      label: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__["__"])("column", "qtd-blocks"),
+      value: columns,
+      onChange: columns => setAttributes({
+        columns
+      }),
+      min: 1,
+      max: 6
+    }))), /*#__PURE__*/React.createElement(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__["InnerBlocks"], {
       allowedBlocks: ['qtd-blocks/team-member'],
-      template: [['qtd-blocks/team-member'], ['qtd-blocks/team-member']] // templateLock={"insert"}
-
+      template: [["qtd-blocks/team-member"], ["qtd-blocks/team-member"]]
     }));
   },
 
-  save() {
-    return /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement(_wordpress_editor__WEBPACK_IMPORTED_MODULE_2__["InnerBlocks"].content, null));
+  save({
+    attributes
+  }) {
+    const {
+      columns
+    } = attributes;
+    return /*#__PURE__*/React.createElement("div", {
+      className: `has-${columns}-columns`
+    }, /*#__PURE__*/React.createElement(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__["InnerBlocks"].Content, null));
   }
 
 });
@@ -1073,19 +1075,13 @@ Object(_wordpress_blocks__WEBPACK_IMPORTED_MODULE_0__["registerBlockType"])('qtd
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return save; });
-/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/i18n */ "@wordpress/i18n");
-/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
-/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _wordpress_editor__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @wordpress/editor */ "@wordpress/editor");
-/* harmony import */ var _wordpress_editor__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_wordpress_editor__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _wordpress_editor__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/editor */ "@wordpress/editor");
+/* harmony import */ var _wordpress_editor__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_editor__WEBPACK_IMPORTED_MODULE_0__);
 /**
  * Retrieves the translation of text.
  *
  * @see https://developer.wordpress.org/block-editor/packages/packages-i18n/
  */
-
-
 
 /**
  * The save function defines the way in which the different attributes should
@@ -1104,11 +1100,11 @@ function save({
     title,
     info
   } = attributes;
-  return /*#__PURE__*/React.createElement("div", null, title && /*#__PURE__*/React.createElement(_wordpress_editor__WEBPACK_IMPORTED_MODULE_2__["RichText"].Content, {
+  return /*#__PURE__*/React.createElement("div", null, title && /*#__PURE__*/React.createElement(_wordpress_editor__WEBPACK_IMPORTED_MODULE_0__["RichText"].Content, {
     className: 'wp-block-qtd-blocks-team-member__title',
     tagName: "h4",
     value: title
-  }), info && /*#__PURE__*/React.createElement(_wordpress_editor__WEBPACK_IMPORTED_MODULE_2__["RichText"].Content, {
+  }), info && /*#__PURE__*/React.createElement(_wordpress_editor__WEBPACK_IMPORTED_MODULE_0__["RichText"].Content, {
     className: 'wp-block-qtd-blocks-team-member__info',
     tagName: "p",
     value: info
@@ -1327,6 +1323,17 @@ __webpack_require__(/*! ./src/blocks/todoList/index.js */"./src/blocks/todoList/
 __webpack_require__(/*! ./src/blocks/coverBlock/index.js */"./src/blocks/coverBlock/index.js");
 module.exports = __webpack_require__(/*! ./src/blocks/team-member/index.js */"./src/blocks/team-member/index.js");
 
+
+/***/ }),
+
+/***/ "@wordpress/block-editor":
+/*!**********************************************!*\
+  !*** external {"this":["wp","blockEditor"]} ***!
+  \**********************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+(function() { module.exports = this["wp"]["blockEditor"]; }());
 
 /***/ }),
 

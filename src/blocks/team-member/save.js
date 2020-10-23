@@ -3,8 +3,6 @@
  *
  * @see https://developer.wordpress.org/block-editor/packages/packages-i18n/
  */
-import { __ } from '@wordpress/i18n';
-import { Component } from '@wordpress/element'
 import { RichText } from "@wordpress/editor";
 
 
@@ -37,7 +35,6 @@ export default function save(
 				value={ info }
 			/>
 			}
-
 		</div>
 	);
 }

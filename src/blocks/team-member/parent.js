@@ -1,6 +1,14 @@
 import { registerBlockType } from '@wordpress/blocks';
 import { __ } from '@wordpress/i18n';
-import { InnerBlocks } from '@wordpress/editor';
+import { InnerBlocks, InspectorControls } from '@wordpress/block-editor';
+import { PanelBody, RangeControl } from "@wordpress/components";
+
+const attributes = {
+	columns: {
+		type: "number",
+		default: 2
+	}
+};
 
 registerBlockType('qtd-blocks/team-members', {
 	title: __( 'Team members', 'qtd-blocks' ),
@@ -22,26 +30,41 @@ registerBlockType('qtd-blocks/team-members', {
 		, __('person', 'team-member')
 	],
 
-	edit ( {className}) {
+	attributes,
+
+	edit ( {className, attributes, setAttributes}) {
+		const { columns } = attributes;
 		return (
-		<div className={ className }>
+		<div className={`${className} has-${columns}-columns`}>
+			<InspectorControls>
+				<PanelBody>
+					<RangeControl
+						label={__("column", "qtd-blocks")}
+						value={columns}
+						onChange={columns => setAttributes({ columns })}
+						min={1}
+						max={6}
+					/>
+				</PanelBody>
+			</InspectorControls>
 			<InnerBlocks
-			allowedBlocks={['qtd-blocks/team-member']}
-			template={[
-				['qtd-blocks/team-member'],
-				['qtd-blocks/team-member'],
-			]}
-			// templateLock={"insert"}
+				allowedBlocks={['qtd-blocks/team-member']}
+				template={[
+					["qtd-blocks/team-member"],
+					["qtd-blocks/team-member"]
+				]}
 			/>
 		</div>
 		)
+
 	},
 
-	save() {
+	save({ attributes }) {
+		const { columns } = attributes;
 		return (
-			<div>
-				<InnerBlocks.content />
+			<div className={`has-${columns}-columns`}>
+				<InnerBlocks.Content />
 			</div>
-		)
+		);
 	}
 })

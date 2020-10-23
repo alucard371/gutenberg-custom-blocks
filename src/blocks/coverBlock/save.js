@@ -32,8 +32,7 @@ export default function save(
 	//add the classes names
 	//let classes='';
 	/*if (backgroundClass) {
-		classes += backgroundClass;
-	}*/
+		classes += backgroundClass;	}*/
 
 	const classes = classnames({
 		//variable as a key to see if the condition is true

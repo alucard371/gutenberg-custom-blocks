@@ -2,7 +2,6 @@ import { Component } from '@wordpress/element'
 import { RichText } from "@wordpress/editor";
 
 import {__} from "@wordpress/i18n";
-import classnames from 'classnames';
 
 class TeamMemberEdit extends Component{
 	onChangeTitle = (title) => {

@@ -31,6 +31,7 @@
 		"lodash": "^4.17.20"
 	},
 	"dependencies": {
+		"@wordpress/block-editor": "^5.1.0",
 		"@wordpress/blocks": "^6.23.0",
 		"@wordpress/i18n": "^3.16.0",
 		"jquery": "^3.5.1"
