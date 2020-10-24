@@ -1,7 +1,15 @@
 import { Component } from '@wordpress/element'
 import { RichText, MediaPlaceholder, BlockControls, MediaUpload, MediaUploadCheck, InspectorControls } from "@wordpress/block-editor";
 import { isBlobURL } from "@wordpress/blob"
-import { Spinner, withNotices, Toolbar, IconButton, PanelBody, TextareaControl } from  "@wordpress/components"
+import {
+	Spinner,
+	withNotices,
+	Toolbar,
+	IconButton,
+	PanelBody,
+	TextareaControl,
+	SelectControl
+} from  "@wordpress/components"
 import {__} from "@wordpress/i18n";
 
 class TeamMemberEdit extends Component{
@@ -70,7 +78,17 @@ class TeamMemberEdit extends Component{
 							label={ __('Alt text', 'qtd-blocks') }
 							value={ alt }
 							onChange={ this.updateAlt }
-							help={__('Enter some text', 'qtd-blocks')}
+							help={__('The alt attribute provides alternative information for an image if a user for some reason cannot view it', 'qtd-blocks')}
+						/>
+						}
+						{id &&
+						<SelectControl
+							label={ __('Image size', 'qtd-blocks') }
+							options={[
+								{label: 'Large', value: 'large'},
+								{label: 'Medium', value: 'medium'}
+							]}
+							onChange={(value) => console.log(value)}
 						/>
 						}
 					</PanelBody>

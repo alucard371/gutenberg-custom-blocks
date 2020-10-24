@@ -929,7 +929,17 @@ class TeamMemberEdit extends _wordpress_element__WEBPACK_IMPORTED_MODULE_0__["Co
       label: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__["__"])('Alt text', 'qtd-blocks'),
       value: alt,
       onChange: this.updateAlt,
-      help: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__["__"])('Enter some text', 'qtd-blocks')
+      help: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__["__"])('The alt attribute provides alternative information for an image if a user for some reason cannot view it', 'qtd-blocks')
+    }), id && /*#__PURE__*/React.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__["SelectControl"], {
+      label: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__["__"])('Image size', 'qtd-blocks'),
+      options: [{
+        label: 'Large',
+        value: 'large'
+      }, {
+        label: 'Medium',
+        value: 'medium'
+      }],
+      onChange: value => console.log(value)
     }))), /*#__PURE__*/React.createElement(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__["BlockControls"], null, url && /*#__PURE__*/React.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__["Toolbar"], null, id && /*#__PURE__*/React.createElement(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__["MediaUploadCheck"], null, /*#__PURE__*/React.createElement(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__["MediaUpload"], {
       onSelect: this.onSelectImage,
       allowedTypes: ["image"],
