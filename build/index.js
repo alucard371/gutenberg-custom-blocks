@@ -869,6 +869,14 @@ class TeamMemberEdit extends _wordpress_element__WEBPACK_IMPORTED_MODULE_0__["Co
       });
     });
 
+    _defineProperty(this, "removeImage", () => {
+      this.props.setAttributes({
+        url: "",
+        id: null,
+        alt: ""
+      });
+    });
+
     _defineProperty(this, "onUploadError", message => {
       const {
         noticeOperations
@@ -906,9 +914,29 @@ class TeamMemberEdit extends _wordpress_element__WEBPACK_IMPORTED_MODULE_0__["Co
       title,
       info,
       url,
-      alt
+      alt,
+      id
     } = attributes;
-    return /*#__PURE__*/React.createElement("div", {
+    return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__["BlockControls"], null, url && /*#__PURE__*/React.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__["Toolbar"], null, id && /*#__PURE__*/React.createElement(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__["MediaUploadCheck"], null, /*#__PURE__*/React.createElement(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__["MediaUpload"], {
+      onSelect: this.onSelectImage,
+      allowedTypes: ["image"],
+      value: id,
+      render: ({
+        open
+      }) => {
+        return /*#__PURE__*/React.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__["IconButton"], {
+          className: "components-icon-button components-toolbar__control",
+          icon: "edit",
+          label: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__["__"])('Edit image', 'qtd-blocks'),
+          onClick: open
+        });
+      }
+    })), /*#__PURE__*/React.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__["IconButton"], {
+      className: "components-icon-button components-toolbar__control",
+      icon: "trash",
+      label: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__["__"])('Remove image', 'qtd-blocks'),
+      onClick: this.removeImage
+    }))), /*#__PURE__*/React.createElement("div", {
       className: className
     }, url ? /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement("img", {
       src: url,
@@ -939,7 +967,7 @@ class TeamMemberEdit extends _wordpress_element__WEBPACK_IMPORTED_MODULE_0__["Co
       value: info,
       placeholder: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__["__"])("Member info", 'team-member'),
       formattingControle: []
-    }));
+    })));
   }
 
 }

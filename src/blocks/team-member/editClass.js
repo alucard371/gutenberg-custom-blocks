@@ -1,7 +1,7 @@
 import { Component } from '@wordpress/element'
-import { RichText, MediaPlaceholder } from "@wordpress/block-editor";
+import { RichText, MediaPlaceholder, BlockControls, MediaUpload, MediaUploadCheck } from "@wordpress/block-editor";
 import { isBlobURL } from "@wordpress/blob"
-import { Spinner, withNotices } from  "@wordpress/components"
+import { Spinner, withNotices, Toolbar, IconButton } from  "@wordpress/components"
 import {__} from "@wordpress/i18n";
 
 class TeamMemberEdit extends Component{
@@ -38,6 +38,14 @@ class TeamMemberEdit extends Component{
 		});
 	};
 
+	removeImage = () => {
+		this.props.setAttributes({
+			url:"",
+			id: null,
+			alt: ""
+		});
+	}
+
 	onUploadError = (message) => {
 		const { noticeOperations } = this.props;
 		noticeOperations.createErrorNotice( message )
@@ -46,46 +54,80 @@ class TeamMemberEdit extends Component{
 	render(){
 		console.log(this.props);
 		const { className, attributes, noticeUI } = this.props;
-		const { title,info, url, alt } = attributes;
+		const { title,info, url, alt, id } = attributes;
 		return(
-			<div className={ className }>
-				{url ?
-				<>
-					<img src={url} alt={alt}/>
-					{isBlobURL(url) && <Spinner />}
-				</>
-				: <MediaPlaceholder
-						icon="format-image"
-						onSelect={ this.onSelectImage }
-						onSelectURL={ this.onSelectURL }
-						onError={ this.onUploadError }
-						//accept="image/*"
-						allowedTypes={["image"]}
-						notices={ noticeUI }
+			<>
+				<BlockControls>
+					{url &&
+						<Toolbar>
+							{id &&
+							<MediaUploadCheck>
+								<MediaUpload
+									onSelect={ this.onSelectImage }
+									allowedTypes={["image"]}
+									value={ id }
+									render={({ open }) => {
+										return(
+											<IconButton
+												className="components-icon-button components-toolbar__control"
+												icon="edit"
+												label={ __('Edit image', 'qtd-blocks') }
+												onClick={ open }
+											/>
+										)
+									}}
+								/>
+							</MediaUploadCheck>
+							}
+							<IconButton
+								className="components-icon-button components-toolbar__control"
+								icon="trash"
+								label={ __('Remove image', 'qtd-blocks') }
+								onClick={ this.removeImage }
+							/>
+						</Toolbar>
+					}
+				</BlockControls>
+				<div className={ className }>
+					{url ?
+						<>
+							<img src={url} alt={alt}/>
+							{isBlobURL(url) && <Spinner />}
+						</>
+						: <MediaPlaceholder
+							icon="format-image"
+							onSelect={ this.onSelectImage }
+							onSelectURL={ this.onSelectURL }
+							onError={ this.onUploadError }
+							//accept="image/*"
+							allowedTypes={["image"]}
+							notices={ noticeUI }
 
+						/>
+					}
+					<RichText
+						//classname is in BEM format
+						//This will be the class of our div
+						className={'wp-block-qtd-blocks-team-member__title'}
+						tagName="h4"
+						onChange={ this.onChangeTitle }
+						value = {title}
+						placeholder={__("Member name", 'team-member')}
+						formattingControle={[]}
 					/>
-				}
-				<RichText
-					//classname is in BEM format
-					//This will be the class of our div
-					className={'wp-block-qtd-blocks-team-member__title'}
-					tagName="h4"
-					onChange={ this.onChangeTitle }
-					value = {title}
-					placeholder={__("Member name", 'team-member')}
-					formattingControle={[]}
-				/>
-				<RichText
-					//classname is in BEM format
-					//This will be the class of our div
-					className={'wp-block-qtd-blocks-team-member__info'}
-					tagName="p"
-					onChange={ this.onChangeInfo }
-					value = {info}
-					placeholder={__("Member info", 'team-member')}
-					formattingControle={[]}
-				/>
-			</div>
+					<RichText
+						//classname is in BEM format
+						//This will be the class of our div
+						className={'wp-block-qtd-blocks-team-member__info'}
+						tagName="p"
+						onChange={ this.onChangeInfo }
+						value = {info}
+						placeholder={__("Member info", 'team-member')}
+						formattingControle={[]}
+					/>
+				</div>
+			</>
+
 )
 	}
 }
