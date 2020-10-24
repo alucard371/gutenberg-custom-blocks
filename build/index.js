@@ -940,6 +940,26 @@ class TeamMemberEdit extends _wordpress_element__WEBPACK_IMPORTED_MODULE_0__["Co
         social: new_social
       });
     });
+
+    _defineProperty(this, "removeLink", e => {
+      e.preventDefault();
+      const {
+        setAttributes,
+        attributes
+      } = this.props;
+      const {
+        social
+      } = attributes;
+      const {
+        selectedLink
+      } = this.state;
+      setAttributes({
+        social: [...social.slice(0, selectedLink), ...social.slice(selectedLink + 1)]
+      });
+      this.setState({
+        selectedLink: null
+      });
+    });
   }
 
   componentDidMount() {
@@ -1105,7 +1125,8 @@ class TeamMemberEdit extends _wordpress_element__WEBPACK_IMPORTED_MODULE_0__["Co
       value: social[this.state.selectedLink].link,
       onChange: url => this.updateSocialItem('link', url)
     }), /*#__PURE__*/React.createElement("a", {
-      className: 'wp-block-qtd-blocks-team-member__removeLink'
+      className: 'wp-block-qtd-blocks-team-member__removeLink',
+      onClick: this.removeLink
     }, Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__["__"])('RemoveLink', 'qtd-blocks')))));
   }
 

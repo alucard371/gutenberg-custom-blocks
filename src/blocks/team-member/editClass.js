@@ -129,6 +129,20 @@ class TeamMemberEdit extends Component{
 		});
 	}
 
+	removeLink = (e) => {
+		e.preventDefault();
+		const {setAttributes, attributes} = this.props;
+		const {social} = attributes;
+		const { selectedLink } = this.state;
+
+		setAttributes({
+			social: [...social.slice(0, selectedLink), ...social.slice(selectedLink+1)]
+		});
+		this.setState({
+			selectedLink: null
+		})
+	}
+
 	render(){
 		console.log(this.props);
 		const { className, attributes, noticeUI, isSelected } = this.props;
@@ -262,7 +276,10 @@ class TeamMemberEdit extends Component{
 							value={social[this.state.selectedLink].link}
 							onChange={(url) => this.updateSocialItem('link', url)}
 						/>
-						<a className={'wp-block-qtd-blocks-team-member__removeLink'}>
+						<a
+							className={'wp-block-qtd-blocks-team-member__removeLink'}
+							onClick={ this.removeLink }
+						>
 							{__('RemoveLink', 'qtd-blocks')}
 						</a>
 					</div>
