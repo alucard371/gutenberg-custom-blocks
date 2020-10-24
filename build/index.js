@@ -860,6 +860,14 @@ class TeamMemberEdit extends _wordpress_element__WEBPACK_IMPORTED_MODULE_0__["Co
         alt
       });
     });
+
+    _defineProperty(this, "onSelectURL", url => {
+      this.props.setAttributes({
+        url,
+        id: null,
+        alt: ""
+      });
+    });
   }
 
   render() {
@@ -879,13 +887,12 @@ class TeamMemberEdit extends _wordpress_element__WEBPACK_IMPORTED_MODULE_0__["Co
       src: url,
       alt: alt
     }), Object(_wordpress_blob__WEBPACK_IMPORTED_MODULE_2__["isBlobURL"])(url) && /*#__PURE__*/React.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__["Spinner"], null)) : /*#__PURE__*/React.createElement(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__["MediaPlaceholder"], {
-      className: 'wp-block-qtd-blocks-team-member__image',
       icon: "format-image",
       onSelect: this.onSelectImage,
-      onSelectURL: url => console.log(url),
-      onError: message => console.log(message),
-      accept: "image/*",
-      allowedTypes: ['image']
+      onSelectURL: this.onSelectURL //onError={message => console.log(message)}
+      //accept="image/*"
+      ,
+      allowedTypes: ["image"]
     }), /*#__PURE__*/React.createElement(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__["RichText"] //classname is in BEM format
     //This will be the class of our div
     , {
