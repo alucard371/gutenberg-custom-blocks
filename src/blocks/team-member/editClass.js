@@ -1,7 +1,7 @@
 import { Component } from '@wordpress/element'
 import { RichText, MediaPlaceholder } from "@wordpress/block-editor";
 import { isBlobURL } from "@wordpress/blob"
-import { Spinner } from  "@wordpress/components"
+import { Spinner, withNotices } from  "@wordpress/components"
 import {__} from "@wordpress/i18n";
 
 class TeamMemberEdit extends Component{
@@ -18,7 +18,7 @@ class TeamMemberEdit extends Component{
 			alt
 		})
 	};
-	onSelectURL = url => {
+	onSelectURL = (url) => {
 		this.props.setAttributes({
 			url,
 			id: null,
@@ -26,8 +26,14 @@ class TeamMemberEdit extends Component{
 		});
 	};
 
+	onUploadError = (message) => {
+		const { noticeOperations } = this.props;
+		noticeOperations.createErrorNotice( message )
+	}
+
 	render(){
-		const { className, attributes } = this.props;
+		console.log(this.props);
+		const { className, attributes, noticeUI } = this.props;
 		const { title,info, url, alt } = attributes;
 		return(
 			<div className={ className }>
@@ -38,11 +44,13 @@ class TeamMemberEdit extends Component{
 				</>
 				: <MediaPlaceholder
 						icon="format-image"
-						onSelect={this.onSelectImage}
-						onSelectURL={this.onSelectURL}
-						//onError={message => console.log(message)}
+						onSelect={ this.onSelectImage }
+						onSelectURL={ this.onSelectURL }
+						onError={ this.onUploadError }
 						//accept="image/*"
 						allowedTypes={["image"]}
+						notices={ noticeUI }
+
 					/>
 				}
 				<RichText
@@ -70,4 +78,4 @@ class TeamMemberEdit extends Component{
 	}
 }
 
-export default TeamMemberEdit;
+export default withNotices(TeamMemberEdit);

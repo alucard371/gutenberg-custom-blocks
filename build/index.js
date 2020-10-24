@@ -868,12 +868,21 @@ class TeamMemberEdit extends _wordpress_element__WEBPACK_IMPORTED_MODULE_0__["Co
         alt: ""
       });
     });
+
+    _defineProperty(this, "onUploadError", message => {
+      const {
+        noticeOperations
+      } = this.props;
+      noticeOperations.createErrorNotice(message);
+    });
   }
 
   render() {
+    console.log(this.props);
     const {
       className,
-      attributes
+      attributes,
+      noticeUI
     } = this.props;
     const {
       title,
@@ -889,10 +898,11 @@ class TeamMemberEdit extends _wordpress_element__WEBPACK_IMPORTED_MODULE_0__["Co
     }), Object(_wordpress_blob__WEBPACK_IMPORTED_MODULE_2__["isBlobURL"])(url) && /*#__PURE__*/React.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__["Spinner"], null)) : /*#__PURE__*/React.createElement(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__["MediaPlaceholder"], {
       icon: "format-image",
       onSelect: this.onSelectImage,
-      onSelectURL: this.onSelectURL //onError={message => console.log(message)}
-      //accept="image/*"
+      onSelectURL: this.onSelectURL,
+      onError: this.onUploadError //accept="image/*"
       ,
-      allowedTypes: ["image"]
+      allowedTypes: ["image"],
+      notices: noticeUI
     }), /*#__PURE__*/React.createElement(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__["RichText"] //classname is in BEM format
     //This will be the class of our div
     , {
@@ -916,7 +926,7 @@ class TeamMemberEdit extends _wordpress_element__WEBPACK_IMPORTED_MODULE_0__["Co
 
 }
 
-/* harmony default export */ __webpack_exports__["default"] = (TeamMemberEdit);
+/* harmony default export */ __webpack_exports__["default"] = (Object(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__["withNotices"])(TeamMemberEdit));
 
 /***/ }),
 
