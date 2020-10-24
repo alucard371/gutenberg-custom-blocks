@@ -59,9 +59,9 @@ const attributes = {
 	social: {
 		type: 'array',
 		default: [
-			{link:'facebook.com', icon: 'facebook'},
-			{link:'linkedin.com', icon: 'linkedin'},
-			{link:'instagram.com', icon: 'instagram'}
+			{link:'https://facebook.com', icon: 'facebook'},
+			{link:'https://linkedin.com', icon: 'linkedin'},
+			{link:'https://instagram.com', icon: 'instagram'}
 		],
 	}
 

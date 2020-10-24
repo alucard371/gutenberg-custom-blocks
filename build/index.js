@@ -840,6 +840,10 @@ class TeamMemberEdit extends _wordpress_element__WEBPACK_IMPORTED_MODULE_0__["Co
   constructor(...args) {
     super(...args);
 
+    _defineProperty(this, "state", {
+      selectedLink: null
+    });
+
     _defineProperty(this, "onChangeTitle", title => {
       this.props.setAttributes({
         title
@@ -898,6 +902,25 @@ class TeamMemberEdit extends _wordpress_element__WEBPACK_IMPORTED_MODULE_0__["Co
         url
       });
     });
+
+    _defineProperty(this, "addNewLink", () => {
+      const {
+        setAttributes,
+        attributes
+      } = this.props;
+      const {
+        social
+      } = attributes;
+      setAttributes({
+        social: [...social, {
+          icon: 'wordpress',
+          link: ''
+        }]
+      });
+      this.setState({
+        selectedLink: social.length
+      });
+    });
   }
 
   componentDidMount() {
@@ -914,6 +937,14 @@ class TeamMemberEdit extends _wordpress_element__WEBPACK_IMPORTED_MODULE_0__["Co
       setAttributes({
         url: '',
         alt: ''
+      });
+    }
+  }
+
+  componentDidUpdate(prevProps) {
+    if (prevProps.isSelected && !this.props.isSelected) {
+      this.setState({
+        selectedLink: null
       });
     }
   }
@@ -1025,7 +1056,11 @@ class TeamMemberEdit extends _wordpress_element__WEBPACK_IMPORTED_MODULE_0__["Co
       className: 'wp-block-qtd-blocks-team-member__social'
     }, /*#__PURE__*/React.createElement("ul", null, social.map((item, index) => {
       return /*#__PURE__*/React.createElement("li", {
-        key: index
+        key: index,
+        onClick: () => this.setState({
+          selectedLink: index
+        }),
+        className: this.state.selectedLink === index ? 'is-selected' : null
       }, /*#__PURE__*/React.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__["Dashicon"], {
         icon: item.icon,
         size: 16
@@ -1035,7 +1070,8 @@ class TeamMemberEdit extends _wordpress_element__WEBPACK_IMPORTED_MODULE_0__["Co
     }, /*#__PURE__*/React.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__["Tooltip"], {
       text: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__["__"])('Remove image', 'qtd-blocks')
     }, /*#__PURE__*/React.createElement("button", {
-      className: 'wp-block-qtd-blocks-team-member__addIcon'
+      className: 'wp-block-qtd-blocks-team-member__addIcon',
+      onClick: this.addNewLink
     }, /*#__PURE__*/React.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__["Dashicon"], {
       icon: 'plus',
       size: 14
@@ -1145,13 +1181,13 @@ const attributes = {
   social: {
     type: 'array',
     default: [{
-      link: 'facebook.com',
+      link: 'https://facebook.com',
       icon: 'facebook'
     }, {
-      link: 'linkedin.com',
+      link: 'https://linkedin.com',
       icon: 'linkedin'
     }, {
-      link: 'instagram.com',
+      link: 'https://instagram.com',
       icon: 'instagram'
     }]
   }
@@ -1314,11 +1350,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return save; });
 /* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/block-editor */ "@wordpress/block-editor");
 /* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/components */ "@wordpress/components");
+/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__);
 /**
  * Retrieves the translation of text.
  *
  * @see https://developer.wordpress.org/block-editor/packages/packages-i18n/
  */
+
 
 /**
  * The save function defines the way in which the different attributes should
@@ -1338,7 +1377,8 @@ function save({
     info,
     url,
     alt,
-    id
+    id,
+    social
   } = attributes;
   return /*#__PURE__*/React.createElement("div", null, url && /*#__PURE__*/React.createElement("img", {
     src: url,
@@ -1352,7 +1392,21 @@ function save({
     className: 'wp-block-qtd-blocks-team-member__info',
     tagName: "p",
     value: info
-  }));
+  }), social.length > 0 && /*#__PURE__*/React.createElement("div", {
+    className: 'wp-block-qtd-blocks-team-member__social'
+  }, /*#__PURE__*/React.createElement("ul", null, social.map((item, index) => {
+    return /*#__PURE__*/React.createElement("li", {
+      key: index,
+      "data-icon": item.icon
+    }, /*#__PURE__*/React.createElement("a", {
+      href: item.link,
+      target: "_blank",
+      rel: "noopener noreferrer"
+    }, /*#__PURE__*/React.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__["Dashicon"], {
+      icon: item.icon,
+      size: 16
+    })));
+  }))));
 }
 
 /***/ }),

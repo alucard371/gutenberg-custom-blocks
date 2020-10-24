@@ -17,6 +17,10 @@ import { withSelect} from "@wordpress/data";
 
 class TeamMemberEdit extends Component{
 
+	state= {
+		selectedLink: null
+	}
+
 	componentDidMount() {
 		const { attributes, setAttributes } = this.props;
 		const { url,id } = attributes;
@@ -24,6 +28,14 @@ class TeamMemberEdit extends Component{
 			setAttributes({
 				url: '',
 				alt: ''
+			})
+		}
+	}
+
+	componentDidUpdate( prevProps ) {
+		if (prevProps.isSelected && !this.props.isSelected) {
+			this.setState({
+				selectedLink: null,
 			})
 		}
 	}
@@ -91,6 +103,17 @@ class TeamMemberEdit extends Component{
 		this.props.setAttributes({
 			url
 		});
+	}
+
+	addNewLink = () => {
+		const {setAttributes, attributes} = this.props;
+		const {social} = attributes;
+		setAttributes({
+			social: [...social, { icon : 'wordpress', link : ''}]
+		})
+		this.setState({
+			selectedLink: social.length
+		})
 	}
 
 	render(){
@@ -193,6 +216,8 @@ class TeamMemberEdit extends Component{
 								return (
 									<li
 										key={index}
+										onClick={() => this.setState({ selectedLink: index })}
+										className={ this.state.selectedLink === index ? 'is-selected' : null}
 									>
 										<Dashicon icon={item.icon} size={16}/>
 									</li>
@@ -201,7 +226,10 @@ class TeamMemberEdit extends Component{
 							{isSelected &&
 							<li className={'wp-block-qtd-blocks-team-member__addIconLi'}>
 								<Tooltip text={__('Remove image', 'qtd-blocks')}>
-									<button className={'wp-block-qtd-blocks-team-member__addIcon'}>
+									<button
+										className={'wp-block-qtd-blocks-team-member__addIcon'}
+										onClick={ this.addNewLink }
+									>
 										<Dashicon icon={'plus'} size={14}/>
 									</button>
 								</Tooltip>

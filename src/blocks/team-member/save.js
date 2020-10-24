@@ -4,6 +4,7 @@
  * @see https://developer.wordpress.org/block-editor/packages/packages-i18n/
  */
 import { RichText } from "@wordpress/block-editor";
+import {Dashicon} from "@wordpress/components";
 
 
 /**
@@ -18,7 +19,7 @@ import { RichText } from "@wordpress/block-editor";
 export default function save(
 	{ attributes }
 	) {
-	const { title, info, url, alt, id } = attributes;
+	const { title, info, url, alt, id, social } = attributes;
 	return (
 		<div>
 			{url &&
@@ -37,6 +38,21 @@ export default function save(
 				tagName="p"
 				value={ info }
 			/>
+			}
+			{social.length > 0 &&
+			<div className={'wp-block-qtd-blocks-team-member__social'}>
+				<ul>
+					{social.map((item, index) => {
+						return (
+							<li key={index} data-icon={item.icon}>
+								<a href={item.link} target="_blank" rel="noopener noreferrer">
+									<Dashicon icon={item.icon} size={16}/>
+								</a>
+							</li>
+							)
+					})}
+				</ul>
+			</div>
 			}
 		</div>
 	);
