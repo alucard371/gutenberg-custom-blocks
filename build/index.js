@@ -1189,7 +1189,20 @@ const attributes = {
     }, {
       link: 'https://instagram.com',
       icon: 'instagram'
-    }]
+    }],
+    source: 'query',
+    selector: '.wp-block-qtd-blocks-team-member__social ul li',
+    query: {
+      icon: {
+        source: 'attribute',
+        attribute: 'data-icon'
+      },
+      link: {
+        source: 'attribute',
+        selector: 'a',
+        attribute: 'href'
+      }
+    }
   }
 };
 /**
