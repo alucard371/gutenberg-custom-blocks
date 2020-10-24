@@ -33,6 +33,7 @@ registerBlockType('qtd-blocks/team-members', {
 	supports: {
 		// Removes support for an HTML mode.
 		html: false,
+		align: ['wide', "full"]
 	},
 
 	attributes,

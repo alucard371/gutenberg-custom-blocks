@@ -1225,7 +1225,8 @@ Object(_wordpress_blocks__WEBPACK_IMPORTED_MODULE_0__["registerBlockType"])('qtd
   keywords: [Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__["__"])('list', 'team-member'), Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__["__"])('organise', 'team-member'), Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__["__"])('team', 'team-member'), Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__["__"])('member', 'team-member'), Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__["__"])('person', 'team-member')],
   supports: {
     // Removes support for an HTML mode.
-    html: false
+    html: false,
+    align: ['wide', "full"]
   },
   attributes,
 
