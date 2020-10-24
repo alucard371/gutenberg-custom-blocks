@@ -1197,9 +1197,16 @@ function save({
 }) {
   const {
     title,
-    info
+    info,
+    url,
+    alt,
+    id
   } = attributes;
-  return /*#__PURE__*/React.createElement("div", null, title && /*#__PURE__*/React.createElement(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_0__["RichText"].Content, {
+  return /*#__PURE__*/React.createElement("div", null, url && /*#__PURE__*/React.createElement("img", {
+    src: url,
+    alt: alt,
+    className: id ? `wp-image-${id}` : null
+  }), title && /*#__PURE__*/React.createElement(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_0__["RichText"].Content, {
     className: 'wp-block-qtd-blocks-team-member__title',
     tagName: "h4",
     value: title

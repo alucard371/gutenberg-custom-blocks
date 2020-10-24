@@ -18,9 +18,12 @@ import { RichText } from "@wordpress/block-editor";
 export default function save(
 	{ attributes }
 	) {
-	const { title, info } = attributes;
+	const { title, info, url, alt, id } = attributes;
 	return (
 		<div>
+			{url &&
+			<img src={url} alt={alt} className={id ? `wp-image-${id}`:null}/>
+			}
 			{title &&
 			<RichText.Content
 				className={'wp-block-qtd-blocks-team-member__title'}
