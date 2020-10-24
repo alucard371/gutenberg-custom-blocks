@@ -36,6 +36,7 @@
 		"@wordpress/blocks": "^6.23.0",
 		"@wordpress/data": "^4.25.0",
 		"@wordpress/i18n": "^3.16.0",
-		"jquery": "^3.5.1"
+		"jquery": "^3.5.1",
+		"react-sortable-hoc": "^1.11.0"
 	}
 }

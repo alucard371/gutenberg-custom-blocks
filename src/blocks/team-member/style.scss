@@ -5,6 +5,10 @@
  * Replace them with your own styles or remove the file completely.
  */
 
+.social_dragging {
+  list-style: none;
+}
+
 .wp-block-qtd-blocks-team-members {
   display: flex;
   flex-wrap: wrap;
@@ -40,6 +44,12 @@
 	  font-weight: bolder;
 	  margin-bottom: 5px;
 	  padding: 10px;
+	}
+	&__addIcon {
+	  padding: 2px;
+	  line-height: 1;
+	  border: 1px dashed #00d082;
+	  cursor: pointer;
 	}
 	&__linkForm {
 	  border: 1px solid #eaeaea;

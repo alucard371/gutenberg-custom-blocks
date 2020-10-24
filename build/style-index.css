@@ -43,6 +43,9 @@
  *
  * Replace them with your own styles or remove the file completely.
  */
+.social_dragging {
+  list-style: none; }
+
 .wp-block-qtd-blocks-team-members {
   display: flex;
   flex-wrap: wrap;
@@ -80,6 +83,11 @@
       font-weight: bolder;
       margin-bottom: 5px;
       padding: 10px; }
+    .wp-block-qtd-blocks-team-members .wp-block-qtd-blocks-team-member__addIcon {
+      padding: 2px;
+      line-height: 1;
+      border: 1px dashed #00d082;
+      cursor: pointer; }
     .wp-block-qtd-blocks-team-members .wp-block-qtd-blocks-team-member__linkForm {
       border: 1px solid #eaeaea;
       padding: 10px;
