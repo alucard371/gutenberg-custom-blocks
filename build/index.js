@@ -825,7 +825,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__);
 /* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @wordpress/i18n */ "@wordpress/i18n");
 /* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var _wordpress_data__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @wordpress/data */ "@wordpress/data");
+/* harmony import */ var _wordpress_data__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_wordpress_data__WEBPACK_IMPORTED_MODULE_5__);
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 
 
 
@@ -889,6 +892,12 @@ class TeamMemberEdit extends _wordpress_element__WEBPACK_IMPORTED_MODULE_0__["Co
       } = this.props;
       noticeOperations.createErrorNotice(message);
     });
+
+    _defineProperty(this, "imageSizeChange", url => {
+      this.props.setAttributes({
+        url
+      });
+    });
   }
 
   componentDidMount() {
@@ -907,6 +916,31 @@ class TeamMemberEdit extends _wordpress_element__WEBPACK_IMPORTED_MODULE_0__["Co
         alt: ''
       });
     }
+  }
+
+  getImageSizes() {
+    const {
+      image,
+      imageSizes
+    } = this.props;
+    if (!image) return [];
+    let options = [];
+    const sizes = image.media_details.sizes;
+    console.log(sizes);
+
+    for (const key in sizes) {
+      const size = sizes[key];
+      const imageSize = imageSizes.find(size => size.slug === key);
+
+      if (imageSize) {
+        options.push({
+          label: imageSize.name,
+          value: size.source_url
+        });
+      }
+    }
+
+    return options;
   }
 
   render() {
@@ -932,14 +966,9 @@ class TeamMemberEdit extends _wordpress_element__WEBPACK_IMPORTED_MODULE_0__["Co
       help: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__["__"])('The alt attribute provides alternative information for an image if a user for some reason cannot view it', 'qtd-blocks')
     }), id && /*#__PURE__*/React.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__["SelectControl"], {
       label: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__["__"])('Image size', 'qtd-blocks'),
-      options: [{
-        label: 'Large',
-        value: 'large'
-      }, {
-        label: 'Medium',
-        value: 'medium'
-      }],
-      onChange: value => console.log(value)
+      options: this.getImageSizes(),
+      onChange: this.imageSizeChange,
+      value: url
     }))), /*#__PURE__*/React.createElement(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__["BlockControls"], null, url && /*#__PURE__*/React.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__["Toolbar"], null, id && /*#__PURE__*/React.createElement(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__["MediaUploadCheck"], null, /*#__PURE__*/React.createElement(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__["MediaUpload"], {
       onSelect: this.onSelectImage,
       allowedTypes: ["image"],
@@ -995,7 +1024,13 @@ class TeamMemberEdit extends _wordpress_element__WEBPACK_IMPORTED_MODULE_0__["Co
 
 }
 
-/* harmony default export */ __webpack_exports__["default"] = (Object(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__["withNotices"])(TeamMemberEdit));
+/* harmony default export */ __webpack_exports__["default"] = (Object(_wordpress_data__WEBPACK_IMPORTED_MODULE_5__["withSelect"])((select, props) => {
+  const id = props.attributes.id;
+  return {
+    image: id ? select('core').getMedia(id) : null,
+    imageSizes: select('core/editor').getEditorSettings().imageSizes
+  };
+})(Object(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__["withNotices"])(TeamMemberEdit)));
 
 /***/ }),
 
@@ -1542,6 +1577,17 @@ module.exports = __webpack_require__(/*! ./src/blocks/team-member/index.js */"./
 /***/ (function(module, exports) {
 
 (function() { module.exports = this["wp"]["components"]; }());
+
+/***/ }),
+
+/***/ "@wordpress/data":
+/*!***************************************!*\
+  !*** external {"this":["wp","data"]} ***!
+  \***************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+(function() { module.exports = this["wp"]["data"]; }());
 
 /***/ }),
 

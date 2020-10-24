@@ -11,6 +11,7 @@ import {
 	SelectControl
 } from  "@wordpress/components"
 import {__} from "@wordpress/i18n";
+import {select, withSelect} from "@wordpress/data";
 
 class TeamMemberEdit extends Component{
 
@@ -65,6 +66,31 @@ class TeamMemberEdit extends Component{
 		noticeOperations.createErrorNotice( message )
 	}
 
+	getImageSizes() {
+		const { image, imageSizes } = this.props;
+		if (!image) return [];
+		let options = [];
+		const sizes = image.media_details.sizes;
+		console.log(sizes)
+		for (const key in sizes) {
+			const size = sizes[key];
+			const imageSize = imageSizes.find(size => size.slug === key);
+			if (imageSize) {
+				options.push({
+					label: imageSize.name,
+					value: size.source_url
+				});
+			}
+		}
+		return options;
+	}
+
+	imageSizeChange =  (url) => {
+		this.props.setAttributes({
+			url
+		});
+	}
+
 	render(){
 		console.log(this.props);
 		const { className, attributes, noticeUI } = this.props;
@@ -84,11 +110,9 @@ class TeamMemberEdit extends Component{
 						{id &&
 						<SelectControl
 							label={ __('Image size', 'qtd-blocks') }
-							options={[
-								{label: 'Large', value: 'large'},
-								{label: 'Medium', value: 'medium'}
-							]}
-							onChange={(value) => console.log(value)}
+							options={ this.getImageSizes() }
+							onChange={ this.imageSizeChange }
+							value={ url }
 						/>
 						}
 					</PanelBody>
@@ -168,4 +192,10 @@ class TeamMemberEdit extends Component{
 	}
 }
 
-export default withNotices(TeamMemberEdit);
+export default withSelect((select, props)=> {
+	const id = props.attributes.id;
+	return {
+		image: id ? select('core').getMedia(id) : null,
+		imageSizes: select('core/editor').getEditorSettings().imageSizes
+	}
+})(withNotices(TeamMemberEdit));
