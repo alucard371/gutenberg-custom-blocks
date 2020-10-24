@@ -117,6 +117,18 @@ class TeamMemberEdit extends Component{
 		})
 	}
 
+	updateSocialItem = (type, value) => {
+		const {setAttributes, attributes} = this.props;
+		const {social} = attributes;
+		const { selectedLink } = this.state;
+		//makes a copy of the original array
+		let new_social = [...social];
+		new_social[selectedLink][type] = value;
+		setAttributes({
+			social: new_social
+		});
+	}
+
 	render(){
 		console.log(this.props);
 		const { className, attributes, noticeUI, isSelected } = this.props;
@@ -242,9 +254,13 @@ class TeamMemberEdit extends Component{
 					<div className={'wp-block-qtd-blocks-team-member__linkForm'}>
 						<TextControl
 							label={__('Icon', 'qtd-blocks')}
+							value={social[this.state.selectedLink].icon}
+							onChange={(icon) => this.updateSocialItem('icon', icon)}
 						/>
 						<TextControl
 							label={__('URL', 'qtd-blocks')}
+							value={social[this.state.selectedLink].link}
+							onChange={(url) => this.updateSocialItem('link', url)}
 						/>
 						<a className={'wp-block-qtd-blocks-team-member__removeLink'}>
 							{__('RemoveLink', 'qtd-blocks')}

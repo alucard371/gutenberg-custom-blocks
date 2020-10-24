@@ -921,6 +921,25 @@ class TeamMemberEdit extends _wordpress_element__WEBPACK_IMPORTED_MODULE_0__["Co
         selectedLink: social.length
       });
     });
+
+    _defineProperty(this, "updateSocialItem", (type, value) => {
+      const {
+        setAttributes,
+        attributes
+      } = this.props;
+      const {
+        social
+      } = attributes;
+      const {
+        selectedLink
+      } = this.state; //makes a copy of the original array
+
+      let new_social = [...social];
+      new_social[selectedLink][type] = value;
+      setAttributes({
+        social: new_social
+      });
+    });
   }
 
   componentDidMount() {
@@ -1078,9 +1097,13 @@ class TeamMemberEdit extends _wordpress_element__WEBPACK_IMPORTED_MODULE_0__["Co
     })))))), this.state.selectedLink !== null && /*#__PURE__*/React.createElement("div", {
       className: 'wp-block-qtd-blocks-team-member__linkForm'
     }, /*#__PURE__*/React.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__["TextControl"], {
-      label: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__["__"])('Icon', 'qtd-blocks')
+      label: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__["__"])('Icon', 'qtd-blocks'),
+      value: social[this.state.selectedLink].icon,
+      onChange: icon => this.updateSocialItem('icon', icon)
     }), /*#__PURE__*/React.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__["TextControl"], {
-      label: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__["__"])('URL', 'qtd-blocks')
+      label: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__["__"])('URL', 'qtd-blocks'),
+      value: social[this.state.selectedLink].link,
+      onChange: url => this.updateSocialItem('link', url)
     }), /*#__PURE__*/React.createElement("a", {
       className: 'wp-block-qtd-blocks-team-member__removeLink'
     }, Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__["__"])('RemoveLink', 'qtd-blocks')))));
