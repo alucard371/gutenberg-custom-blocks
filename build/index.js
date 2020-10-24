@@ -877,6 +877,24 @@ class TeamMemberEdit extends _wordpress_element__WEBPACK_IMPORTED_MODULE_0__["Co
     });
   }
 
+  componentDidMount() {
+    const {
+      attributes,
+      setAttributes
+    } = this.props;
+    const {
+      url,
+      id
+    } = attributes;
+
+    if (url && Object(_wordpress_blob__WEBPACK_IMPORTED_MODULE_2__["isBlobURL"])(url) && !id) {
+      setAttributes({
+        url: '',
+        alt: ''
+      });
+    }
+  }
+
   render() {
     console.log(this.props);
     const {
