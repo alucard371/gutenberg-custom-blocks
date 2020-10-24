@@ -1,7 +1,7 @@
 import { Component } from '@wordpress/element'
-import { RichText, MediaPlaceholder, BlockControls, MediaUpload, MediaUploadCheck } from "@wordpress/block-editor";
+import { RichText, MediaPlaceholder, BlockControls, MediaUpload, MediaUploadCheck, InspectorControls } from "@wordpress/block-editor";
 import { isBlobURL } from "@wordpress/blob"
-import { Spinner, withNotices, Toolbar, IconButton } from  "@wordpress/components"
+import { Spinner, withNotices, Toolbar, IconButton, PanelBody, TextareaControl } from  "@wordpress/components"
 import {__} from "@wordpress/i18n";
 
 class TeamMemberEdit extends Component{
@@ -46,6 +46,12 @@ class TeamMemberEdit extends Component{
 		});
 	}
 
+	updateAlt = (alt) => {
+		this.props.setAttributes({
+			alt
+		});
+	}
+
 	onUploadError = (message) => {
 		const { noticeOperations } = this.props;
 		noticeOperations.createErrorNotice( message )
@@ -57,6 +63,18 @@ class TeamMemberEdit extends Component{
 		const { title,info, url, alt, id } = attributes;
 		return(
 			<>
+				<InspectorControls>
+					<PanelBody title={ __('Image settings', 'qtd-blocks') }>
+						{url && !isBlobURL(url) &&
+						<TextareaControl
+							label={ __('Alt text', 'qtd-blocks') }
+							value={ alt }
+							onChange={ this.updateAlt }
+							help={__('Enter some text', 'qtd-blocks')}
+						/>
+						}
+					</PanelBody>
+				</InspectorControls>
 				<BlockControls>
 					{url &&
 						<Toolbar>

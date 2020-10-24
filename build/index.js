@@ -877,6 +877,12 @@ class TeamMemberEdit extends _wordpress_element__WEBPACK_IMPORTED_MODULE_0__["Co
       });
     });
 
+    _defineProperty(this, "updateAlt", alt => {
+      this.props.setAttributes({
+        alt
+      });
+    });
+
     _defineProperty(this, "onUploadError", message => {
       const {
         noticeOperations
@@ -917,7 +923,14 @@ class TeamMemberEdit extends _wordpress_element__WEBPACK_IMPORTED_MODULE_0__["Co
       alt,
       id
     } = attributes;
-    return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__["BlockControls"], null, url && /*#__PURE__*/React.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__["Toolbar"], null, id && /*#__PURE__*/React.createElement(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__["MediaUploadCheck"], null, /*#__PURE__*/React.createElement(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__["MediaUpload"], {
+    return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__["InspectorControls"], null, /*#__PURE__*/React.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__["PanelBody"], {
+      title: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__["__"])('Image settings', 'qtd-blocks')
+    }, url && !Object(_wordpress_blob__WEBPACK_IMPORTED_MODULE_2__["isBlobURL"])(url) && /*#__PURE__*/React.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__["TextareaControl"], {
+      label: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__["__"])('Alt text', 'qtd-blocks'),
+      value: alt,
+      onChange: this.updateAlt,
+      help: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__["__"])('Enter some text', 'qtd-blocks')
+    }))), /*#__PURE__*/React.createElement(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__["BlockControls"], null, url && /*#__PURE__*/React.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__["Toolbar"], null, id && /*#__PURE__*/React.createElement(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__["MediaUploadCheck"], null, /*#__PURE__*/React.createElement(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__["MediaUpload"], {
       onSelect: this.onSelectImage,
       allowedTypes: ["image"],
       value: id,
