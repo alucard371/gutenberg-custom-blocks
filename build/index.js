@@ -948,14 +948,16 @@ class TeamMemberEdit extends _wordpress_element__WEBPACK_IMPORTED_MODULE_0__["Co
     const {
       className,
       attributes,
-      noticeUI
+      noticeUI,
+      isSelected
     } = this.props;
     const {
       title,
       info,
       url,
       alt,
-      id
+      id,
+      social
     } = attributes;
     return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__["InspectorControls"], null, /*#__PURE__*/React.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__["PanelBody"], {
       title: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__["__"])('Image settings', 'qtd-blocks')
@@ -1019,7 +1021,25 @@ class TeamMemberEdit extends _wordpress_element__WEBPACK_IMPORTED_MODULE_0__["Co
       value: info,
       placeholder: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__["__"])("Member info", 'team-member'),
       formattingControle: []
-    })));
+    }), /*#__PURE__*/React.createElement("div", {
+      className: 'wp-block-qtd-blocks-team-member__social'
+    }, /*#__PURE__*/React.createElement("ul", null, social.map((item, index) => {
+      return /*#__PURE__*/React.createElement("li", {
+        key: index
+      }, /*#__PURE__*/React.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__["Dashicon"], {
+        icon: item.icon,
+        size: 16
+      }));
+    }), isSelected && /*#__PURE__*/React.createElement("li", {
+      className: 'wp-block-qtd-blocks-team-member__addIconLi'
+    }, /*#__PURE__*/React.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__["Tooltip"], {
+      text: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__["__"])('Remove image', 'qtd-blocks')
+    }, /*#__PURE__*/React.createElement("button", {
+      className: 'wp-block-qtd-blocks-team-member__addIcon'
+    }, /*#__PURE__*/React.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__["Dashicon"], {
+      icon: 'plus',
+      size: 14
+    }))))))));
   }
 
 }
@@ -1121,6 +1141,19 @@ const attributes = {
     source: 'attribute',
     selector: 'img',
     attribute: 'src'
+  },
+  social: {
+    type: 'array',
+    default: [{
+      link: 'facebook.com',
+      icon: 'facebook'
+    }, {
+      link: 'linkedin.com',
+      icon: 'linkedin'
+    }, {
+      link: 'instagram.com',
+      icon: 'instagram'
+    }]
   }
 };
 /**

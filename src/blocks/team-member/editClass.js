@@ -8,10 +8,12 @@ import {
 	IconButton,
 	PanelBody,
 	TextareaControl,
-	SelectControl
+	SelectControl,
+	Dashicon,
+	Tooltip
 } from  "@wordpress/components"
 import {__} from "@wordpress/i18n";
-import {select, withSelect} from "@wordpress/data";
+import { withSelect} from "@wordpress/data";
 
 class TeamMemberEdit extends Component{
 
@@ -93,8 +95,8 @@ class TeamMemberEdit extends Component{
 
 	render(){
 		console.log(this.props);
-		const { className, attributes, noticeUI } = this.props;
-		const { title,info, url, alt, id } = attributes;
+		const { className, attributes, noticeUI, isSelected } = this.props;
+		const { title,info, url, alt, id, social } = attributes;
 		return(
 			<>
 				<InspectorControls>
@@ -185,6 +187,28 @@ class TeamMemberEdit extends Component{
 						placeholder={__("Member info", 'team-member')}
 						formattingControle={[]}
 					/>
+					<div className={'wp-block-qtd-blocks-team-member__social'}>
+						<ul>
+							{social.map((item, index) => {
+								return (
+									<li
+										key={index}
+									>
+										<Dashicon icon={item.icon} size={16}/>
+									</li>
+								)
+							})}
+							{isSelected &&
+							<li className={'wp-block-qtd-blocks-team-member__addIconLi'}>
+								<Tooltip text={__('Remove image', 'qtd-blocks')}>
+									<button className={'wp-block-qtd-blocks-team-member__addIcon'}>
+										<Dashicon icon={'plus'} size={14}/>
+									</button>
+								</Tooltip>
+							</li>
+							}
+						</ul>
+					</div>
 				</div>
 			</>
 
