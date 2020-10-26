@@ -55,7 +55,7 @@
 
 	&__title {
 	  color: #d24848 !important;
-	  font-size: 2rem;
+	  font-size: 2vw;
 	  font-weight: lighter;
 	  font-style: oblique;
 	  text-transform: capitalize;
@@ -65,7 +65,7 @@
 
 	&__info {
 	  color: #641414 !important;
-	  font-size: 1rem;
+	  font-size: 1vw;
 	  font-weight: bolder;
 	  margin-bottom: 5px;
 	  padding: 10px;
@@ -83,7 +83,7 @@
 	}
 	&__removeLink {
 	  color: #d23535;
-	  font-size: 14px;
+	  font-size: 0.5vw;
 	  text-decoration: underline;
 	  cursor: pointer;
 	}
@@ -147,7 +147,7 @@
 	}
   }
   &__title {
-	font-size: 2rem;
+	font-size: 2vw;
 	font-weight: lighter;
 	font-style: oblique;
 	text-transform: capitalize;
@@ -156,7 +156,7 @@
   }
 
   &__info {
-	font-size: 1rem;
+	font-size: 1vw;
 	font-weight: bolder;
 	margin-bottom: 5px;
 	padding: 10px;
@@ -174,7 +174,7 @@
   }
   &__removeLink {
 	color: #d23535;
-	font-size: 14px;
+	font-size: 1vw;
 	text-decoration: underline;
 	cursor: pointer;
   }

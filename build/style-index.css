@@ -88,7 +88,7 @@
         box-shadow: 0 0 20px rgba(0, 0, 0, 0.4); }
     .wp-block-qtd-blocks-team-members .wp-block-qtd-blocks-team-member__title {
       color: #d24848 !important;
-      font-size: 2rem;
+      font-size: 2vw;
       font-weight: lighter;
       font-style: oblique;
       text-transform: capitalize;
@@ -96,7 +96,7 @@
       padding: 10px; }
     .wp-block-qtd-blocks-team-members .wp-block-qtd-blocks-team-member__info {
       color: #641414 !important;
-      font-size: 1rem;
+      font-size: 1vw;
       font-weight: bolder;
       margin-bottom: 5px;
       padding: 10px; }
@@ -111,7 +111,7 @@
       margin-top: 10px; }
     .wp-block-qtd-blocks-team-members .wp-block-qtd-blocks-team-member__removeLink {
       color: #d23535;
-      font-size: 14px;
+      font-size: 0.5vw;
       text-decoration: underline;
       cursor: pointer; }
     .wp-block-qtd-blocks-team-members .wp-block-qtd-blocks-team-member__social {
@@ -155,14 +155,14 @@
     .wp-block-qtd-blocks-team-member.has-shadow.shadow-opacity-40 {
       box-shadow: 0 0 20px rgba(0, 0, 0, 0.4); }
   .wp-block-qtd-blocks-team-member__title {
-    font-size: 2rem;
+    font-size: 2vw;
     font-weight: lighter;
     font-style: oblique;
     text-transform: capitalize;
     margin-bottom: 0;
     padding: 10px; }
   .wp-block-qtd-blocks-team-member__info {
-    font-size: 1rem;
+    font-size: 1vw;
     font-weight: bolder;
     margin-bottom: 5px;
     padding: 10px; }
@@ -177,7 +177,7 @@
     margin-top: 10px; }
   .wp-block-qtd-blocks-team-member__removeLink {
     color: #d23535;
-    font-size: 14px;
+    font-size: 1vw;
     text-decoration: underline;
     cursor: pointer; }
   .wp-block-qtd-blocks-team-member__social {
