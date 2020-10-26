@@ -3,8 +3,9 @@
  *
  * @see https://developer.wordpress.org/block-editor/packages/packages-i18n/
  */
-import { RichText } from "@wordpress/block-editor";
+import {getColorClassName, RichText} from "@wordpress/block-editor";
 import {Dashicon} from "@wordpress/components";
+import classnames from "classnames";
 
 
 /**
@@ -19,9 +20,25 @@ import {Dashicon} from "@wordpress/components";
 export default function save(
 	{ attributes }
 	) {
-	const { title, info, url, alt, id, social } = attributes;
+	const { title, info, url, alt, id, social, textColor, backgroundColor, customBackgroundColor, customTextColor } = attributes;
+	//get the color classes names from colors
+	const backgroundClass = getColorClassName('background-color', backgroundColor)
+	const textClass = getColorClassName('color', textColor)
+
+	const classes = classnames({
+		//variable as a key to see if the condition is true
+		[backgroundClass] : backgroundClass,
+		[textClass] : textClass,
+	})
+
 	return (
-		<div>
+		<div
+			className={ classes }
+			style={{
+				//ignore the inline style if undefined
+				//if backgroundClass === true backgroundColor=undefined else customBackgroundColor
+				backgroundColor: backgroundClass ? undefined : customBackgroundColor }}
+		>
 			{url &&
 			<img src={url} alt={alt} className={id ? `wp-image-${id}`:null}/>
 			}
@@ -30,6 +47,7 @@ export default function save(
 				className={'wp-block-qtd-blocks-team-member__title'}
 				tagName="h4"
 				value={ title }
+				style={{ color: textClass ? undefined : customTextColor }}
 			/>
 			}
 			{info &&
@@ -37,6 +55,7 @@ export default function save(
 				className={'wp-block-qtd-blocks-team-member__info'}
 				tagName="p"
 				value={ info }
+				style={{ color: textClass ? undefined : customTextColor }}
 			/>
 			}
 			{social.length > 0 &&

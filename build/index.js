@@ -4285,13 +4285,23 @@ class TeamMemberEdit extends _wordpress_element__WEBPACK_IMPORTED_MODULE_0__["Co
     return options;
   }
 
+  /*onChangeBackgroundColor = (backgroundColor) => {
+  	this.props.setAttributes({ backgroundColor })
+  }
+  onChangeTextColor = (textColor) => {
+  	this.props.setAttributes({ textColor })
+  }*/
   render() {
     console.log(this.props);
     const {
       className,
       attributes,
       noticeUI,
-      isSelected
+      isSelected,
+      setTextColor,
+      setBackgroundColor,
+      backgroundColor,
+      textColor
     } = this.props;
     const {
       title,
@@ -4343,6 +4353,20 @@ class TeamMemberEdit extends _wordpress_element__WEBPACK_IMPORTED_MODULE_0__["Co
       options: this.getImageSizes(),
       onChange: this.imageSizeChange,
       value: url
+    })), /*#__PURE__*/React.createElement(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__["PanelColorSettings"], {
+      title: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__["__"])('Panel Color Settings', 'qtd-blocks'),
+      colorSettings: [{
+        value: backgroundColor.color,
+        onChange: setBackgroundColor,
+        label: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__["__"])('Background color', 'qtd-blocks')
+      }, {
+        value: textColor.color,
+        onChange: setTextColor,
+        label: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__["__"])('Text color', 'qtd-blocks')
+      }]
+    }, /*#__PURE__*/React.createElement(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__["ContrastChecker"], {
+      textColor: textColor.color,
+      backgroundColor: backgroundColor.color
     }))), /*#__PURE__*/React.createElement(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__["BlockControls"], null, url && /*#__PURE__*/React.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__["Toolbar"], null, id && /*#__PURE__*/React.createElement(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__["MediaUploadCheck"], null, /*#__PURE__*/React.createElement(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__["MediaUpload"], {
       onSelect: this.onSelectImage,
       allowedTypes: ["image"],
@@ -4363,7 +4387,10 @@ class TeamMemberEdit extends _wordpress_element__WEBPACK_IMPORTED_MODULE_0__["Co
       label: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__["__"])('Remove image', 'qtd-blocks'),
       onClick: this.removeImage
     }))), /*#__PURE__*/React.createElement("div", {
-      className: className
+      className: className,
+      style: {
+        backgroundColor: backgroundColor.color
+      }
     }, url ? /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement("img", {
       src: url,
       alt: alt
@@ -4383,7 +4410,11 @@ class TeamMemberEdit extends _wordpress_element__WEBPACK_IMPORTED_MODULE_0__["Co
       onChange: this.onChangeTitle,
       value: title,
       placeholder: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__["__"])("Member name", 'team-member'),
-      formattingControle: []
+      formattingControle: [],
+      format: "string",
+      style: {
+        color: textColor.color
+      }
     }), /*#__PURE__*/React.createElement(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__["RichText"] //classname is in BEM format
     //This will be the class of our div
     , {
@@ -4392,7 +4423,11 @@ class TeamMemberEdit extends _wordpress_element__WEBPACK_IMPORTED_MODULE_0__["Co
       onChange: this.onChangeInfo,
       value: info,
       placeholder: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__["__"])("Member info", 'team-member'),
-      formattingControle: []
+      formattingControle: [],
+      format: "string",
+      style: {
+        color: textColor.color
+      }
     }), /*#__PURE__*/React.createElement("div", {
       className: 'wp-block-qtd-blocks-team-member__social'
     }, /*#__PURE__*/React.createElement(SortableLink, {
@@ -4427,7 +4462,9 @@ class TeamMemberEdit extends _wordpress_element__WEBPACK_IMPORTED_MODULE_0__["Co
     image: id ? select('core').getMedia(id) : null,
     imageSizes: select('core/editor').getEditorSettings().imageSizes
   };
-})(Object(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__["withNotices"])(TeamMemberEdit)));
+})(Object(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__["withColors"])('backgroundColor', {
+  'textColor': 'color'
+})(Object(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__["withNotices"])(TeamMemberEdit))));
 
 /***/ }),
 
@@ -4519,6 +4556,18 @@ const attributes = {
     selector: 'img',
     attribute: 'src'
   },
+  textColor: {
+    type: 'string'
+  },
+  backgroundColor: {
+    type: 'string'
+  },
+  customTextColor: {
+    type: 'string'
+  },
+  customBackgroundColor: {
+    type: 'string'
+  },
   social: {
     type: 'array',
     default: [{
@@ -4588,6 +4637,17 @@ Object(_wordpress_blocks__WEBPACK_IMPORTED_MODULE_0__["registerBlockType"])('qtd
   })),
   //parent: ['qtd-blocks/team-members'],
   keywords: [Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__["__"])('list', 'team-member'), Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__["__"])('organise', 'team-member'), Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__["__"])('team', 'team-member'), Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__["__"])('member', 'team-member'), Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__["__"])('person', 'team-member')],
+  styles: [{
+    name: 'rounded',
+    label: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__["__"])('Rounded', 'qtd-blocks'),
+    isDefault: true
+  }, {
+    name: 'squared',
+    label: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__["__"])('Squared', 'qtd-blocks')
+  }, {
+    name: 'outlined',
+    label: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__["__"])('Outlined', 'qtd-blocks')
+  }],
   attributes: attributes,
 
   /**
@@ -4729,11 +4789,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/components */ "@wordpress/components");
 /* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! classnames */ "./node_modules/classnames/index.js");
+/* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(classnames__WEBPACK_IMPORTED_MODULE_2__);
 /**
  * Retrieves the translation of text.
  *
  * @see https://developer.wordpress.org/block-editor/packages/packages-i18n/
  */
+
 
 
 /**
@@ -4755,20 +4818,45 @@ function save({
     url,
     alt,
     id,
-    social
-  } = attributes;
-  return /*#__PURE__*/React.createElement("div", null, url && /*#__PURE__*/React.createElement("img", {
+    social,
+    textColor,
+    backgroundColor,
+    customBackgroundColor,
+    customTextColor
+  } = attributes; //get the color classes names from colors
+
+  const backgroundClass = Object(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_0__["getColorClassName"])('background-color', backgroundColor);
+  const textClass = Object(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_0__["getColorClassName"])('color', textColor);
+  const classes = classnames__WEBPACK_IMPORTED_MODULE_2___default()({
+    //variable as a key to see if the condition is true
+    [backgroundClass]: backgroundClass,
+    [textClass]: textClass
+  });
+  return /*#__PURE__*/React.createElement("div", {
+    className: classes,
+    style: {
+      //ignore the inline style if undefined
+      //if backgroundClass === true backgroundColor=undefined else customBackgroundColor
+      backgroundColor: backgroundClass ? undefined : customBackgroundColor
+    }
+  }, url && /*#__PURE__*/React.createElement("img", {
     src: url,
     alt: alt,
     className: id ? `wp-image-${id}` : null
   }), title && /*#__PURE__*/React.createElement(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_0__["RichText"].Content, {
     className: 'wp-block-qtd-blocks-team-member__title',
     tagName: "h4",
-    value: title
+    value: title,
+    style: {
+      color: textClass ? undefined : customTextColor
+    }
   }), info && /*#__PURE__*/React.createElement(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_0__["RichText"].Content, {
     className: 'wp-block-qtd-blocks-team-member__info',
     tagName: "p",
-    value: info
+    value: info,
+    style: {
+      color: textClass ? undefined : customTextColor
+    }
   }), social.length > 0 && /*#__PURE__*/React.createElement("div", {
     className: 'wp-block-qtd-blocks-team-member__social'
   }, /*#__PURE__*/React.createElement("ul", null, social.map((item, index) => {

@@ -69,6 +69,23 @@
     padding: 2px;
     border: 1px solid #0d0f15;
     margin: 10px; }
+    .wp-block-qtd-blocks-team-members .wp-block-qtd-blocks-team-member.is-style-rounded {
+      border-radius: 5%; }
+    .wp-block-qtd-blocks-team-members .wp-block-qtd-blocks-team-member.is-style-squared {
+      border-radius: 0px; }
+    .wp-block-qtd-blocks-team-members .wp-block-qtd-blocks-team-member.is-style-outlined {
+      border-radius: 0px;
+      border: 2px solid currentcolor; }
+    .wp-block-qtd-blocks-team-members .wp-block-qtd-blocks-team-member.has-shadow {
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.3); }
+      .wp-block-qtd-blocks-team-members .wp-block-qtd-blocks-team-member.has-shadow.shadow-opacity-10 {
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.1); }
+      .wp-block-qtd-blocks-team-members .wp-block-qtd-blocks-team-member.has-shadow.shadow-opacity-20 {
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.2); }
+      .wp-block-qtd-blocks-team-members .wp-block-qtd-blocks-team-member.has-shadow.shadow-opacity-30 {
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.3); }
+      .wp-block-qtd-blocks-team-members .wp-block-qtd-blocks-team-member.has-shadow.shadow-opacity-40 {
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.4); }
     .wp-block-qtd-blocks-team-members .wp-block-qtd-blocks-team-member__title {
       color: #d24848 !important;
       font-size: 2rem;
@@ -122,8 +139,22 @@
   padding: 2px;
   border: 1px solid #0d0f15;
   margin: 10px; }
+  .wp-block-qtd-blocks-team-member.is-style-squared {
+    border-radius: 0px; }
+  .wp-block-qtd-blocks-team-member.is-style-outlined {
+    border-radius: 0px;
+    border: 2px solid currentcolor; }
+  .wp-block-qtd-blocks-team-member.has-shadow {
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.3); }
+    .wp-block-qtd-blocks-team-member.has-shadow.shadow-opacity-10 {
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.1); }
+    .wp-block-qtd-blocks-team-member.has-shadow.shadow-opacity-20 {
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.2); }
+    .wp-block-qtd-blocks-team-member.has-shadow.shadow-opacity-30 {
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.3); }
+    .wp-block-qtd-blocks-team-member.has-shadow.shadow-opacity-40 {
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.4); }
   .wp-block-qtd-blocks-team-member__title {
-    color: #d24848 !important;
     font-size: 2rem;
     font-weight: lighter;
     font-style: oblique;
@@ -131,7 +162,6 @@
     margin-bottom: 0;
     padding: 10px; }
   .wp-block-qtd-blocks-team-member__info {
-    color: #641414 !important;
     font-size: 1rem;
     font-weight: bolder;
     margin-bottom: 5px;

@@ -56,6 +56,18 @@ const attributes = {
 		selector: 'img',
 		attribute: 'src',
 	},
+	textColor: {
+		type:'string',
+	},
+	backgroundColor: {
+		type:'string',
+	},
+	customTextColor: {
+		type:'string',
+	},
+	customBackgroundColor: {
+		type:'string',
+	},
 	social: {
 		type: 'array',
 		default: [
@@ -122,6 +134,22 @@ registerBlockType( 'qtd-blocks/team-member', {
 		, __('team', 'team-member')
 		, __('member', 'team-member')
 		, __('person', 'team-member')
+	],
+
+	styles: [
+		{
+			name: 'rounded',
+			label: __('Rounded', 'qtd-blocks'),
+			isDefault: true,
+		},
+		{
+			name: 'squared',
+			label: __('Squared', 'qtd-blocks')
+		},
+		{
+			name: 'outlined',
+			label: __('Outlined', 'qtd-blocks')
+		}
 	],
 
 	attributes: attributes,

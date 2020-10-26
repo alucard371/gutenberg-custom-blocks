@@ -27,6 +27,31 @@
 	padding: 2px;
 	border: 1px solid #0d0f15;
 	margin: 10px;
+	&.is-style-rounded{
+	  border-radius: 5%;
+	}
+	&.is-style-squared{
+	  border-radius: 0px;
+	}
+	&.is-style-outlined{
+	  border-radius: 0px;
+	  border: 2px solid currentcolor;
+	}
+	&.has-shadow{
+	  box-shadow: 0 0 20px rgba(0,0,0,0.3);
+	  &.shadow-opacity-10 {
+		box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+	  }
+	  &.shadow-opacity-20 {
+		box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+	  }
+	  &.shadow-opacity-30 {
+		box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+	  }
+	  &.shadow-opacity-40 {
+		box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
+	  }
+	}
 
 	&__title {
 	  color: #d24848 !important;
@@ -99,9 +124,29 @@
   padding: 2px;
   border: 1px solid #0d0f15;
   margin: 10px;
-
+  &.is-style-squared{
+	border-radius: 0px;
+  }
+  &.is-style-outlined{
+	border-radius: 0px;
+	border: 2px solid currentcolor;
+  }
+  &.has-shadow{
+	box-shadow: 0 0 20px rgba(0,0,0,0.3);
+	&.shadow-opacity-10 {
+	  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+	}
+	&.shadow-opacity-20 {
+	  box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+	}
+	&.shadow-opacity-30 {
+	  box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+	}
+	&.shadow-opacity-40 {
+	  box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
+	}
+  }
   &__title {
-	color: #d24848 !important;
 	font-size: 2rem;
 	font-weight: lighter;
 	font-style: oblique;
@@ -111,7 +156,6 @@
   }
 
   &__info {
-	color: #641414 !important;
 	font-size: 1rem;
 	font-weight: bolder;
 	margin-bottom: 5px;

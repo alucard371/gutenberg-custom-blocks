@@ -1,5 +1,13 @@
 import { Component } from '@wordpress/element'
-import { RichText, MediaPlaceholder, BlockControls, MediaUpload, MediaUploadCheck, InspectorControls, URLInput } from "@wordpress/block-editor";
+import {
+	RichText,
+	MediaPlaceholder,
+	BlockControls,
+	MediaUpload,
+	MediaUploadCheck,
+	InspectorControls,
+	ContrastChecker, PanelColorSettings, withColors
+} from "@wordpress/block-editor";
 import { isBlobURL } from "@wordpress/blob"
 import {
 	Spinner,
@@ -159,9 +167,16 @@ class TeamMemberEdit extends Component{
 
 	}
 
+	/*onChangeBackgroundColor = (backgroundColor) => {
+		this.props.setAttributes({ backgroundColor })
+	}
+	onChangeTextColor = (textColor) => {
+		this.props.setAttributes({ textColor })
+	}*/
+
 	render(){
 		console.log(this.props);
-		const { className, attributes, noticeUI, isSelected } = this.props;
+		const { className, attributes, noticeUI, isSelected, setTextColor, setBackgroundColor,backgroundColor, textColor } = this.props;
 		const { title,info, url, alt, id, social } = attributes;
 
 		const SortableLink = SortableContainer(()=> {
@@ -217,6 +232,26 @@ class TeamMemberEdit extends Component{
 						/>
 						}
 					</PanelBody>
+					<PanelColorSettings
+						title={__('Panel Color Settings', 'qtd-blocks')}
+						colorSettings={[
+							{
+								value: backgroundColor.color,
+								onChange: setBackgroundColor,
+								label: __('Background color', 'qtd-blocks')
+							},
+							{
+								value: textColor.color,
+								onChange: setTextColor,
+								label: __('Text color', 'qtd-blocks')
+							},
+						]}
+					>
+						<ContrastChecker
+							textColor={textColor.color}
+							backgroundColor={backgroundColor.color}
+						/>
+					</PanelColorSettings>
 				</InspectorControls>
 				<BlockControls>
 					{url &&
@@ -249,7 +284,11 @@ class TeamMemberEdit extends Component{
 						</Toolbar>
 					}
 				</BlockControls>
-				<div className={ className }>
+				<div
+					className={ className }
+					style={{
+						backgroundColor: backgroundColor.color}}
+				>
 					{url ?
 						<>
 							<img src={url} alt={alt}/>
@@ -275,6 +314,8 @@ class TeamMemberEdit extends Component{
 						value = {title}
 						placeholder={__("Member name", 'team-member')}
 						formattingControle={[]}
+						format="string"
+						style={{ color: textColor.color }}
 					/>
 					<RichText
 						//classname is in BEM format
@@ -285,6 +326,8 @@ class TeamMemberEdit extends Component{
 						value = {info}
 						placeholder={__("Member info", 'team-member')}
 						formattingControle={[]}
+						format="string"
+						style={{ color: textColor.color }}
 					/>
 					<div className={'wp-block-qtd-blocks-team-member__social'}>
 						<SortableLink
@@ -352,4 +395,4 @@ export default withSelect((select, props)=> {
 		image: id ? select('core').getMedia(id) : null,
 		imageSizes: select('core/editor').getEditorSettings().imageSizes
 	}
-})(withNotices(TeamMemberEdit));
+})(withColors('backgroundColor', {'textColor': 'color'})(withNotices(TeamMemberEdit)));
