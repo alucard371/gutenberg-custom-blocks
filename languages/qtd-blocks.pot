@@ -1,0 +1,135 @@
+# Copyright (C) 2020 The WordPress Contributors
+# This file is distributed under the GPL-2.0-or-later.
+msgid ""
+msgstr ""
+"Project-Id-Version: Qtd Blocks 0.1.0\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/todo-list\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"POT-Creation-Date: 2020-10-26T08:57:10+00:00\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"X-Generator: WP-CLI 2.4.0\n"
+"X-Domain: qtd-blocks\n"
+
+#. Plugin Name of the plugin
+msgid "Qtd Blocks"
+msgstr "Blocs Qtd"
+
+#. Description of the plugin
+msgid "Custom block development module - build step required."
+msgstr "Module de développement de blocs personnalisés - étape de construction requise."
+
+#. Author of the plugin
+msgid "The WordPress Contributors"
+msgstr "Les contributeurs WordPress"
+
+#: qtd-blocks.php:20
+msgid "Qtd theme category"
+msgstr "Catégorie de thème QTD"
+
+#: build/index.js:3593
+msgid "Settings"
+msgstr "Réglages"
+
+#: build/index.js:3595
+msgid "Shadow opacity"
+msgstr "Opacité de l'ombre"
+
+#: build/index.js:3602
+#: src/blocks/coverBlock/edit.js:67
+msgid "Panel Color Settings"
+msgstr "Paramètres de couleur du panneau"
+
+#: build/index.js:3606
+#: src/blocks/coverBlock/edit.js:72
+msgid "Background color"
+msgstr "Couleur de fond"
+
+#: build/index.js:3610
+#: src/blocks/coverBlock/edit.js:77
+msgid "Text color"
+msgstr "Couleur du texte"
+
+#: build/index.js:3623
+#: build/index.js:3628
+msgid "test"
+msgstr "test"
+
+#: build/index.js:3633
+msgid "shadow"
+msgstr "ombre"
+
+#: build/index.js:3802
+#: src/blocks/coverBlock/index.js:105
+msgid "Rounded"
+msgstr "Arrondi"
+
+#: build/index.js:3806
+#: src/blocks/coverBlock/index.js:110
+msgid "Squared"
+msgstr "Carré"
+
+#: build/index.js:3809
+#: src/blocks/coverBlock/index.js:114
+msgid "Outlined"
+msgstr "Souligné"
+
+#: build/index.js:4325
+#: build/index.js:4363
+msgid "Remove image"
+msgstr "Supprimer l'image"
+
+#: build/index.js:4335
+msgid "Image settings"
+msgstr "Paramètres de l'image"
+
+#: build/index.js:4337
+msgid "Alt text"
+msgstr "Texte alternatif"
+
+#: build/index.js:4340
+msgid "The alt attribute provides alternative information for an image if a user for some reason cannot view it"
+msgstr "L'attribut alt fournit des informations alternatives pour une image si un utilisateur ne peut pas l'afficher pour une raison quelconque"
+
+#: build/index.js:4342
+msgid "Image size"
+msgstr "Taille de l'image"
+
+#: build/index.js:4356
+msgid "Edit image"
+msgstr "Éditer l'image"
+
+#: build/index.js:4409
+msgid "Icon"
+msgstr "Icône"
+
+#: build/index.js:4413
+msgid "URL"
+msgstr "URL"
+
+#: build/index.js:4419
+msgid "RemoveLink"
+msgstr "Supprimer le lien"
+
+#: build/index.js:4644
+#: src/blocks/team-member/parent.js:14
+msgid "Team members"
+msgstr "Membres de l'équipe"
+
+#: build/index.js:4690
+#: src/blocks/team-member/parent.js:66
+msgid "column"
+msgstr "colonne"
+
+#: block.json
+msgctxt "block title"
+msgid "Qtd Blocks"
+msgstr "titre du bloc"
+
+#: block.json
+msgctxt "block description"
+msgid "Example block written with ESNext standard and JSX support – build step required."
+msgstr "Exemple de bloc écrit avec le standard ESNext et le support JSX - étape de construction requise."

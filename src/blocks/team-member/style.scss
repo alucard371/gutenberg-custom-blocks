@@ -30,7 +30,7 @@
 
 	&__title {
 	  color: #d24848 !important;
-	  font-size: 3rem;
+	  font-size: 2rem;
 	  font-weight: lighter;
 	  font-style: oblique;
 	  text-transform: capitalize;
@@ -40,7 +40,7 @@
 
 	&__info {
 	  color: #641414 !important;
-	  font-size: 2rem;
+	  font-size: 1rem;
 	  font-weight: bolder;
 	  margin-bottom: 5px;
 	  padding: 10px;
@@ -63,6 +63,7 @@
 	  cursor: pointer;
 	}
 	&__social {
+	  padding: 10px;
 	  ul {
 		list-style: none;
 		line-height: 1;
@@ -86,6 +87,77 @@
 			vertical-align: middle;
 			color: #4e4e4e;
 		  }
+		}
+	  }
+	}
+  }
+}
+
+.wp-block-qtd-blocks-team-member {
+  background-color: #fffcfc;
+  color: #322e2e;
+  padding: 2px;
+  border: 1px solid #0d0f15;
+  margin: 10px;
+
+  &__title {
+	color: #d24848 !important;
+	font-size: 2rem;
+	font-weight: lighter;
+	font-style: oblique;
+	text-transform: capitalize;
+	margin-bottom: 0;
+	padding: 10px;
+  }
+
+  &__info {
+	color: #641414 !important;
+	font-size: 1rem;
+	font-weight: bolder;
+	margin-bottom: 5px;
+	padding: 10px;
+  }
+  &__addIcon {
+	padding: 2px;
+	line-height: 1;
+	border: 1px dashed #00d082;
+	cursor: pointer;
+  }
+  &__linkForm {
+	border: 1px solid #eaeaea;
+	padding: 10px;
+	margin-top: 10px;
+  }
+  &__removeLink {
+	color: #d23535;
+	font-size: 14px;
+	text-decoration: underline;
+	cursor: pointer;
+  }
+  &__social {
+	padding: 10px;
+	ul {
+	  list-style: none;
+	  line-height: 1;
+	  margin-left: -5px;
+	  margin-right: -5px;
+
+	  li {
+		display: inline-block;
+		line-height: 1;
+		margin: 5px;
+
+		a {
+		  border-bottom: none;
+		}
+
+		&.is-selected {
+		  outline: 2px solid #99797e;
+		}
+
+		svg {
+		  vertical-align: middle;
+		  color: #4e4e4e;
 		}
 	  }
 	}

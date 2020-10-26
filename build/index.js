@@ -4586,7 +4586,7 @@ Object(_wordpress_blocks__WEBPACK_IMPORTED_MODULE_0__["registerBlockType"])('qtd
   }), /*#__PURE__*/React.createElement("path", {
     d: "M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-5 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z"
   })),
-  parent: ['qtd-blocks/team-members'],
+  //parent: ['qtd-blocks/team-members'],
   keywords: [Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__["__"])('list', 'team-member'), Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__["__"])('organise', 'team-member'), Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__["__"])('team', 'team-member'), Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__["__"])('member', 'team-member'), Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__["__"])('person', 'team-member')],
   attributes: attributes,
 
@@ -4645,6 +4645,29 @@ Object(_wordpress_blocks__WEBPACK_IMPORTED_MODULE_0__["registerBlockType"])('qtd
   description: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__["__"])('Block to show team members', 'team-members'),
   category: 'qtd-blocks-category',
   icon: 'grid-view',
+  transforms: {
+    from: [{
+      type: 'block',
+      blocks: ['core/gallery'],
+      transform: ({
+        columns,
+        images
+      }) => {
+        let inner = images.map(({
+          alt,
+          id,
+          url
+        }) => Object(_wordpress_blocks__WEBPACK_IMPORTED_MODULE_0__["createBlock"])('qtd-blocks/team-member', {
+          alt,
+          id,
+          url
+        }));
+        return Object(_wordpress_blocks__WEBPACK_IMPORTED_MODULE_0__["createBlock"])('qtd-blocks/team-members', {
+          columns: columns
+        }, inner);
+      }
+    }]
+  },
   keywords: [Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__["__"])('list', 'team-member'), Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__["__"])('organise', 'team-member'), Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__["__"])('team', 'team-member'), Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__["__"])('member', 'team-member'), Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__["__"])('person', 'team-member')],
   supports: {
     // Removes support for an HTML mode.

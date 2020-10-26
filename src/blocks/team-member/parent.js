@@ -1,4 +1,4 @@
-import { registerBlockType } from '@wordpress/blocks';
+import { registerBlockType, createBlock } from '@wordpress/blocks';
 import { __ } from '@wordpress/i18n';
 import { InnerBlocks, InspectorControls } from '@wordpress/block-editor';
 import { PanelBody, RangeControl } from "@wordpress/components";
@@ -21,6 +21,24 @@ registerBlockType('qtd-blocks/team-members', {
 	category: 'qtd-blocks-category',
 
 	icon: 'grid-view',
+
+	transforms: {
+		from: [
+			{
+				type: 'block',
+				blocks: ['core/gallery'],
+				transform: ({columns, images}) => {
+					let inner = images.map(({alt, id, url}) =>
+						createBlock('qtd-blocks/team-member',
+						{alt, id, url}));
+				return createBlock('qtd-blocks/team-members', {
+					columns: columns
+
+					},inner);
+				}
+			}
+		]
+	},
 
 	keywords: [
 		__('list', 'team-member')

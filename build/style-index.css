@@ -71,7 +71,7 @@
     margin: 10px; }
     .wp-block-qtd-blocks-team-members .wp-block-qtd-blocks-team-member__title {
       color: #d24848 !important;
-      font-size: 3rem;
+      font-size: 2rem;
       font-weight: lighter;
       font-style: oblique;
       text-transform: capitalize;
@@ -79,7 +79,7 @@
       padding: 10px; }
     .wp-block-qtd-blocks-team-members .wp-block-qtd-blocks-team-member__info {
       color: #641414 !important;
-      font-size: 2rem;
+      font-size: 1rem;
       font-weight: bolder;
       margin-bottom: 5px;
       padding: 10px; }
@@ -97,20 +97,75 @@
       font-size: 14px;
       text-decoration: underline;
       cursor: pointer; }
-    .wp-block-qtd-blocks-team-members .wp-block-qtd-blocks-team-member__social ul {
+    .wp-block-qtd-blocks-team-members .wp-block-qtd-blocks-team-member__social {
+      padding: 10px; }
+      .wp-block-qtd-blocks-team-members .wp-block-qtd-blocks-team-member__social ul {
+        list-style: none;
+        line-height: 1;
+        margin-left: -5px;
+        margin-right: -5px; }
+        .wp-block-qtd-blocks-team-members .wp-block-qtd-blocks-team-member__social ul li {
+          display: inline-block;
+          line-height: 1;
+          margin: 5px; }
+          .wp-block-qtd-blocks-team-members .wp-block-qtd-blocks-team-member__social ul li a {
+            border-bottom: none; }
+          .wp-block-qtd-blocks-team-members .wp-block-qtd-blocks-team-member__social ul li.is-selected {
+            outline: 2px solid #99797e; }
+          .wp-block-qtd-blocks-team-members .wp-block-qtd-blocks-team-member__social ul li svg {
+            vertical-align: middle;
+            color: #4e4e4e; }
+
+.wp-block-qtd-blocks-team-member {
+  background-color: #fffcfc;
+  color: #322e2e;
+  padding: 2px;
+  border: 1px solid #0d0f15;
+  margin: 10px; }
+  .wp-block-qtd-blocks-team-member__title {
+    color: #d24848 !important;
+    font-size: 2rem;
+    font-weight: lighter;
+    font-style: oblique;
+    text-transform: capitalize;
+    margin-bottom: 0;
+    padding: 10px; }
+  .wp-block-qtd-blocks-team-member__info {
+    color: #641414 !important;
+    font-size: 1rem;
+    font-weight: bolder;
+    margin-bottom: 5px;
+    padding: 10px; }
+  .wp-block-qtd-blocks-team-member__addIcon {
+    padding: 2px;
+    line-height: 1;
+    border: 1px dashed #00d082;
+    cursor: pointer; }
+  .wp-block-qtd-blocks-team-member__linkForm {
+    border: 1px solid #eaeaea;
+    padding: 10px;
+    margin-top: 10px; }
+  .wp-block-qtd-blocks-team-member__removeLink {
+    color: #d23535;
+    font-size: 14px;
+    text-decoration: underline;
+    cursor: pointer; }
+  .wp-block-qtd-blocks-team-member__social {
+    padding: 10px; }
+    .wp-block-qtd-blocks-team-member__social ul {
       list-style: none;
       line-height: 1;
       margin-left: -5px;
       margin-right: -5px; }
-      .wp-block-qtd-blocks-team-members .wp-block-qtd-blocks-team-member__social ul li {
+      .wp-block-qtd-blocks-team-member__social ul li {
         display: inline-block;
         line-height: 1;
         margin: 5px; }
-        .wp-block-qtd-blocks-team-members .wp-block-qtd-blocks-team-member__social ul li a {
+        .wp-block-qtd-blocks-team-member__social ul li a {
           border-bottom: none; }
-        .wp-block-qtd-blocks-team-members .wp-block-qtd-blocks-team-member__social ul li.is-selected {
+        .wp-block-qtd-blocks-team-member__social ul li.is-selected {
           outline: 2px solid #99797e; }
-        .wp-block-qtd-blocks-team-members .wp-block-qtd-blocks-team-member__social ul li svg {
+        .wp-block-qtd-blocks-team-member__social ul li svg {
           vertical-align: middle;
           color: #4e4e4e; }
 
