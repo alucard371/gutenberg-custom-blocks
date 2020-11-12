@@ -6,7 +6,7 @@ import { PanelBody, RangeControl } from "@wordpress/components";
 const attributes = {
 	columns: {
 		type: "number",
-		default: 2
+		default: 4
 	}
 };
 
@@ -74,6 +74,8 @@ registerBlockType('qtd-blocks/team-members', {
 			<InnerBlocks
 				allowedBlocks={['qtd-blocks/team-member']}
 				template={[
+					["qtd-blocks/team-member"],
+					["qtd-blocks/team-member"],
 					["qtd-blocks/team-member"],
 					["qtd-blocks/team-member"]
 				]}

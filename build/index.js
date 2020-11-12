@@ -4697,7 +4697,7 @@ __webpack_require__.r(__webpack_exports__);
 const attributes = {
   columns: {
     type: "number",
-    default: 2
+    default: 4
   }
 };
 Object(_wordpress_blocks__WEBPACK_IMPORTED_MODULE_0__["registerBlockType"])('qtd-blocks/team-members', {
@@ -4756,7 +4756,7 @@ Object(_wordpress_blocks__WEBPACK_IMPORTED_MODULE_0__["registerBlockType"])('qtd
       max: 6
     }))), /*#__PURE__*/React.createElement(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__["InnerBlocks"], {
       allowedBlocks: ['qtd-blocks/team-member'],
-      template: [["qtd-blocks/team-member"], ["qtd-blocks/team-member"]]
+      template: [["qtd-blocks/team-member"], ["qtd-blocks/team-member"], ["qtd-blocks/team-member"], ["qtd-blocks/team-member"]]
     }));
   },
 
